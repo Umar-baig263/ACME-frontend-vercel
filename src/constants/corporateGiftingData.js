@@ -1,6 +1,6 @@
 // corporateGiftingData.js
 
-import { bottles } from "./bottleS";
+import { bottles } from "./bottles";
 import { gift } from "./gift";
 import { pens } from "./pens";
 import { tech } from "./tech";

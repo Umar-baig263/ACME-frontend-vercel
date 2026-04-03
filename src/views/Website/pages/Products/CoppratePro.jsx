@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { gift } from "../../../../constants/gift";
 import { tech } from "../../../../constants/tech";
 import { pens } from "../../../../constants/pens";
-import { bottles } from "../../../../constants/bottleS";
+import { bottles } from "../../../../constants/bottles";
 
 const CoppratePro = () => {
   const { search } = useLocation();

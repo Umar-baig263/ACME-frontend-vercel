@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
-import CardSec1 from "../../components/Products/cardSec1";
+import CardSec1 from "../../components/Products/CardSec1";
 import Banner from "../../components/main/Banner/Banner";
 import LatestNews from "../../components/main/LastestNews/LastestNews";
 import FaqSection from "../../components/main/FaqSection/FaqSection";

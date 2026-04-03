@@ -3,7 +3,7 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { PiWhatsappLogo } from "react-icons/pi";
 // import BlogBody from '../../BlogBody/BlogBody'
-// import { Image_Url } from '../../../../Utils/const'
+// import { Image_Url } from '../../../../utils/const'
 import RedButton from "../main/Buttons/RedButton";
 
 const Section2 = ({ head, des1, des2, img, isreversed, pad }) => {
