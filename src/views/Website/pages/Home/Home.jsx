@@ -1,11 +1,11 @@
 import React from "react";
-import Section1 from "../../components/HomePage/section1";
+import Section1 from "../../components/HomePage/Section1";
 import Section2 from "../../components/HomePage/section2";
 import Section3 from "../../components/HomePage/section3";
 // import Section4 from "../../components/HomePage/Section4";
 import Banner from "../../components/main/Banner/Banner.jsx";
-import Section5 from "../../components/HomePage/section5";
-import Section6 from "../../components/HomePage/section6.jsx";
+import Section5 from "../../components/HomePage/Section5";
+import Section6 from "../../components/HomePage/Section6.jsx";
 import Section7 from "../../components/HomePage/Section7.jsx";
 import Section8 from "../../components/HomePage/Section8.jsx";
 // import Section9 from "../../components/HomePage/section9.jsx";
