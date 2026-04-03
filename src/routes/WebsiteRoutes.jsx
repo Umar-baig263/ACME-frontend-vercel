@@ -30,7 +30,7 @@ import ApparelPro from "../views/Website/pages/Products/ApparelPro";
 import EstorePro from "../views/Website/pages/Products/EstorePro";
 import CoppratePro from "../views/Website/pages/Products/CoppratePro";
 import CardsPro from "../views/Website/pages/Products/CardsPro";
-import CustomizePage from "../views/Website/pages/Customize/customizePage";
+import CustomizePage from "../views/Website/pages/Customize/CustomizePage";
 import StampProductDesc from "../views/Website/pages/ProductDesc/StampProductDesc";
 import CardProductDesc from "../views/Website/pages/ProductDesc/CardProductDesc";
 import EStoreProductDesc from "../views/Website/pages/ProductDesc/EStoreProductDesc";
