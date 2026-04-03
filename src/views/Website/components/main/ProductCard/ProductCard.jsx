@@ -1,0 +1,126 @@
+import React, { useContext } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { WishlistContext } from "../../../../../contexts/wishlistContext";
+
+const ProductCard = ({
+  product,
+  id,
+  img,
+  name,
+  desc,
+  price,
+  isPrice,
+  slug,
+  category,
+  disableLink,
+}) => {
+  const { wishlist, addToWishlist } = useContext(WishlistContext);
+
+  // Check if this product is already in wishlist
+  const isInWishlist = wishlist.some((p) => p.id === id);
+
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    addToWishlist({
+      id,
+      img,
+      name,
+      desc,
+      price: Number(price) || 181.95,
+      quantity: 1, // optional, for wishlist quantity
+    });
+  };
+
+  return (
+    <div className="relative flex flex-col gap-3">
+      {/* Heart Icon */}
+      <div
+        className="absolute top-2 right-2 p-2 rounded-full bg-white shadow-md cursor-pointer z-10"
+        onClick={handleWishlistClick}
+      >
+        {isInWishlist ? (
+          <AiFillHeart className="text-red-500 text-xl" />
+        ) : (
+          <AiOutlineHeart className="text-gray-600 text-xl" />
+        )}
+      </div>
+
+      {/* Product link */}
+      {/* ProductCard.jsx ke andar */}
+      {disableLink ? (
+        <div className="w-full h-full">
+          <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
+            <img
+              src={img}
+              alt={name}
+              className="max-w-[80%] max-h-[80%] object-contain"
+            />
+          </div>
+
+          <div className="flex flex-col pr-5">
+            <div
+              className={`${
+                isPrice
+                  ? "flex justify-between md:flex-row flex-col md:items-center w-full"
+                  : ""
+              }`}
+            >
+              <div
+                className={`md:text-base ${isPrice ? "" : "font-medium"} text-sm mt-3`}
+              >
+                {name}
+              </div>
+
+              {isPrice && (
+                <div className="md:text-lg text-sm font-bold">{price}</div>
+              )}
+            </div>
+
+            <div className="mt-1 md:text-xs text-xs w-full font-light">
+              {desc}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Link to={`/product/${slug || id}`}>
+          <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
+            <img
+              src={img}
+              alt={name}
+              className="max-w-[80%] max-h-[80%] object-contain"
+            />
+          </div>
+
+          <div className="flex flex-col pr-5">
+            <div
+              className={`${
+                isPrice
+                  ? "flex justify-between md:flex-row flex-col md:items-center w-full"
+                  : ""
+              }`}
+            >
+              <div
+                className={`md:text-base ${isPrice ? "" : "font-medium"} text-sm mt-3`}
+              >
+                {name}
+              </div>
+
+              {isPrice && (
+                <div className="md:text-lg text-sm font-bold">{price}</div>
+              )}
+            </div>
+
+            <div className="mt-1 md:text-xs text-xs w-full font-light">
+              {desc}
+            </div>
+          </div>
+        </Link>
+      )}
+    </div>
+  );
+};
+
+export default ProductCard;
