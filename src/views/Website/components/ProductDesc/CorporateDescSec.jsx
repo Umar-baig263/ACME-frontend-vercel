@@ -148,8 +148,8 @@ const CorporateDescSec = ({ product }) => {
       state: {
         buyNowProduct: {
           name: product.name,
-          price: product.price,
-          img: product.img,
+          price: Number(product.price) || 39.99,
+          img: product.img || images[0],
           qty: items,
           selectColor: colorName,
           selectSize: selectedSize,
@@ -211,16 +211,16 @@ const CorporateDescSec = ({ product }) => {
             <div className="text-lg text-gray-800">{product.desc}</div>
             <div className="flex  w-full justify-between">
               <div className="font-semibold">
-                <div>$181.95 for 5 units</div>
+                <div>${( (Number(product.price) || 39.99) * 4.5 ).toFixed(2)} for 5 units</div>
                 <div>
-                  <span className="line-through">$39.99</span> {" "}
-                  <span className="text-red-700"></span> / unit
+                  <span className="line-through">${((Number(product.price) || 39.99) * 1.2).toFixed(2)}</span>{" "}
+                  <span className="text-red-700"></span> / unit
                 </div>
                 <div className="text-red-700">9% Volume Discount</div>
                 <div> No setup fee</div>
               </div>
-              <div className="flex gap-2">
-                <span className="text-yellow-500">★★★★★</span>
+              <div className="flex gap-2 items-center">
+                <span className="text-[#FFB200] text-2xl">★★★★★</span>
                 <span className="font-bold">{product.rating}</span>
                 <span className="text-gray-800">({product.reviews})</span>
               </div>

@@ -17,6 +17,7 @@ const ProductCard2 = ({
   isDetail,
   isPrice,
   onClick,
+  reviews,
 }) => {
   const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
@@ -68,7 +69,7 @@ const ProductCard2 = ({
               : ""
           }`}
         >
-          <div className={` ${isPrice ? "" : "font-semibold"} text-sm`}>
+          <div className={` ${isPrice ? "" : "font-medium"} text-md`}>
             {name}
           </div>
           {isPrice ? <div className="text-xs font-bold">{price}</div> : ""}
@@ -76,10 +77,10 @@ const ProductCard2 = ({
         <div className=" text-xs w-full">{desc} </div>
         {isDetail ? (
           <div className="flex flex-col">
-            <div className="text-xs flex gap-1">
-              <div className="text-yellow-500">{star}</div>
-              <div className="font-semibold">{rating}</div>
-              <div className="text-gray-500">{people}</div>
+            <div className="text-xs flex gap-2 items-center">
+              <div className="text-[#FFB200] text-2xl">★★★★★</div>
+              <div className="font-medium text-base">{rating}</div>
+              <div className="text-gray-500 text-base">({reviews})</div>
             </div>
             <div className=" text-xs flex md:flex-row flex-col gap-1">
               <div>{text}</div>

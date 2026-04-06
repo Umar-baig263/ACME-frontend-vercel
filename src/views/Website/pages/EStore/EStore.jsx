@@ -12,6 +12,11 @@ import Testmonial1 from "../../components/main/Testmonials/Testmonial1";
 import { tshirt } from "../../../../constants/products/apparel/tshirt";
 import { cap } from "../../../../constants/products/apparel/cap";
 import { useNavigate, useLocation } from "react-router-dom";
+  
+import Filter from "../../components/Products/Filter";
+import { apparel } from "../../../../constants/products/apparel";
+import { useState } from "react";
+import ProductSwiper from "../../components/main/ProductSwiper/ProductSwiper";
 
 const EStore = () => {
   const navigate = useNavigate();
@@ -29,38 +34,76 @@ const EStore = () => {
   }, [location]);
   const Cat = [
     {
-      name: "Business Card",
+      key: "tshirt",
+      name: "T-Shirt",
       img: "dpCat1.png",
     },
     {
-      name: " Card & Print Advertising",
+      key: "jacket",
+      name: "Jacket",
       img: "dpCat2.png",
     },
     {
-      name: "Signs, Banner & Poster",
+      key: "cap",
+      name: "Cap",
       img: "dpCat3.png",
     },
     {
-      name: "Stickers & Labels",
+      key: "shirt",
+      name: "Shirt",
       img: "dpCat4.png",
     },
     {
-      name: "Promotional Product",
+      key: "paint",
+      name: "Paint & Short",
       img: "dpCat5.png",
     },
-    {
-      name: "Packaging",
-      img: "dpCat6.png",
-    },
-    {
-      name: "Promotional Product",
-      img: "dpCat3.png",
-    },
-    {
-      name: "Packaging",
-      img: "dpCat4.png",
-    },
   ];
+
+  const [activeMain, setActiveMain] = useState("");
+  const [activeSub, setActiveSub] = useState("");
+  const [selectedSpecificProducts, setSelectedSpecificProducts] = useState([]);
+
+  const eStoreData = {
+    tshirt: { title: "T-Shirt", products: apparel["T-Shirts"] },
+    jacket: { title: "Jacket", products: apparel["Jackets"] },
+    cap: { title: "Cap", products: apparel["Caps"] },
+    shirt: { title: "Shirt", products: apparel["Shirts"] },
+    paint: { title: "Paint & Short", products: apparel["Paint"] },
+  };
+
+  const mainCategories = Object.keys(eStoreData).map((key) => ({
+    key,
+    title: eStoreData[key].title,
+    subs: [{ name: "All " + eStoreData[key].title, products: eStoreData[key].products }],
+  }));
+
+  const handleMainClick = (key) => {
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+  };
+
+  const handleProductClick = (product) => {
+    setSelectedSpecificProducts((prev) => {
+      const isSelected = prev.some((p) => p.id === product.id);
+      return isSelected
+        ? prev.filter((p) => p.id !== product.id)
+        : [...prev, product];
+    });
+  };
+
+  const getFilteredProducts = (mainKey, fallbackData) => {
+    if (activeMain !== mainKey) return fallbackData;
+    if (selectedSpecificProducts.length > 0) return selectedSpecificProducts;
+    return fallbackData;
+  };
 
   const card = [
     {
@@ -78,9 +121,8 @@ const EStore = () => {
     <div className="md:pt-30 pt-20">
       <Navbar breadcrumb="e-store" isBanner={false} />
       <HeaderBanner
-        head="Shop ACME’s exclusive collection of branded merchandise.   "
+        head="Shop ACME’s exclusive collection of branded merchandise."
         isButton={true}
-        // desc="From business cards to banners — we deliver vibrant, sharp, and reliable prints."
         btnLink="/stamp"
         btnText="Shop Now"
         imgUrl="/estore.png"

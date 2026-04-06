@@ -15,6 +15,9 @@ import { promotionalProducts } from "../../../../constants/products/digitalPrint
 import { stickersLabels } from "../../../../constants/products/digitalPrinting/stickersLabels";
 import { packaging } from "../../../../constants/products/digitalPrinting/packaging";
 import { useNavigate, useLocation } from "react-router-dom";
+import Filter from "../../components/Products/Filter";
+import { digitalPrintingData } from "../../../../constants/digitalPrintingData";
+import { useState } from "react";
 
 const DigitalPrinting = () => {
   const navigate = useNavigate();
@@ -32,36 +35,34 @@ const DigitalPrinting = () => {
   }, [location]);
   const Cat = [
     {
+      key: "business",
       name: "Business Card",
       img: "dpCat1.png",
     },
     {
+      key: "card",
       name: " Card & Print Advertising",
       img: "dpCat2.png",
     },
     {
+      key: "sign",
       name: "Signs, Banner & Poster",
       img: "dpCat3.png",
     },
     {
+      key: "sticker",
       name: "Stickers & Labels",
       img: "dpCat4.png",
     },
     {
+      key: "promotional",
       name: "Promotional Product",
       img: "dpCat5.png",
     },
     {
+      key: "packaging",
       name: "Packaging",
       img: "dpCat6.png",
-    },
-    {
-      name: "Promotional Product",
-      img: "dpCat3.png",
-    },
-    {
-      name: "Packaging",
-      img: "dpCat4.png",
     },
   ];
   const card = [
@@ -76,6 +77,57 @@ const DigitalPrinting = () => {
       img: "s6img2.png",
     },
   ];
+
+  const [activeMain, setActiveMain] = useState("");
+  const [activeSub, setActiveSub] = useState("");
+  const [selectedSpecificProducts, setSelectedSpecificProducts] = useState([]);
+
+  const mainCategories = Object.keys(digitalPrintingData).map((key) => ({
+    key,
+    title: digitalPrintingData[key].title,
+    subs: digitalPrintingData[key].categories.map((c) => ({
+      name: c.name,
+      products: c.products,
+    })),
+  }));
+
+  const handleMainClick = (key) => {
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+  };
+
+  const handleProductClick = (product) => {
+    setSelectedSpecificProducts((prev) => {
+      const isSelected = prev.some((p) => p.id === product.id);
+      return isSelected
+        ? prev.filter((p) => p.id !== product.id)
+        : [...prev, product];
+    });
+  };
+
+  // Helper function to return filtered products for an active category Swiper
+  const getFilteredProducts = (mainKey, fallbackData) => {
+    if (activeMain !== mainKey) return fallbackData;
+
+    if (selectedSpecificProducts.length > 0) return selectedSpecificProducts;
+
+    if (activeSub) {
+      const subCatObj = digitalPrintingData[mainKey]?.categories.find(
+        (c) => c.name === activeSub
+      );
+      return subCatObj ? subCatObj.products : fallbackData;
+    }
+
+    return fallbackData;
+  };
+
   return (
     <div className="md:pt-30 pt-20">
       <Navbar breadcrumb="Digital Printing" isBanner={false} />
@@ -87,55 +139,112 @@ const DigitalPrinting = () => {
         btnText="Customize your stamp"
         imgUrl="/dpbannerimg.png"
       />
-      <CategorySwiper data={Cat} />
-      <div id="business-card-section" className="scroll-mt-40">
-        <ProductSwiper
-          head="Business Card"
-          desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
-          data={businessCards}
-          onProductClick={() => navigate("/card-products?main=business")}
-        />
+
+      <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
+        {/* SIDEBAR */}
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+          <Filter
+            filter={mainCategories.map((cat) => ({
+              key: cat.key,
+              name: cat.title,
+              sub: cat.subs.map((subObj) => ({
+                name: subObj.name,
+                products: subObj.products,
+              })),
+            }))}
+            selectedMain={activeMain}
+            selectedSub={activeSub}
+            onMainClick={handleMainClick}
+            onSubClick={handleSubClick}
+            onProductClick={handleProductClick}
+            selectedProducts={selectedSpecificProducts}
+          />
+        </div>
+
+        {/* MAIN CONTENT */}
+        <div className="flex-1 w-full min-w-0 lg:pl-10 pb-20 overflow-hidden">
+          <CategorySwiper
+            data={Cat}
+            activeCategory={activeMain}
+            onCategoryClick={handleMainClick}
+            paddingClass="lg:px-10 md:px-5 px-5"
+          />
+          
+          {(!activeMain || activeMain === "business") && (
+            <ProductSwiper
+              head="Business Card"
+              desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
+              data={getFilteredProducts("business", businessCards)}
+              onProductClick={() => navigate("/card-products?main=business")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+          {(!activeMain || activeMain === "card") && (
+            <ProductSwiper
+              head="Card & Print Advertising"
+              desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
+              data={getFilteredProducts("card", cardPrintAds)}
+              onProductClick={() => navigate("/card-products?main=card")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {!activeMain && (
+            <div className="mt-10 lg:pl-10">
+              <Banner
+                color="text-white"
+                heading="Fast. Affordable. Professional. Get Your Prints Today!"
+                subheading="Mess-free, self-inking stamps for clean, reliable impressions — every time."
+                isred={false}
+                img="/dbBanner.png"
+                width="w-full"
+                btntext="Shop Now"
+                btnLink="/"
+              />
+            </div>
+          )}
+
+          {(!activeMain || activeMain === "sign") && (
+            <ProductSwiper
+              head="Signs, Banner & Poster"
+              desc="Whether indoors or outdoors, our eye-catching signs, banners, and posters are perfect for promotions, events, or branding visibility."
+              data={getFilteredProducts("sign", signsBannersPosters)}
+              onProductClick={() => navigate("/card-products?main=sign")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {(!activeMain || activeMain === "promotional") && (
+            <ProductSwiper
+              head="Promotional & Product"
+              desc="Customized promotional items and product branding solutions designed to keep your business top of mind with your audience."
+              data={getFilteredProducts("promotional", promotionalProducts)}
+              onProductClick={() => navigate("/card-products?main=promotional")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+          {(!activeMain || activeMain === "sticker") && (
+            <ProductSwiper
+              head="stickers & labels"
+              desc="From product labeling to creative branding, our high-quality stickers and labels are designed to enhance visibility, deliver information, and make your packaging stand out."
+              data={getFilteredProducts("sticker", stickersLabels)}
+              onProductClick={() => navigate("/card-products?main=sticker")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {(!activeMain || activeMain === "packaging") && (
+            <ProductSwiper
+              head="packaging"
+              desc="Custom-designed packaging that protects your product while enhancing shelf appeal and reinforcing your brand identity."
+              data={getFilteredProducts("packaging", packaging)}
+              onProductClick={() => navigate("/card-products?main=packaging")}
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+        </div>
       </div>
-      <ProductSwiper
-        head="Card & Print  Advertising "
-        desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
-        data={cardPrintAds}
-        onProductClick={() => navigate("/card-products?main=card")}
-      />
-      <Banner
-        color="text-white"
-        heading="Fast. Affordable. Professional. Get Your Prints Today!"
-        subheading="Mess-free, self-inking stamps for clean, reliable impressions — every time."
-        isred={false}
-        img="/dbBanner.png"
-        width="md:w-1/2 w-full"
-        btntext="Shop Now"
-        btnLink="/"
-      />
-      <ProductSwiper
-        head="Signs, Banner &  Poster"
-        desc="Whether indoors or outdoors, our eye-catching signs, banners, and posters are perfect for promotions, events, or branding visibility."
-        data={signsBannersPosters}
-        onProductClick={() => navigate("/card-products?main=sign")}
-      />
-      <ProductSwiper
-        head="Promotional & Product"
-        desc="Customized promotional items and product branding solutions designed to keep your business top of mind with your audience."
-        data={promotionalProducts}
-        onProductClick={() => navigate("/card-products?main=promotional")}
-      />
-      <ProductSwiper
-        head="stickers & labels"
-        desc="From product labeling to creative branding, our high-quality stickers and labels are designed to enhance visibility, deliver information, and make your packaging stand out."
-        data={stickersLabels}
-        onProductClick={() => navigate("/card-products?main=sticker")}
-      />
-      <ProductSwiper
-        head="packaging"
-        desc="Custom-designed packaging that protects your product while enhancing shelf appeal and reinforcing your brand identity."
-        data={packaging}
-        onProductClick={() => navigate("/card-products?main=packaging")}
-      />
+
       <Testmonial1 />
       <LatestNews data={card} />
       <FaqSection />

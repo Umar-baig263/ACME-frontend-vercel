@@ -18,6 +18,7 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
   const [selectedSubCat, setSelectedSubCat] = useState(initialSub);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedSpecificProducts, setSelectedSpecificProducts] = useState([]);
 
   const layouts = [
     { id: "grid2", cols: 5 },
@@ -47,7 +48,10 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
   const mainCategories = Object.keys(stampData).map((key) => ({
     key,
     title: stampData[key].title,
-    subs: stampData[key].categories.map((c) => c.name),
+    subs: stampData[key].categories.map((c) => ({
+      name: c.name,
+      products: c.products,
+    })),
   }));
 
   const handleLoadMore = () => setVisibleProducts((prev) => prev + 16);
@@ -57,12 +61,14 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
     setSelectedMainCat(mainKey);
     const firstSub = stampData[mainKey]?.categories[0]?.name || null;
     setSelectedSubCat(firstSub); // automatically select first subcategory
+    setSelectedSpecificProducts([]);
   };
 
   // Handle subcategory click from sidebar
   const handleSubCategoryClick = (subName, mainKey) => {
     setSelectedMainCat(mainKey);
     setSelectedSubCat(subName);
+    setSelectedSpecificProducts([]);
   };
 
   // Handle top slider click
@@ -79,7 +85,24 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
         setSelectedSubCat(subName);
       }
     }
+    setSelectedSpecificProducts([]);
   };
+
+  const handleProductClickFromSidebar = (product) => {
+    setSelectedSpecificProducts((prev) => {
+      const isSelected = prev.some((p) => p.id === product.id);
+      if (isSelected) {
+        return prev.filter((p) => p.id !== product.id);
+      } else {
+        return [...prev, product];
+      }
+    });
+  };
+
+  const displayProducts =
+    selectedSpecificProducts.length > 0
+      ? selectedSpecificProducts
+      : filteredProducts;
 
   return (
     <div className="flex md:flex-row flex-col">
@@ -89,12 +112,17 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
           filter={mainCategories.map((cat) => ({
             key: cat.key,
             name: cat.title,
-            sub: cat.subs.map((subName) => ({ name: subName })),
+            sub: cat.subs.map((subObj) => ({
+              name: subObj.name,
+              products: subObj.products,
+            })),
           }))}
           onMainClick={handleMainCategoryClick}
           onSubClick={handleSubCategoryClick}
           selectedMain={selectedMainCat}
           selectedSub={selectedSubCat}
+          onProductClick={handleProductClickFromSidebar}
+          selectedProducts={selectedSpecificProducts}
         />
       </div>
 
@@ -118,9 +146,9 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
               setActiveLayout={setActiveLayout}
               visibleProducts={Math.min(
                 visibleProducts,
-                filteredProducts.length,
+                displayProducts.length,
               )}
-              totalProducts={filteredProducts.length}
+              totalProducts={displayProducts.length}
             />
           </div>
 
@@ -136,7 +164,7 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
                       : "grid-cols-1 md:grid-cols-2"
               }`}
             >
-              {filteredProducts.slice(0, visibleProducts).map((d) => (
+              {displayProducts.slice(0, visibleProducts).map((d) => (
                 <ProductCard2
                   key={d.id || d.name}
                   name={d.name}
@@ -150,13 +178,17 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
                   rating={d.rating}
                   isDetail={true}
                   isPrice={false}
-                  onClick={() => navigate(`/stamp-description/${d.slug}`)}
+                  onClick={() =>
+                    navigate(`/stamp-description/${d.slug}`, {
+                      state: { product: d },
+                    })
+                  }
                 />
               ))}
             </div>
           </div>
 
-          {visibleProducts < filteredProducts.length && (
+          {visibleProducts < displayProducts.length && (
             <div className="w-full flex justify-center items-center">
               <RedButton text="Load More" onClick={handleLoadMore} />
             </div>

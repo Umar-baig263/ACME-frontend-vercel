@@ -7,6 +7,7 @@ export const halfSleeve = [
     rating: 4.9,
     reviews: 1523,
     img: "/tshirt-img1.png",
+    sizes: ["XS", "S", "M", "L", "XL", "2XL"],
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const halfSleeve = [
     rating: 4.8,
     reviews: 1345,
     img: "/tshirt-img2.png",
+    sizes: ["S", "M", "L", "XL", "2XL"],
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const halfSleeve = [
     rating: 4.7,
     reviews: 1120,
     img: "/tshirt-img3.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const halfSleeve = [
     rating: 4.8,
     reviews: 980,
     img: "/tshirt-img4.png",
+    sizes: ["XS", "S", "M", "L", "XL"],
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const halfSleeve = [
     rating: 4.7,
     reviews: 860,
     img: "/tshirt-img5.png",
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ export const halfSleeve = [
     rating: 4.6,
     reviews: 740,
     img: "/tshirt-img6.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ export const halfSleeve = [
     rating: 4.9,
     reviews: 620,
     img: "/tshirt-img7.png",
+    sizes: ["XS", "S", "M", "L", "XL", "2XL"],
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ export const halfSleeve = [
     rating: 4.7,
     reviews: 540,
     img: "/tshirt-img8.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 9,
@@ -79,6 +87,7 @@ export const halfSleeve = [
     rating: 4.8,
     reviews: 410,
     img: "/tshirt-img9.png",
+    sizes: ["S", "M", "L", "XL", "2XL"],
   },
   {
     id: 10,
@@ -88,6 +97,7 @@ export const halfSleeve = [
     rating: 4.6,
     reviews: 380,
     img: "/tshirt-img10.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 11,
@@ -97,6 +107,7 @@ export const halfSleeve = [
     rating: 4.7,
     reviews: 355,
     img: "/tshirt-img11.png",
+    sizes: ["XS", "S", "M", "L", "XL"],
   },
   {
     id: 12,
@@ -106,6 +117,7 @@ export const halfSleeve = [
     rating: 4.8,
     reviews: 330,
     img: "/tshirt-img12.png",
+    sizes: ["S", "M", "L", "XL", "2XL"],
   },
   {
     id: 13,
@@ -115,6 +127,7 @@ export const halfSleeve = [
     rating: 4.6,
     reviews: 305,
     img: "/tshirt-img13.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 14,
@@ -124,6 +137,7 @@ export const halfSleeve = [
     rating: 4.9,
     reviews: 290,
     img: "/tshirt-img14.png",
+    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
   },
   {
     id: 15,
@@ -133,6 +147,7 @@ export const halfSleeve = [
     rating: 4.8,
     reviews: 275,
     img: "/tshirt-img15.png",
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 16,
@@ -142,5 +157,6 @@ export const halfSleeve = [
     rating: 4.7,
     reviews: 260,
     img: "/tshirt-img16.png",
+    sizes: ["S", "M", "L", "XL", "2XL"],
   },
 ];

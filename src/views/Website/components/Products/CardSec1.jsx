@@ -25,6 +25,7 @@ const CardSec1 = () => {
   const [selectedSubCat, setSelectedSubCat] = useState(initialSub);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedSpecificProducts, setSelectedSpecificProducts] = useState([]);
 
   const layouts = [
     { id: "grid2", cols: 5 },
@@ -58,7 +59,10 @@ const CardSec1 = () => {
   const mainCategories = Object.keys(digitalPrintingData).map((key) => ({
     key,
     title: digitalPrintingData[key].title,
-    subs: digitalPrintingData[key].categories.map((c) => c.name),
+    subs: digitalPrintingData[key].categories.map((c) => ({
+      name: c.name,
+      products: c.products,
+    })),
   }));
 
   const handleLoadMore = () => setVisibleProducts((prev) => prev + 16);
@@ -68,12 +72,14 @@ const CardSec1 = () => {
     setSelectedMainCat(mainKey);
     const firstSub = digitalPrintingData[mainKey]?.categories[0]?.name || null;
     setSelectedSubCat(firstSub);
+    setSelectedSpecificProducts([]);
   };
 
   // LEFT → Subcategory Click
   const handleSubCategoryClick = (subName, mainKey) => {
     setSelectedMainCat(mainKey);
     setSelectedSubCat(subName);
+    setSelectedSpecificProducts([]);
   };
 
   // TOP SLIDER → Subcategory click
@@ -92,7 +98,24 @@ const CardSec1 = () => {
         setSelectedSubCat(subName);
       }
     }
+    setSelectedSpecificProducts([]);
   };
+
+  const handleProductClickFromSidebar = (product) => {
+    setSelectedSpecificProducts((prev) => {
+      const isSelected = prev.some((p) => p.id === product.id);
+      if (isSelected) {
+        return prev.filter((p) => p.id !== product.id);
+      } else {
+        return [...prev, product];
+      }
+    });
+  };
+
+  const displayProducts =
+    selectedSpecificProducts.length > 0
+      ? selectedSpecificProducts
+      : filteredProducts;
 
   return (
     <div className="flex md:flex-row flex-col w-full">
@@ -102,12 +125,17 @@ const CardSec1 = () => {
           filter={mainCategories.map((cat) => ({
             key: cat.key,
             name: cat.title,
-            sub: cat.subs.map((subName) => ({ name: subName })),
+            sub: cat.subs.map((subObj) => ({
+              name: subObj.name,
+              products: subObj.products,
+            })),
           }))}
           onMainClick={handleMainCategoryClick}
           onSubClick={handleSubCategoryClick}
           selectedMain={selectedMainCat}
           selectedSub={selectedSubCat}
+          onProductClick={handleProductClickFromSidebar}
+          selectedProducts={selectedSpecificProducts}
         />
       </div>
 
@@ -131,9 +159,9 @@ const CardSec1 = () => {
               setActiveLayout={setActiveLayout}
               visibleProducts={Math.min(
                 visibleProducts,
-                filteredProducts.length,
+                displayProducts.length,
               )}
-              totalProducts={filteredProducts.length}
+              totalProducts={displayProducts.length}
             />
           </div>
 
@@ -150,7 +178,7 @@ const CardSec1 = () => {
                       : "grid-cols-1 sm:grid-cols-2 md:grid-cols-2"
               }`}
             >
-              {filteredProducts.slice(0, visibleProducts).map((d) => (
+              {displayProducts.slice(0, visibleProducts).map((d) => (
                 <ProductCard2
                   key={d.id || d.name}
                   name={d.name}
@@ -174,7 +202,7 @@ const CardSec1 = () => {
           </div>
 
           {/* LOAD MORE */}
-          {visibleProducts < filteredProducts.length && (
+          {visibleProducts < displayProducts.length && (
             <div className="w-full flex justify-center items-center">
               <RedButton text="Load More" onClick={handleLoadMore} />
             </div>

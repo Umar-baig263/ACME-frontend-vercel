@@ -13,7 +13,8 @@ const ProductCard = ({
   isPrice,
   slug,
   category,
-  disableLink,
+  isLink = false,
+  disableLink = false,
 }) => {
   const { wishlist, addToWishlist } = useContext(WishlistContext);
 
@@ -29,10 +30,57 @@ const ProductCard = ({
       img,
       name,
       desc,
-      price: Number(price) || 181.95,
+      price: Number(price) || 0,
       quantity: 1, // optional, for wishlist quantity
     });
   };
+
+  const getProductRoute = () => {
+    let base = "/shop"; // default e-store
+    if (category === "stamp") base = "/stamp-description";
+    else if (category === "apparel" || category === "Apparel Shirt Shirts") base = "/apparel-product-description";
+    else if (category === "digitalPrinting" || category === "Digital Printing") base = "/card-product-description";
+    else if (category === "corporate") base = "/corporate-product-description";
+    else if (category === "e-store" || category === "estore") base = "/e-store";
+    
+    return `${base}/${slug || id}`;
+  };
+
+  const cardContent = (
+    <>
+      <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
+        <img
+          src={img}
+          alt={name}
+          className="max-w-[80%] max-h-[80%] object-contain"
+        />
+      </div>
+
+      <div className="flex flex-col pr-5">
+        <div
+          className={`${
+            isPrice
+              ? "flex justify-between md:flex-row flex-col md:items-center w-full"
+              : ""
+          }`}
+        >
+          <div
+            className={`md:text-base ${isPrice ? "" : "font-medium"} text-sm mt-3`}
+          >
+            {name}
+          </div>
+
+          {isPrice && (
+            <div className="md:text-lg text-sm font-bold">{price}</div>
+          )}
+        </div>
+
+        <div className="mt-1 md:text-xs text-xs w-full font-light">
+          {desc}
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <div className="relative flex flex-col gap-3">
@@ -48,76 +96,10 @@ const ProductCard = ({
         )}
       </div>
 
-      {/* Product link */}
-      {/* ProductCard.jsx ke andar */}
       {disableLink ? (
-        <div className="w-full h-full">
-          <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
-            <img
-              src={img}
-              alt={name}
-              className="max-w-[80%] max-h-[80%] object-contain"
-            />
-          </div>
-
-          <div className="flex flex-col pr-5">
-            <div
-              className={`${
-                isPrice
-                  ? "flex justify-between md:flex-row flex-col md:items-center w-full"
-                  : ""
-              }`}
-            >
-              <div
-                className={`md:text-base ${isPrice ? "" : "font-medium"} text-sm mt-3`}
-              >
-                {name}
-              </div>
-
-              {isPrice && (
-                <div className="md:text-lg text-sm font-bold">{price}</div>
-              )}
-            </div>
-
-            <div className="mt-1 md:text-xs text-xs w-full font-light">
-              {desc}
-            </div>
-          </div>
-        </div>
+        cardContent
       ) : (
-        <Link to={`/product/${slug || id}`}>
-          <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
-            <img
-              src={img}
-              alt={name}
-              className="max-w-[80%] max-h-[80%] object-contain"
-            />
-          </div>
-
-          <div className="flex flex-col pr-5">
-            <div
-              className={`${
-                isPrice
-                  ? "flex justify-between md:flex-row flex-col md:items-center w-full"
-                  : ""
-              }`}
-            >
-              <div
-                className={`md:text-base ${isPrice ? "" : "font-medium"} text-sm mt-3`}
-              >
-                {name}
-              </div>
-
-              {isPrice && (
-                <div className="md:text-lg text-sm font-bold">{price}</div>
-              )}
-            </div>
-
-            <div className="mt-1 md:text-xs text-xs w-full font-light">
-              {desc}
-            </div>
-          </div>
-        </Link>
+        <Link to={getProductRoute()}>{cardContent}</Link>
       )}
     </div>
   );

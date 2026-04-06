@@ -23,6 +23,7 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
   const [selectedSub, setSelectedSub] = useState(initialSub);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedSpecificProducts, setSelectedSpecificProducts] = useState([]);
 
   const layouts = [
     { id: "grid2", cols: 5 },
@@ -34,7 +35,10 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
   const mainCategories = Object.keys(corporateGiftingData).map((key) => ({
     key,
     name: corporateGiftingData[key].title,
-    subs: corporateGiftingData[key].categories.map((c) => c.name),
+    subs: corporateGiftingData[key].categories.map((c) => ({
+      name: c.name,
+      products: c.products,
+    })),
   }));
 
   const subCategories = corporateGiftingData[selectedMain]?.categories || [];
@@ -51,12 +55,14 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
     setSelectedMain(mainKey);
     const firstSub = corporateGiftingData[mainKey]?.categories[0]?.name;
     setSelectedSub(firstSub);
+    setSelectedSpecificProducts([]);
   };
 
   // Handle sub click
   const handleSubClick = (subName, mainKey) => {
     setSelectedMain(mainKey);
     setSelectedSub(subName);
+    setSelectedSpecificProducts([]);
   };
 
   const handleLoadMore = () => {
@@ -74,6 +80,22 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
     if (urlSub) setSelectedSub(urlSub);
   }, [urlMain, urlSub]);
 
+  const handleProductClickFromSidebar = (product) => {
+    setSelectedSpecificProducts((prev) => {
+      const isSelected = prev.some((p) => p.id === product.id);
+      if (isSelected) {
+        return prev.filter((p) => p.id !== product.id);
+      } else {
+        return [...prev, product];
+      }
+    });
+  };
+
+  const displayProducts =
+    selectedSpecificProducts.length > 0
+      ? selectedSpecificProducts
+      : filteredProducts;
+
   return (
     <div className="flex">
       {/* Sidebar */}
@@ -82,12 +104,17 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
           filter={mainCategories.map((cat) => ({
             key: cat.key,
             name: cat.name,
-            sub: cat.subs.map((s) => ({ name: s })),
+            sub: cat.subs.map((subObj) => ({
+              name: subObj.name,
+              products: subObj.products,
+            })),
           }))}
           selectedMain={selectedMain}
           selectedSub={selectedSub}
           onMainClick={handleMainClick}
           onSubClick={handleSubClick}
+          onProductClick={handleProductClickFromSidebar}
+          selectedProducts={selectedSpecificProducts}
         />
       </div>
 
@@ -105,7 +132,7 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
             </div>
 
             <div className="text-lg">
-              Over {filteredProducts.length}{" "}
+              Over {displayProducts.length}{" "}
               <span className="text-yellow-500">★★★★★</span> reviews
             </div>
 
@@ -126,8 +153,8 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
             layouts={layouts}
             activeLayout={activeLayout}
             setActiveLayout={setActiveLayout}
-            visibleProducts={Math.min(visibleProducts, filteredProducts.length)}
-            totalProducts={filteredProducts.length}
+            visibleProducts={Math.min(visibleProducts, displayProducts.length)}
+            totalProducts={displayProducts.length}
           />
         </div>
 
@@ -151,9 +178,9 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
                     : "grid-cols-1 md:grid-cols-2"
             }`}
           >
-            {filteredProducts.slice(0, visibleProducts).map((p, i) => (
+            {displayProducts.slice(0, visibleProducts).map((p, i) => (
               <ProductCard2
-                key={p.id}
+                key={p.id || i}
                 name={p.name}
                 desc={p.desc}
                 img={p.img}
@@ -170,7 +197,7 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
           </div>
         </div>
 
-        {visibleProducts < filteredProducts.length && (
+        {visibleProducts < displayProducts.length && (
           <div className="w-full flex justify-center items-center mb-10">
             <RedButton text="Load More" onClick={handleLoadMore} />
           </div>

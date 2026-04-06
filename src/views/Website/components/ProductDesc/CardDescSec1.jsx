@@ -115,13 +115,13 @@ const CardDescSec1 = ({ product }) => {
         <div className="w-1/2">
           <div className="border-b border-gray-300 flex flex-col gap-3 pb-5 px-5">
             <div className="text-3xl font-bold">{product.name}</div>
-            <div className="flex gap-2">
-              <span className="text-yellow-500">★★★★★</span>
-              <span className="font-bold">{product.rating}</span>
-              <span className="text-gray-800">({product.reviews})</span>
+            <div className="flex gap-2 items-center">
+              <span className="text-[#FFB200] text-2xl">★★★★★</span>
+              <span className="font-medium">{product.rating}</span>
+              <span className="text-[#5C5C5F]">({product.reviews})</span>
             </div>
             <div className="text-lg text-gray-800">{product.desc}</div>
-            <div className="text-lg font-bold">100 starting at $21.99</div>
+            <div className="text-lg font-medium">100 starting at $21.99</div>
           </div>
           <div className="p-5 flex flex-col gap-5">
             <div className="flex flex-col gap-2 text-lg">

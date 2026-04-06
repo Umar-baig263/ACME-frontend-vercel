@@ -7,13 +7,22 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ProductSwiper = ({ head, desc, link, data, onProductClick }) => {
+const ProductSwiper = ({
+  head,
+  desc,
+  link,
+  data,
+  onProductClick,
+  paddingClass,
+}) => {
   return (
     <div className="md:mt-30 mt-20 flex flex-col gap-10">
       <div>
         <ProductHeader head={head} subHead={desc} link={link} />
       </div>
-      <div className="lg:px-26 md:px-10 px-5 overflow-visible">
+      <div
+        className={`${paddingClass || "lg:px-26 md:px-10 px-5"} overflow-visible`}
+      >
         <Swiper
           breakpoints={{
             1024: { slidesPerView: 5, spaceBetween: 20 },

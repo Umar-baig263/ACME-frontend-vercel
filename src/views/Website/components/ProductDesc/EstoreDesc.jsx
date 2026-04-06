@@ -50,6 +50,7 @@ const EstoreDesc = () => {
     const product = {
       ...currentProduct,
       qty: items,
+      price: Number(currentProduct.price) || 39.99,
       selectSize,
       selectColor,
     };
@@ -66,6 +67,7 @@ const EstoreDesc = () => {
     const product = {
       ...currentProduct,
       qty: items,
+      price: Number(currentProduct.price) || 39.99,
       selectSize,
       selectColor,
     };

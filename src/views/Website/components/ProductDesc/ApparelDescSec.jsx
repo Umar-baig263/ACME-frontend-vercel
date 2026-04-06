@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import RedButton from "../main/Buttons/RedButton";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import RedButtonLink from "../main/Buttons/RedButtonLink";
@@ -9,6 +10,8 @@ const ApparelDescSec = ({ product }) => {
   const [selectSize, setSelectSize] = useState("M");
   const [selectColor, setSelectColor] = useState("black");
   const [colorName, setColorName] = useState("Black");
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || null);
+  const navigate = useNavigate();
 
   const colors = [
     {
@@ -142,7 +145,29 @@ const ApparelDescSec = ({ product }) => {
   const [selectedImg, setSelectedImg] = useState(images[0]);
   useEffect(() => {
     setSelectedImg(images[0]);
+    setSelectedSize(product?.sizes?.[0] || null);
   }, [product]);
+
+  const handleBuyNow = () => {
+    if (!selectedSize) {
+      alert("Please select a size first.");
+      return;
+    }
+    navigate("/check-out", {
+      state: {
+        buyNowProduct: {
+          id: product.id,
+          name: product.name,
+          img: product.img || images[0],
+          price: unitPrice,
+          qty: items,
+          selectSize: selectedSize,
+          selectColor: colorName,
+        },
+      },
+    });
+  };
+
   return (
     <div className="flex flex-col lg:px-26 gap-5 mt-5">
       <div className="flex gap-10">
@@ -196,17 +221,17 @@ const ApparelDescSec = ({ product }) => {
             <div className="text-lg text-gray-800">{product.desc}</div>
             <div className="flex  w-full justify-between">
               <div className="font-semibold">
-                <div>${totalPrice} for {items} unit{items > 1 ? "s" : ""}</div>
+                <div>$181.95 for 5 units</div>
                 <div>
-                  <span className="line-through">${product?.priceWas ?? "39.99"}</span> 
-                  <span className="text-red-700">${unitPrice.toFixed(2)}</span> / unit
+                  <span className="line-through">$39.99</span>{" "}
+                  <span className="text-red-700"></span> / unit
                 </div>
                 <div className="text-red-700">9% Volume Discount</div>
                 <div> No setup fee</div>
               </div>
-              <div className="flex gap-2">
-                <span className="text-yellow-500">★★★★★</span>
-                <span className="font-bold">{product.rating}</span>
+              <div className="flex gap-2 items-center">
+                <span className="text-[#FFB200] text-2xl">★★★★★</span>
+                <span className="font-medium">{product.rating}</span>
                 <span className="text-gray-800">({product.reviews})</span>
               </div>
             </div>
@@ -251,7 +276,27 @@ const ApparelDescSec = ({ product }) => {
               <div className="text-sm text-gray-500">
                 Selected size: {selectSize}
               </div>
+              {product?.sizes?.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-1.5 rounded-full border text-sm font-medium transition-all duration-200 cursor-pointer ${
+                        selectedSize === size
+                          ? "border-red-600 text-red-600 bg-red-50"
+                          : "border-gray-300 text-gray-700 hover:border-red-400 hover:text-red-500"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-gray-500">No sizes available</div>
+              )}
             </div>
+
             <div className="flex flex-col gap-3">
               <div className="text-lg">
                 <span className="font-bold">Color:</span> {colorName}
@@ -276,7 +321,7 @@ const ApparelDescSec = ({ product }) => {
                 <RedButton text="Customize Your Design" />
               </div>
               <div>
-                <OutlineButton text="Buy Now" />
+                <OutlineButton text="Buy Now" onClick={handleBuyNow} />
               </div>
             </div>
             <div className="flex flex-col gap-5">
@@ -299,7 +344,7 @@ const ApparelDescSec = ({ product }) => {
         <div className="w-3/4 text-lg">
           Designed with comfort in mind, the JERZEES® NuBlend® Midweight Hoodie
           pairs perfectly with a tracksuit on workouts or your favorite jeans on
-          weekends. It’s ideal for work uniforms and gives your team a vibrant
+          weekends. It's ideal for work uniforms and gives your team a vibrant
           and professional look. This custom hoodie features a convenient front
           pouch pocket that makes it easy to store a wallet, phone or any
           personal items – and it also serves as a hand warmer when it's

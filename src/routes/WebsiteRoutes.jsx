@@ -41,7 +41,7 @@ import ProductCustomize from "../views/Website/pages/ProductCustomize/ProductCus
 import StampCategories from "../views/Website/pages/StampCategories/StampCategories";
 import DigitalPrintingCategories from "../views/Website/pages/DigitalPrintingCategories/DigitalPrintingCategories";
 import CorporateProductDesc from "../views/Website/pages/ProductDesc/CorporateProductDesc";
-
+import Faq from "../views/Website/pages/Faq/Faq";
 
 const websiteRoutes = [
   {
@@ -80,27 +80,7 @@ const websiteRoutes = [
         path: "apparel",
         element: <Apparel />,
       },
-      {
-        path: "/product/:slug",
-        element: <EStoreProductDesc />,
-      },
-      {
-        path: "/digital-printing/:slug",
-        element: <EStoreProductDesc />,
-      },
-      {
-        path: "stamp/:slug",
-        element: <EStoreProductDesc />,
-      },
 
-      {
-        path: "corporate-gifting/:slug",
-        element: <EStoreProductDesc />,
-      },
-      {
-        path: "e-store/:slug",
-        element: <EStoreProductDesc />,
-      },
       {
         path: "shop/:slug",
         element: <EStoreProductDesc />,
@@ -133,6 +113,10 @@ const websiteRoutes = [
       {
         path: "e-store",
         element: <EStore />,
+      },
+      {
+        path: "e-store/:slug",
+        element: <EStoreProductDesc />,
       },
       {
         path: "contact",
@@ -206,6 +190,7 @@ const websiteRoutes = [
         path: "customize",
         element: <CustomizePage />,
       },
+
       {
         path: "apparel-products",
         element: <ApparelPro />,
@@ -223,6 +208,11 @@ const websiteRoutes = [
         element: <CardsPro />,
       },
       { path: "/stamp-categories", element: <StampCategories /> },
+
+      {
+        path: "faq",
+        element: <Faq />,
+      },
 
       {
         path: "*",

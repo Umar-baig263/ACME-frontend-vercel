@@ -3,11 +3,32 @@ import React, { useState, useContext } from 'react';
 import RedButton from '../main/Buttons/RedButton';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { FaX } from "react-icons/fa6";
-import OutlineButton from '../main/Buttons/OutlineButton';
-import { useNavigate } from "react-router-dom";
-import { CartContext } from '../../../../contexts/cartContext';
+import RedButtonLink from "../main/Buttons/RedButtonLink";
+// import SignUpPopUp from './SignUpPopUp';
+import OutlineButton from "../main/Buttons/OutlineButton";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CartContext } from "../../../../contexts/cartContext";
 
-const StampDesc = ({ product}) => {
+const StampDesc = ({ product: propProduct }) => {
+  const { state } = useLocation();
+  const product = propProduct || state?.product;
+
+  const handleQtyChange = (index, type) => {
+    setItems((prevItems) => {
+      return prevItems.map((item, i) => {
+        if (i === index) {
+          const newQty =
+            type === "inc"
+              ? item.qty + 1
+              : item.qty > 1
+                ? item.qty - 1
+                : item.qty;
+          return { ...item, qty: newQty };
+        }
+        return item;
+      });
+    });
+  };
   const keyFeatures = [
     {
       heading: "Laser-Crafted Precision",
@@ -40,14 +61,29 @@ const StampDesc = ({ product}) => {
         "Trodat TR-4910 Sharp 9×26 mm prints with laser-cut precision.",
     },
   ];
+  // const images = product?.images || [product?.img];
 
+  // const dummyImages = [
+  //   product?.img || "/productImgDesc.png",
+  //   "/productImgDesc1.png",
+  //   "/productImgDesc2.png",
+  //   "/productImgDesc3.png",
+  // ];
+  // const images = product?.images && product.images.length > 0 ? product.images : dummyImages;
+
+ 
   const dummyImages = [
-    product?.img || "/productImgDesc.png",
-    "/productImgDesc1.png",
-    "/productImgDesc2.png",
-    "/productImgDesc3.png",
-  ];
-  const images = product?.images && product.images.length > 0 ? product.images : dummyImages;
+  product?.img || "/productImgDesc.png",
+  "/productImgDesc1.png",
+  "/productImgDesc2.png",
+  "/productImgDesc3.png",
+];
+
+const images =
+  product?.images && product.images.length > 0
+    ? product.images
+    : dummyImages;
+
 
   const [items, setItems] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +109,7 @@ const StampDesc = ({ product}) => {
   const handleAddToCart = () => {
     addToCart({
       ...product,
+      price: Number(product.price) || 39.99,
       qty: items,
     });
   };
@@ -80,7 +117,7 @@ const StampDesc = ({ product}) => {
   // ✅ Buy Now
   const handleBuyNow = () => {
     navigate("/check-out", {
-      state: { buyNowProduct: { ...product, qty: items } },
+      state: { buyNowProduct: { ...product, price: Number(product.price) || 39.99, qty: items } },
     });
   };
 
@@ -116,7 +153,7 @@ const StampDesc = ({ product}) => {
                         <div className='text-lg text-gray-800'>{product.desc}</div>
 
                         <div className='flex justify-between mt-3'>
-                            <div className='text-xl font-bold'>$ {product.price}</div>
+                            <div className='text-xl font-bold'>$ {Number(product.price) || 39.99}</div>
                             <div className='flex gap-2'>
                                 <span className='text-yellow-500'>★★★★★</span>
                                 <span className='font-bold'>5</span>

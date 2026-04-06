@@ -54,7 +54,7 @@ const Header = () => {
       .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title, topLevel: "Stamps Stamp" })))
       .flatMap((subCat) => (subCat.products || []).map((p) => ({ 
         ...p, 
-        route: `/stamp-description`,
+        route: `/stamp-description/${p.slug}`,
         searchTags: `${subCat.name} ${subCat.mainCatTitle} ${subCat.topLevel}`
       })));
 
@@ -62,11 +62,11 @@ const Header = () => {
       .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title, topLevel: "Digital Printing" })))
       .flatMap((subCat) => (subCat.products || []).map((p) => ({ 
         ...p, 
-        route: `/card-product-description`,
+        route: `/card-product-description/${p.slug}`,
         searchTags: `${subCat.name} ${subCat.mainCatTitle} ${subCat.topLevel}`
       })));
 
-    const mappedProducts = (products || []).map((p) => ({ ...p, route: `/product/${p.slug}`, searchTags: p.category || "" }));
+    const mappedProducts = (products || []).map((p) => ({ ...p, route: `/shop/${p.slug}`, searchTags: p.category || "" }));
 
     const categoriesList = [
       { id: "cat1", name: "Stamps", category: "Category", route: "/stamp" },
