@@ -11,7 +11,13 @@ const CardDescSec1 = ({ product }) => {
   const [items, setItems] = useState(1);
   const [selected, setSelected] = useState(null);
 
-  const images = product.images ? product.images : [product.img];
+  const dummyImages = [
+    product?.img || "/productImgDesc.png",
+    "/productImgDesc1.png",
+    "/productImgDesc2.png",
+    "/productImgDesc3.png",
+  ];
+  const images = product?.images && product.images.length > 0 ? product.images : dummyImages;
   const [selectedImg, setSelectedImg] = useState(images[0]);
 
   // ✅ Update selectedImg whenever product changes

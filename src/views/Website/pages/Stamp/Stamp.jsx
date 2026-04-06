@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
 // import Section1 from "../../components/Stamp/Section1";
 // import Section2 from "../../components/Stamp/Section2";
@@ -11,7 +11,7 @@ import HeaderBanner from "../../components/main/HeaderBanner/HeaderBanner";
 import { trodatprinty } from "../../../../constants/products/stamp/trodatprinty";
 import { rubberstamps } from "../../../../constants/products/stamp/rubberstamp";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { padsandinks } from "../../../../constants/products/stamp/padsandinks";
 import { stencils } from "../../../../constants/products/stamp/stencils";
 import { colop } from "../../../../constants/products/stamp/colop";
@@ -19,6 +19,18 @@ import { embossingseals } from "../../../../constants/products/stamp/embossingse
 
 const Stamp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [location]);
   const Cat = [
     {
       name: "Trodat/Printy",
@@ -65,12 +77,14 @@ const Stamp = () => {
         imgUrl="/stamp-banner.png"
       />
       <CategorySwiper data={Cat} />
-      <ProductSwiper
-        head="Trodat/Printy"
-        desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
-        data={trodatprinty}
-        onProductClick={() => navigate("/stamp-products?main=trodat")}
-      />
+      <div id="stamp-section" className="scroll-mt-40">
+        <ProductSwiper
+          head="Trodat/Printy"
+          desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
+          data={trodatprinty}
+          onProductClick={() => navigate("/stamp-products?main=trodat")}
+        />
+      </div>
       <ProductSwiper
         head="Colop/ 2000Plus"
         desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."

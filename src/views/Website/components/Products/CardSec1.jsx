@@ -163,7 +163,8 @@ const CardSec1 = () => {
                   star={d.stars}
                   rating={d.rating}
                   isDetail={true}
-                  isPrice={false}
+                  isPrice={true}
+                  price={d.price || "$21.99"}
                   onClick={() =>
                     navigate(`/card-product-description/${d.slug}`)
                   }

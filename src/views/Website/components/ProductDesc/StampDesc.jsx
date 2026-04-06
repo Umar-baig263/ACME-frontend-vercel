@@ -156,6 +156,24 @@ const StampDesc = ({ product}) => {
                             </button>
                         </div>
 
+                        {/* ✅ Design Navigation Buttons */}
+                        <div className="flex flex-col gap-3 mt-2">
+                            <div 
+                                onClick={() => navigate('/card-template')}
+                                className="bg-[#cc1016] cursor-pointer text-white flex flex-col justify-center items-start px-4 py-3 hover:bg-[#a10d12] transition-colors"
+                            >
+                                <div className="text-lg font-medium">Browse design</div>
+                                <div className="text-xs font-light">choose one of our templates</div>
+                            </div>
+                            <div 
+                                onClick={() => navigate('/card-template')}
+                                className="bg-white border border-gray-400 cursor-pointer text-black flex flex-col justify-center items-start px-4 py-3 hover:bg-gray-50 transition-colors"
+                            >
+                                <div className="text-lg font-medium">Upload design</div>
+                                <div className="text-xs font-light text-gray-500">Have a design? Upload and edit it</div>
+                            </div>
+                        </div>
+
                         <div className='text-gray-700'>
                             Introducing the Trodat Printy TR-4910...
                         </div>

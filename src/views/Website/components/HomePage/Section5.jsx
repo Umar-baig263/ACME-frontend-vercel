@@ -7,25 +7,25 @@ const Section5 = () => {
     {
       img: "/homes5img1.png",
       btnText: "Veiw All",
-      btnLink: "/stamp",
+      btnLink: "/stamp#stamp-section",
       text: "Stamp",
     },
     {
       img: "/homes5img2.png",
       btnText: "Veiw All",
-      btnLink: "/digital-printing",
+      btnLink: "/digital-printing#business-card-section",
       text: "Business Card",
     },
     {
       img: "/homes5img3.png",
       btnText: "Veiw All",
-      btnLink: "/apparel",
+      btnLink: "/apparel#caps-section",
       text: "Caps",
     },
     {
       img: "/homes5img4.png",
       btnText: "Veiw All",
-      btnLink: "/e-store",
+      btnLink: "/e-store#hoodie-section",
       text: "Hoodie",
     },
   ];

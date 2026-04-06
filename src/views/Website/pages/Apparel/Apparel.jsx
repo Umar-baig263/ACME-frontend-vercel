@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
 import HeaderBanner from "../../components/main/HeaderBanner/HeaderBanner";
 import CategorySwiper from "../../components/main/CategorySwiper/CategorySwiper";
@@ -10,10 +10,22 @@ import LatestNews from "../../components/main/LastestNews/LastestNews";
 import Testmonial1 from "../../components/main/Testmonials/Testmonial1";
 import NewsCard from "../DigitalPrintingCategories/NewsCard";
 import { apparel } from "../../../../constants/products/apparel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Apparel = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [location]);
   const Cat = [
     {
       name: "Business Card",
@@ -108,12 +120,14 @@ const Apparel = () => {
           data={apparel["Paint"]}
           onProductClick={() => navigate(`/apparel-products?main=paint`)}
         />
-        <ProductSwiper
-          head="Cap"
-          desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
-          data={apparel["Caps"]}
-          onProductClick={() => navigate(`/apparel-products?main=cap`)}
-        />
+        <div id="caps-section" className="scroll-mt-40">
+          <ProductSwiper
+            head="Cap"
+            desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
+            data={apparel["Caps"]}
+            onProductClick={() => navigate(`/apparel-products?main=cap`)}
+          />
+        </div>
         <ProductSwiper
           head="Shirt"
           desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
 import HeaderBanner from "../../components/main/HeaderBanner/HeaderBanner";
 import CategorySwiper from "../../components/main/CategorySwiper/CategorySwiper";
@@ -14,10 +14,22 @@ import { signsBannersPosters } from "../../../../constants/products/digitalPrint
 import { promotionalProducts } from "../../../../constants/products/digitalPrinting/promotionalProducts";
 import { stickersLabels } from "../../../../constants/products/digitalPrinting/stickersLabels";
 import { packaging } from "../../../../constants/products/digitalPrinting/packaging";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const DigitalPrinting = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [location]);
   const Cat = [
     {
       name: "Business Card",
@@ -76,12 +88,14 @@ const DigitalPrinting = () => {
         imgUrl="/dpbannerimg.png"
       />
       <CategorySwiper data={Cat} />
-      <ProductSwiper
-        head="Business Card"
-        desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
-        data={businessCards}
-        onProductClick={() => navigate("/card-products?main=business")}
-      />
+      <div id="business-card-section" className="scroll-mt-40">
+        <ProductSwiper
+          head="Business Card"
+          desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
+          data={businessCards}
+          onProductClick={() => navigate("/card-products?main=business")}
+        />
+      </div>
       <ProductSwiper
         head="Card & Print  Advertising "
         desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."

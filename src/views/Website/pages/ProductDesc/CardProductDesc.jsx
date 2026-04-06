@@ -12,12 +12,25 @@ import { digitalPrintingData } from "../../../../constants/digitalPrintingData";
 
 const CardProductDesc = () => {
   const { state } = useLocation();
-  const product = state?.product || {};
+  const navigate = useNavigate();
+  const { slug } = useParams();
+
+  let product = state?.product || state;
+
+  if (!product || !product.id) {
+      // Fallback to searching all digital printing products by slug
+      const allProducts = Object.values(digitalPrintingData)
+          .flatMap((main) => main.categories || [])
+          .flatMap((sub) => sub.products || []);
+      product = allProducts.find((p) => p.slug === slug) || {};
+  }
+  
+  const relatedProducts = digitalPrintingData?.business?.categories[0]?.products || [];
 
   return (
     <div className="md:pt-30 pt-20">
       <Navbar breadcrumb={`Card Product / ${product?.name || 'Details'}`} isBanner={false} />
-      <CardDescSec1 />
+      <CardDescSec1 product={product} />
       <CardDescSec2 img="/cardDesc12.png" />
       <ProductSwiper
         head="Related products"
