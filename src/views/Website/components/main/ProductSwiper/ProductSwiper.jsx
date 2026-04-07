@@ -14,6 +14,7 @@ const ProductSwiper = ({
   data,
   onProductClick,
   paddingClass,
+  isLink,
 }) => {
   return (
     <div className="md:mt-30 mt-20 flex flex-col gap-10">
@@ -60,7 +61,7 @@ const ProductSwiper = ({
                   slug={d?.slug}
                   isPrice={false}
                   isDetail={false}
-                  disableLink={!!onProductClick}
+                  isLink={isLink}
                 />
               </div>
             </SwiperSlide>

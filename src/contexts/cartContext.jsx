@@ -14,13 +14,15 @@ export const CartProvider = ({ children }) => {
 
   // ADD TO CART
   const addToCart = (product) => {
+    const customizationHash = product.customization ? JSON.stringify(product.customization) : "default";
+
     const cartProduct = {
       ...product,
       price: Number(product.price) || 0, // <-- ensure price is number
       qty: product.qty || 1, // <-- default quantity
       cartKey: `${product.id}-${product.selectSize || "default"}-${
         product.selectColor || "default"
-      }`,
+      }-${customizationHash}`,
     };
 
     setCart((prevCart) => {

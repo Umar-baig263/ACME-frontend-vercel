@@ -7,6 +7,7 @@ export const inkingDaters = [
     price: 12.99,
     oldPrice: 14.99,
     rating: 4.6,
+    reviews: 78,
     slug: "nd-101-1-8-x-7-8",
   },
   {
@@ -17,6 +18,7 @@ export const inkingDaters = [
     price: 13.49,
     oldPrice: 15.49,
     rating: 4.7,
+    reviews: 64,
     slug: "nd-102-3-16-x-1",
   },
   {
@@ -27,6 +29,7 @@ export const inkingDaters = [
     price: 14.99,
     oldPrice: 16.99,
     rating: 4.5,
+    reviews: 52,
     slug: "nd-103-1-4-x-1-1-4",
   },
   {
@@ -37,6 +40,7 @@ export const inkingDaters = [
     price: 15.49,
     oldPrice: 17.49,
     rating: 4.7,
+    reviews: 89,
     slug: "nd-104-5-16-x-1-3-8",
   },
   {
@@ -47,6 +51,7 @@ export const inkingDaters = [
     price: 16.99,
     oldPrice: 18.99,
     rating: 4.8,
+    reviews: 112,
     slug: "nd-105-3-8-x-1-1-2",
   },
   {
@@ -57,6 +62,7 @@ export const inkingDaters = [
     price: 18.49,
     oldPrice: 20.49,
     rating: 4.7,
+    reviews: 95,
     slug: "nd-106-1-2-x-1-3-4",
   },
   {
@@ -67,6 +73,7 @@ export const inkingDaters = [
     price: 19.49,
     oldPrice: 21.49,
     rating: 4.6,
+    reviews: 43,
     slug: "nd-107-9-16-x-2",
   },
   {
@@ -77,6 +84,7 @@ export const inkingDaters = [
     price: 20.99,
     oldPrice: 22.99,
     rating: 4.8,
+    reviews: 134,
     slug: "nd-108-5-8-x-2-1-4",
   },
   {
@@ -87,6 +95,7 @@ export const inkingDaters = [
     price: 22.49,
     oldPrice: 24.49,
     rating: 4.7,
+    reviews: 121,
     slug: "nd-109-3-4-x-2-1-2",
   },
   {
@@ -97,6 +106,7 @@ export const inkingDaters = [
     price: 25.99,
     oldPrice: 27.99,
     rating: 4.9,
+    reviews: 215,
     slug: "nd-110-1-x-3",
   },
 ];

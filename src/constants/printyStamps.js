@@ -7,6 +7,7 @@ export const printyStamps = [
     price: 29.98,
     oldPrice: 31.99,
     rating: 4.7,
+    reviews: 124,
     slug: "tr-4910-3-8-x-1-1-32",
   },
   {
@@ -17,6 +18,7 @@ export const printyStamps = [
     price: 31.29,
     oldPrice: 32.95,
     rating: 4.7,
+    reviews: 189,
     slug: "tr-4911-9-16-x-1-1-2-4-lines",
   },
   {
@@ -27,6 +29,7 @@ export const printyStamps = [
     price: 31.29,
     oldPrice: 32.95,
     rating: 4.7,
+    reviews: 156,
     slug: "tr-4912-3-4-x-1-7-8-4-lines",
   },
   {
@@ -37,6 +40,7 @@ export const printyStamps = [
     price: 31.29,
     oldPrice: 32.95,
     rating: 4.7,
+    reviews: 210,
     slug: "tr-4913-7-8-x-2-3-8-5-lines",
   },
   {
@@ -47,6 +51,7 @@ export const printyStamps = [
     price: 34.99,
     oldPrice: 36.99,
     rating: 4.6,
+    reviews: 178,
     slug: "tr-4914-1-x-2-1-2-6-lines",
   },
   {
@@ -57,6 +62,7 @@ export const printyStamps = [
     price: 36.49,
     oldPrice: 38.99,
     rating: 4.6,
+    reviews: 95,
     slug: "tr-4915-1-x-2-3-4-6-lines",
   },
   {
@@ -67,6 +73,7 @@ export const printyStamps = [
     price: 38.99,
     oldPrice: 40.99,
     rating: 4.8,
+    reviews: 245,
     slug: "tr-4916-1-x-3-7-lines",
   },
   {
@@ -77,6 +84,7 @@ export const printyStamps = [
     price: 39.99,
     oldPrice: 42.0,
     rating: 4.8,
+    reviews: 312,
     slug: "tr-4917-1-x-3-1-4-7-lines",
   },
   {
@@ -87,6 +95,7 @@ export const printyStamps = [
     price: 42.99,
     oldPrice: 45.0,
     rating: 4.7,
+    reviews: 167,
     slug: "tr-4918-1-1-8-x-3-1-2",
   },
   {
@@ -97,6 +106,7 @@ export const printyStamps = [
     price: 45.99,
     oldPrice: 48.99,
     rating: 4.7,
+    reviews: 84,
     slug: "tr-4919-1-1-2-x-3-3-4",
   },
   {
@@ -107,6 +117,7 @@ export const printyStamps = [
     price: 48.99,
     oldPrice: 52.0,
     rating: 4.6,
+    reviews: 134,
     slug: "tr-4920-1-3-4-x-4",
   },
   {
@@ -117,6 +128,7 @@ export const printyStamps = [
     price: 52.99,
     oldPrice: 55.99,
     rating: 4.7,
+    reviews: 192,
     slug: "tr-4921-2-x-4-1-4",
   },
   {
@@ -127,6 +139,7 @@ export const printyStamps = [
     price: 54.99,
     oldPrice: 58.0,
     rating: 4.8,
+    reviews: 211,
     slug: "tr-4922-2-x-4-1-2",
   },
   {
@@ -137,6 +150,7 @@ export const printyStamps = [
     price: 57.99,
     oldPrice: 60.0,
     rating: 4.8,
+    reviews: 176,
     slug: "tr-4923-2-1-4-x-4-3-4",
   },
   {
@@ -147,6 +161,7 @@ export const printyStamps = [
     price: 60.99,
     oldPrice: 64.0,
     rating: 4.9,
+    reviews: 320,
     slug: "tr-4924-2-1-2-x-5",
   },
   {
@@ -157,6 +172,7 @@ export const printyStamps = [
     price: 64.99,
     oldPrice: 68.0,
     rating: 4.9,
+    reviews: 289,
     slug: "tr-4925-2-3-4-x-5-1-2",
   },
 ];

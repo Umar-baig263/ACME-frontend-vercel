@@ -1,8 +1,10 @@
 import React from "react";
-import ProductCard1 from "../main/ProductCard/ProductCard1";
+import ProductCard2 from "../main/ProductCard/ProductCard2";
 import { products as allProducts } from "../../../../constants/products";
+import { useNavigate } from "react-router-dom";
 
-const Section1 = ({ head, data }) => {
+const Section1 = ({ head, data, path }) => {
+  const navigate = useNavigate();
   const currentData = data?.length ? data : allProducts.slice(0, 10);
 
   return (
@@ -10,22 +12,28 @@ const Section1 = ({ head, data }) => {
       <div className="text-center flex flex-col gap-2">
         <h2 className="md:text-3xl text-lg font-bold">{head}</h2>
         <p className="md:text-base text-sm">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          Select a template to begin your customization journey.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 py-10">
         {currentData.map((d) => (
-          <ProductCard1
-            key={d.id}
-            id={d.id}
+          <ProductCard2
+            key={d.id || d.name}
             name={d.name}
-            img={d.img}
             desc={d.desc}
-            price={Number(d.price)}
-            isPrice={true} // Show price
-            isDetail={false}
+            img={d.img}
+            was={d.priceWas || d.oldPrice}
+            now={d.priceNow || d.price}
+            rating={d.rating}
+            reviews={d.reviews}
+            isDetail={true}
+            isPrice={false}
+            onClick={() =>
+              navigate(`${path}/${d.slug}`, {
+                state: { product: d },
+              })
+            }
           />
         ))}
       </div>

@@ -7,6 +7,7 @@ export const stockstamps = [
     price: 9.99,
     oldPrice: 11.49,
     rating: 4.8,
+    reviews: 156,
     slug: "ss-101-paid-stamp-1-x-2",
   },
   {
@@ -17,6 +18,7 @@ export const stockstamps = [
     price: 10.49,
     oldPrice: 12.49,
     rating: 4.7,
+    reviews: 89,
     slug: "ss-102-approved-stamp-1-x-2",
   },
   {
@@ -27,6 +29,7 @@ export const stockstamps = [
     price: 10.99,
     oldPrice: 12.99,
     rating: 4.8,
+    reviews: 112,
     slug: "ss-103-received-stamp-1-x-2-1-4",
   },
   {
@@ -37,6 +40,7 @@ export const stockstamps = [
     price: 11.49,
     oldPrice: 13.49,
     rating: 4.7,
+    reviews: 74,
     slug: "ss-104-urgent-stamp-1-x-2-1-4",
   },
   {
@@ -47,6 +51,7 @@ export const stockstamps = [
     price: 11.99,
     oldPrice: 13.99,
     rating: 4.9,
+    reviews: 201,
     slug: "ss-105-completed-stamp-1-x-2-1-2",
   },
   {
@@ -57,6 +62,7 @@ export const stockstamps = [
     price: 12.49,
     oldPrice: 14.49,
     rating: 4.8,
+    reviews: 134,
     slug: "ss-106-cancelled-stamp-1-x-2-1-2",
   },
   {
@@ -67,6 +73,7 @@ export const stockstamps = [
     price: 12.99,
     oldPrice: 14.99,
     rating: 4.7,
+    reviews: 95,
     slug: "ss-107-copy-stamp-1-x-2-3-4",
   },
   {
@@ -77,6 +84,7 @@ export const stockstamps = [
     price: 13.49,
     oldPrice: 15.49,
     rating: 4.8,
+    reviews: 118,
     slug: "ss-108-faxed-stamp-1-x-2-3-4",
   },
   {
@@ -87,6 +95,7 @@ export const stockstamps = [
     price: 13.99,
     oldPrice: 15.99,
     rating: 4.9,
+    reviews: 167,
     slug: "ss-109-void-stamp-1-x-3",
   },
   {
@@ -97,6 +106,7 @@ export const stockstamps = [
     price: 14.49,
     oldPrice: 16.49,
     rating: 5.0,
+    reviews: 312,
     slug: "ss-110-confidential-stamp-1-1-4-x-3",
   },
   {
@@ -107,6 +117,7 @@ export const stockstamps = [
     price: 14.99,
     oldPrice: 16.99,
     rating: 4.9,
+    reviews: 178,
     slug: "ss-111-important-stamp-1-1-4-x-3",
   },
   {
@@ -117,6 +128,7 @@ export const stockstamps = [
     price: 15.49,
     oldPrice: 17.49,
     rating: 4.8,
+    reviews: 92,
     slug: "ss-112-draft-stamp-1-1-4-x-3",
   },
   {
@@ -127,6 +139,7 @@ export const stockstamps = [
     price: 15.99,
     oldPrice: 17.99,
     rating: 4.9,
+    reviews: 124,
     slug: "ss-113-original-stamp-1-1-4-x-3-1-4",
   },
   {
@@ -137,6 +150,7 @@ export const stockstamps = [
     price: 16.49,
     oldPrice: 18.49,
     rating: 5.0,
+    reviews: 215,
     slug: "ss-114-filed-stamp-1-1-4-x-3-1-4",
   },
 ];

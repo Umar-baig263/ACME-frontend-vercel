@@ -5,6 +5,8 @@ export const rubberstamps = [
     desc: "High-quality traditional rubber stamps for daily use.",
     slug: "rubber-stamps",
     img: "/rubberstamp-img1.png",
+    rating: 4.8,
+    reviews: 142,
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const rubberstamps = [
     desc: "Classic wooden handle stamps for precise impressions.",
     slug: "wooden-handle-stamps",
     img: "/rubberstamp-img2.png",
+    rating: 4.7,
+    reviews: 67,
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const rubberstamps = [
     desc: "Personalized rubber stamps with your own design.",
     slug: "custom-rubber-stamps",
     img: "/rubberstamp-img3.png",
+    rating: 4.9,
+    reviews: 289,
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const rubberstamps = [
     desc: "Ideal stamps for office and business use.",
     slug: "office-rubber-stamps",
     img: "/rubberstamp-img4.png",
+    rating: 4.6,
+    reviews: 54,
   },
   {
     id: 5,
@@ -33,5 +41,7 @@ export const rubberstamps = [
     desc: "Rubber stamps with adjustable date settings.",
     slug: "date-rubber-stamps",
     img: "/rubberstamp-img5.png",
+    rating: 4.8,
+    reviews: 112,
   },
 ];

@@ -5,6 +5,8 @@ export const colop = [
     desc: "Reliable self-inking stamps for everyday office use.",
     slug: "colop-printer-line",
     img: "/colop-img1.png",
+    rating: 4.7,
+    reviews: 112,
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const colop = [
     desc: "Durable and high-performance stamps for professional use.",
     slug: "2000-plus-stamps",
     img: "/colop-img2.png",
+    rating: 4.8,
+    reviews: 145,
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const colop = [
     desc: "Self-inking date stamps with adjustable settings.",
     slug: "colop-daters",
     img: "/colop-img3.png",
+    rating: 4.6,
+    reviews: 67,
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const colop = [
     desc: "Compact and portable stamps for on-the-go use.",
     slug: "colop-pocket-stamps",
     img: "/colop-img4.png",
+    rating: 4.9,
+    reviews: 234,
   },
   {
     id: 5,
@@ -33,5 +41,7 @@ export const colop = [
     desc: "Ink pads and refills designed for Colop stamps.",
     slug: "colop-accessories",
     img: "/colop-img5.png",
+    rating: 4.5,
+    reviews: 89,
   },
 ];

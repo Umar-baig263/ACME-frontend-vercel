@@ -5,6 +5,8 @@ export const trodatprinty = [
     desc: "Lorem Ipsum is simply dummy text of the printing.",
     slug: "printy-stamps",
     img: "/trodatprinty-img1.png",
+    rating: 4.8,
+    reviews: 156,
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const trodatprinty = [
     desc: "Lorem Ipsum is simply dummy text of the printing.",
     slug: "printy-daters",
     img: "/trodatprinty-img2.png",
+    rating: 4.7,
+    reviews: 89,
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const trodatprinty = [
     desc: "Lorem Ipsum is simply dummy text of the printing.",
     slug: "non-self-inking-daters",
     img: "/trodatprinty-img3.png",
+    rating: 4.6,
+    reviews: 42,
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const trodatprinty = [
     desc: "Lorem Ipsum is simply dummy text of the printing.",
     slug: "professional-line",
     img: "/trodatprinty-img4.png",
+    rating: 4.9,
+    reviews: 210,
   },
   {
     id: 5,
@@ -33,5 +41,7 @@ export const trodatprinty = [
     desc: "Lorem Ipsum is simply dummy text of the printing.",
     slug: "stock-stamps",
     img: "/trodatprinty-img5.png",
+    rating: 4.8,
+    reviews: 134,
   },
 ];

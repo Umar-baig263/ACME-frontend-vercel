@@ -170,7 +170,10 @@ const CardDescSec1 = ({ product }) => {
               </div>
               <div className="flex justify-between items-center w-full">
                 <div>
-                  <RedButton text="Make your own Design" />
+                  <RedButton
+                    text="Make your own Design"
+                    onClick={() => navigate("/card-customize")}
+                  />
                 </div>
                 <div>
                   <OutlineButton text="See more Quantity" />

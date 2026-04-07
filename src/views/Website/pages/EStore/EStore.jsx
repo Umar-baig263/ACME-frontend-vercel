@@ -75,7 +75,12 @@ const EStore = () => {
   const mainCategories = Object.keys(eStoreData).map((key) => ({
     key,
     title: eStoreData[key].title,
-    subs: [{ name: "All " + eStoreData[key].title, products: eStoreData[key].products }],
+    subs: [
+      {
+        name: "All " + eStoreData[key].title,
+        products: eStoreData[key].products,
+      },
+    ],
   }));
 
   const handleMainClick = (key) => {
@@ -127,16 +132,114 @@ const EStore = () => {
         btnText="Shop Now"
         imgUrl="/estore.png"
       />
-      <CategorySwiper data={Cat} />
-      <div id="hoodie-section" className="scroll-mt-40">
-        <Section1
-          head="T-Shirt"
-          desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
-          data={tshirt}
-          onClick={() =>
-            navigate("/estore-products", { state: { category: "tshirt" } })
-          }
-        />
+
+      <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
+        {/* SIDEBAR */}
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+          <Filter
+            filter={mainCategories.map((cat) => ({
+              key: cat.key,
+              name: cat.title,
+              sub: cat.subs.map((subObj) => ({
+                name: subObj.name,
+                products: subObj.products,
+              })),
+            }))}
+            selectedMain={activeMain}
+            selectedSub={activeSub}
+            onMainClick={handleMainClick}
+            onSubClick={handleSubClick}
+            onProductClick={handleProductClick}
+            selectedProducts={selectedSpecificProducts}
+          />
+        </div>
+
+        {/* MAIN CONTENT */}
+        <div className="flex-1 w-full min-w-0 lg:pl-10 pb-20 overflow-hidden">
+          <CategorySwiper
+            data={Cat}
+            activeCategory={activeMain}
+            onCategoryClick={handleMainClick}
+            paddingClass="lg:px-10 md:px-5 px-5"
+          />
+
+          {(!activeMain || activeMain === "tshirt") && (
+            <ProductSwiper
+              head="T-Shirt"
+              desc="High-quality custom t-shirts for every occasion — choose your style and make a statement."
+              data={getFilteredProducts("tshirt", apparel["T-Shirts"])}
+              onProductClick={() =>
+                navigate("/estore-products", { state: { category: "tshirt" } })
+              }
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {(!activeMain || activeMain === "cap") && (
+            <ProductSwiper
+              head="Cap"
+              desc="Branded caps and headwear for high visibility and professional style."
+              data={getFilteredProducts("cap", apparel["Caps"])}
+              onProductClick={() =>
+                navigate("/estore-products", { state: { category: "cap" } })
+              }
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {!activeMain && (
+            <div className="mt-10 lg:pl-10">
+              <Banner
+                color="text-white"
+                heading="Have an Idea? Let's Design It"
+                subheading="Get started with your custom branded merchandise in minutes — we deliver quality every time."
+                isred={false}
+                img="/estoreBanner.png"
+                width="w-full"
+                btntext="Shop Now"
+                btnLink="/"
+              />
+            </div>
+          )}
+
+          {(!activeMain || activeMain === "jacket") && (
+            <ProductSwiper
+              head="Jacket"
+              desc="Stay warm and promote your brand with our premium custom jackets."
+              data={getFilteredProducts("jacket", apparel["Jackets"])}
+              onProductClick={() =>
+                navigate("/estore-products", { state: { category: "jacket" } })
+              }
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {(!activeMain || activeMain === "shirt") && (
+            <ProductSwiper
+              head="Shirt"
+              desc="Professional branded shirts for your team — available in a variety of styles and fits."
+              data={getFilteredProducts("shirt", apparel["Shirts"])}
+              onProductClick={() =>
+                navigate("/estore-products", { state: { category: "shirt" } })
+              }
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {(!activeMain || activeMain === "paint") && (
+            <ProductSwiper
+              head="Paint & Short"
+              desc="Comfortable and durable branded short-sleeve apparel for any setting."
+              data={getFilteredProducts("paint", apparel["Paint"])}
+              onProductClick={() =>
+                navigate("/estore-products", { state: { category: "paint" } })
+              }
+              paddingClass="lg:px-10 md:px-5 px-5"
+            />
+          )}
+
+          {!activeMain && <Section2 />}
+        </div>
       </div>
       <Section1
         head="Cap"

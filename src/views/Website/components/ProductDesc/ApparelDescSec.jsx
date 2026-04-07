@@ -318,7 +318,10 @@ const ApparelDescSec = ({ product }) => {
             </div>
             <div className="flex gap-2">
               <div>
-                <RedButton text="Customize Your Design" />
+                <RedButton
+                  text="Customize Your Design"
+                  onClick={() => navigate(`/apparel-customize`, { state: { product } })}
+                />
               </div>
               <div>
                 <OutlineButton text="Buy Now" onClick={handleBuyNow} />

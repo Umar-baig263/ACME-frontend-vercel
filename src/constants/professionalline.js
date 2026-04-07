@@ -7,6 +7,7 @@ export const professionalline = [
     price: 42.99,
     oldPrice: 45.99,
     rating: 4.8,
+    reviews: 189,
     slug: "pl-5203-1-x-1-3-4",
   },
   {
@@ -17,6 +18,7 @@ export const professionalline = [
     price: 45.49,
     oldPrice: 48.99,
     rating: 4.9,
+    reviews: 245,
     slug: "pl-5204-1-1-8-x-2",
   },
   {
@@ -27,6 +29,7 @@ export const professionalline = [
     price: 48.99,
     oldPrice: 52.49,
     rating: 4.8,
+    reviews: 167,
     slug: "pl-5206-1-1-4-x-2-1-4",
   },
   {
@@ -37,6 +40,7 @@ export const professionalline = [
     price: 52.49,
     oldPrice: 55.99,
     rating: 4.9,
+    reviews: 312,
     slug: "pl-5208-1-1-2-x-2-3-4",
   },
   {
@@ -47,6 +51,7 @@ export const professionalline = [
     price: 55.99,
     oldPrice: 59.49,
     rating: 4.9,
+    reviews: 198,
     slug: "pl-5210-1-5-8-x-3",
   },
   {
@@ -57,6 +62,7 @@ export const professionalline = [
     price: 58.99,
     oldPrice: 62.49,
     rating: 4.8,
+    reviews: 156,
     slug: "pl-5212-1-3-4-x-3-1-4",
   },
   {
@@ -67,6 +73,7 @@ export const professionalline = [
     price: 62.49,
     oldPrice: 66.99,
     rating: 5.0,
+    reviews: 412,
     slug: "pl-5215-2-x-3-1-2",
   },
   {
@@ -77,6 +84,7 @@ export const professionalline = [
     price: 66.99,
     oldPrice: 70.99,
     rating: 4.9,
+    reviews: 211,
     slug: "pl-5217-2-1-4-x-3-3-4",
   },
   {
@@ -87,6 +95,7 @@ export const professionalline = [
     price: 69.99,
     oldPrice: 74.49,
     rating: 4.8,
+    reviews: 184,
     slug: "pl-5219-2-1-2-x-4",
   },
   {
@@ -97,6 +106,7 @@ export const professionalline = [
     price: 74.99,
     oldPrice: 79.99,
     rating: 5.0,
+    reviews: 320,
     slug: "pl-5223-2-3-4-x-4-1-2",
   },
 ];

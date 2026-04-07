@@ -24,7 +24,7 @@ const Home = () => {
         isred={false}
         heading="Have an Idea? Let's Design It"
         subheading="Get started with your custom Stamp in minutes"
-        btnLink="/stamp"
+        btnLink="/stamp-customize"
         btntext="Custom your Own Stamp"
         img="/homes4.jpg"
       />

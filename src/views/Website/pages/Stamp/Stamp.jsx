@@ -117,7 +117,7 @@ const Stamp = () => {
         head="High-Quality Custom Stamps for Every Need"
         isButton={true}
         desc="Self-inking, logo & date stamps — customized to leave a professional mark."
-        btnLink="/stamp"
+        btnLink="/stamp-customize"
         btnText="Customize your stamp"
         imgUrl="/stamp-banner.png"
       />
@@ -181,7 +181,7 @@ const Stamp = () => {
                 isred={false}
                 img="stamp.png"
                 btntext="Custom Stamp Now"
-                btnLink="/"
+                btnLink="/stamp-customize"
               />
             </div>
           )}

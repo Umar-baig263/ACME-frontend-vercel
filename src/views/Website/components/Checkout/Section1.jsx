@@ -315,8 +315,19 @@ const Section1 = () => {
                         </div>
 
                         <div className="text-xs">
-                          Size: {item.selectSize} | Color: {item.selectColor}
+                          Size: {item.selectSize || 'N/A'} | Color: {item.selectColor || 'N/A'}
                         </div>
+                        {item.customization && (
+                          <div className="text-xs text-gray-500 mt-1 flex flex-col gap-1 bg-gray-50 p-2 rounded border border-gray-100">
+                            <div><strong>Font:</strong> {item.customization.fontFamily} ({item.customization.fontSize}px)</div>
+                            {(item.customization.isBold || item.customization.isItalic) && (
+                              <div><strong>Style:</strong> {item.customization.isBold ? "Bold" : ""} {item.customization.isItalic ? "Italic" : ""}</div>
+                            )}
+                            {item.customization.lines?.map((line, idx) => line && (
+                              <div key={idx}><strong>Line {idx+1}:</strong> "{line}"</div>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex flex-col items-end gap-2">

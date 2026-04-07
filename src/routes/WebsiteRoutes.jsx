@@ -37,11 +37,14 @@ import EStoreProductDesc from "../views/Website/pages/ProductDesc/EStoreProductD
 import ApparelProductDesc from "../views/Website/pages/ProductDesc/ApparelProductDesc";
 import CardTemplate from "../views/Website/pages/Products/CardTemplate";
 import MainPage from "../views/Website/Research/mainPage";
-import ProductCustomize from "../views/Website/pages/ProductCustomize/ProductCustomize";
+
 import StampCategories from "../views/Website/pages/StampCategories/StampCategories";
 import DigitalPrintingCategories from "../views/Website/pages/DigitalPrintingCategories/DigitalPrintingCategories";
 import CorporateProductDesc from "../views/Website/pages/ProductDesc/CorporateProductDesc";
-import Faq from "../views/Website/pages/Faq/Faq";
+import HelpFaq from "../views/Website/pages/HelpFaq/HelpFaq";
+import StampCustomize from "../views/Website/pages/StampCustomizePage/StampCustomize";
+import CardCustomize from "../views/Website/pages/CardCustomizePage/CardCustomize";
+import ApparelCustomize from "../views/Website/pages/ApparelCustomizePage/ApparelCustomize";
 
 const websiteRoutes = [
   {
@@ -90,10 +93,7 @@ const websiteRoutes = [
         path: "corporate-gifting",
         element: <Corporate />,
       },
-      {
-        path: "product-customize/:id",
-        element: <ProductCustomize />,
-      },
+
       {
         path: "marketing-advertising",
         element: <Marketing />,
@@ -151,6 +151,10 @@ const websiteRoutes = [
         element: <BlogDetail />,
       },
       {
+        path: "faq",
+        element: <HelpFaq />,
+      },
+      {
         path: "cart",
         element: <AddToCard />,
       },
@@ -190,7 +194,18 @@ const websiteRoutes = [
         path: "customize",
         element: <CustomizePage />,
       },
-
+      {
+        path: "card-customize",
+        element: <CardCustomize />,
+      },
+      {
+        path: "stamp-customize",
+        element: <StampCustomize />,
+      },
+      {
+        path: "apparel-customize",
+        element: <ApparelCustomize />,
+      },
       {
         path: "apparel-products",
         element: <ApparelPro />,
@@ -209,10 +224,7 @@ const websiteRoutes = [
       },
       { path: "/stamp-categories", element: <StampCategories /> },
 
-      {
-        path: "faq",
-        element: <Faq />,
-      },
+
 
       {
         path: "*",

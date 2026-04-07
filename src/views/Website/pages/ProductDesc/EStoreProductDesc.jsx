@@ -10,9 +10,14 @@ import Section1 from "../../components/EStore/Section1";
 // import ProductSlider from "../../components/main/ProductSlider/ProductSlider";
 import { products } from "../../../../constants/products";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 const EStoreProductDesc = () => {
   const { category, slug } = useParams();
   const categoryStr = category || "Product";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const product = products.find((p) => p.slug === slug);
   return (

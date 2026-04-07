@@ -261,7 +261,7 @@ const EstoreDesc = () => {
 
               <div className="flex">
                 {/* ✅ FIX */}
-                <Link to={`/product-customize/${currentProduct.id}`}>
+                <Link to={`/apparel-customize`}>
                   <RedButton text="Customize Template" />
                 </Link>
               </div>

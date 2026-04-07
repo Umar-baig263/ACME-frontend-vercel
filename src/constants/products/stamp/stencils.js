@@ -5,6 +5,8 @@ export const stencils = [
     desc: "Reusable letter stencils for clean and accurate text marking.",
     slug: "alphabet-stencils",
     img: "/stencils-img1.png",
+    rating: 4.8,
+    reviews: 112,
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const stencils = [
     desc: "Durable number stencils for industrial and office use.",
     slug: "number-stencils",
     img: "/stencils-img2.png",
+    rating: 4.7,
+    reviews: 78,
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const stencils = [
     desc: "Personalized stencils designed according to your needs.",
     slug: "custom-stencils",
     img: "/stencils-img3.png",
+    rating: 4.9,
+    reviews: 210,
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const stencils = [
     desc: "Heavy-duty stencils for warehouses and factory marking.",
     slug: "industrial-stencils",
     img: "/stencils-img4.png",
+    rating: 4.6,
+    reviews: 45,
   },
   {
     id: 5,
@@ -33,5 +41,7 @@ export const stencils = [
     desc: "Lightweight and reusable plastic stencils for daily use.",
     slug: "plastic-stencils",
     img: "/stencils-img5.png",
+    rating: 4.8,
+    reviews: 89,
   },
 ];

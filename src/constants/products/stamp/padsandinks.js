@@ -5,6 +5,8 @@ export const padsandinks = [
     desc: "High-quality ink pads for clear and consistent impressions.",
     slug: "stamp-pads",
     img: "/padsandinks-img1.png",
+    rating: 4.8,
+    reviews: 156,
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const padsandinks = [
     desc: "Premium refill inks for long-lasting stamp performance.",
     slug: "ink-refills",
     img: "/padsandinks-img2.png",
+    rating: 4.7,
+    reviews: 89,
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const padsandinks = [
     desc: "Original Trodat ink for professional stamping results.",
     slug: "trodat-ink",
     img: "/padsandinks-img3.png",
+    rating: 4.9,
+    reviews: 210,
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const padsandinks = [
     desc: "Available in multiple colors for versatile stamping needs.",
     slug: "color-ink-pads",
     img: "/padsandinks-img4.png",
+    rating: 4.6,
+    reviews: 74,
   },
   {
     id: 5,
@@ -33,5 +41,7 @@ export const padsandinks = [
     desc: "Fast drying inks ideal for office and industrial use.",
     slug: "quick-dry-inks",
     img: "/padsandinks-img5.png",
+    rating: 4.8,
+    reviews: 134,
   },
 ];

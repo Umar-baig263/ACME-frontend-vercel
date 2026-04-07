@@ -84,9 +84,14 @@ const ProductCard2 = ({
             </div>
             <div className=" text-xs flex md:flex-row flex-col gap-1">
               <div>{text}</div>
-              <div className="flex gap-1">
-                <div className="text-gray-500 line-through">{was}</div>
-                <div className="font-semibold text-[#C6131B]">{now}</div>
+              <div className="flex gap-1 items-center">
+                <div className="text-base text-[#5C5C5F]">Starting at</div>
+                <div className="text-[#5C5C5F] text-base line-through">
+                  {was}
+                </div>
+                <div className="font-medium text-base text-[#C6131B]">
+                  {now}
+                </div>
               </div>
             </div>
           </div>

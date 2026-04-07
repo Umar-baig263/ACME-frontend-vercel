@@ -75,9 +75,7 @@ const ProductCard = ({
           )}
         </div>
 
-        <div className="mt-1 md:text-xs text-xs w-full font-light">
-          {desc}
-        </div>
+        <div className="mt-1 md:text-xs text-xs w-full font-light">{desc}</div>
       </div>
     </>
   );
@@ -96,8 +94,9 @@ const ProductCard = ({
         )}
       </div>
 
-      {disableLink ? (
-        cardContent
+      {/* isLink=true hone pe hi Link render hoga, warna sirf div */}
+      {isLink ? (
+        <Link to={`/shop/${slug || id}`}>{cardContent}</Link>
       ) : (
         <Link to={getProductRoute()}>{cardContent}</Link>
       )}

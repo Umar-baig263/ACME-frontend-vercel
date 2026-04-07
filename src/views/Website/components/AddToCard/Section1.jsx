@@ -49,7 +49,18 @@ const Section1 = () => {
                           alt={item.name}
                           className="w-16 h-16 object-contain"
                         />
-                        <span>{item.name}</span>
+                        <div className="flex flex-col">
+                          <span className="font-bold">{item.name}</span>
+                          {item.customization && (
+                            <div className="text-xs text-gray-500 mt-1 flex flex-col gap-1">
+                              <div>Font: {item.customization.fontFamily} ({item.customization.fontSize}px)</div>
+                              <div>Style: {item.customization.isBold ? "Bold" : ""} {item.customization.isItalic ? "Italic" : ""}</div>
+                              {item.customization.lines?.map((line, idx) => line && (
+                                <div key={idx}>Line {idx+1}: "{line}"</div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </td>
                       <td className="p-4">${price.toFixed(2)}</td>
                       <td className="p-4 ">

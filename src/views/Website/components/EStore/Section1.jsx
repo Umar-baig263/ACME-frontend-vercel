@@ -43,24 +43,28 @@ const Section1 = ({ head, desc, link, data, isLink, onClick }) => {
           loop={true}
           className="h-full w-full relaive  overflow-visible"
         >
-          {data?.map((d) => (
-            <SwiperSlide key={d.id}>
-              <Link to={`/e-store/${d.slug}`}>
-                <ProductCard1
-                  id={d.id}
-                  name={d?.name}
-                  desc={d?.desc}
-                  img={d?.img}
-                  price={d?.price}
-                  btn1="Buy Now"
-                  btn2="Add To Cart"
-                  product={d}
-                  category="e-store"
-                  slug={d.slug}
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
+          {data?.map((d) => {
+            const cardContent = (
+              <ProductCard1
+                id={d.id}
+                name={d?.name}
+                desc={d?.desc}
+                img={d?.img}
+                price={d?.price}
+                btn1="Buy Now"
+                btn2="Add To Cart"
+                product={d}
+                category="e-store"
+                slug={d.slug}
+                isHide={!!onClick}
+              />
+            );
+            return (
+              <SwiperSlide key={d.id}>
+                {onClick ? cardContent : <Link to={`/shop/${d.slug}`}>{cardContent}</Link>}
+              </SwiperSlide>
+            );
+          })}
 
           <div className="blog-custom-prev  absolute  z-100 top-1/2 left-2 bg-white shadow-md flex p-2 rounded-full">
             <FaAngleLeft />

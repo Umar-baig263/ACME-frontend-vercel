@@ -171,11 +171,12 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
                   desc={d.desc}
                   img={d.img}
                   people={d.people}
-                  was={d.priceWas}
-                  now={d.priceNow}
+                  was={d.priceWas || d.oldPrice}
+                  now={d.priceNow || d.price}
                   text={d.text}
                   star={d.stars}
-                  rating={d.rating}
+                  rating={d.rating || d.stars}
+                  reviews={d.reviews || d.people || 0}
                   isDetail={true}
                   isPrice={false}
                   onClick={() =>

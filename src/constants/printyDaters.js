@@ -7,6 +7,7 @@ export const printyDaters = [
     price: 45.99,
     oldPrice: 48.99,
     rating: 4.6,
+    reviews: 142,
     slug: "daters-1-4-lines",
   },
   {
@@ -17,6 +18,7 @@ export const printyDaters = [
     price: 48.29,
     oldPrice: 50.99,
     rating: 4.7,
+    reviews: 98,
     slug: "daters-2-5-lines",
   },
   {
@@ -27,6 +29,7 @@ export const printyDaters = [
     price: 49.99,
     oldPrice: 52.99,
     rating: 4.7,
+    reviews: 115,
     slug: "daters-3-6-lines",
   },
   {
@@ -37,6 +40,7 @@ export const printyDaters = [
     price: 51.99,
     oldPrice: 54.99,
     rating: 4.8,
+    reviews: 204,
     slug: "daters-4-7-lines",
   },
   {
@@ -47,6 +51,7 @@ export const printyDaters = [
     price: 53.99,
     oldPrice: 56.99,
     rating: 4.8,
+    reviews: 87,
     slug: "daters-5-8-lines",
   },
   {
@@ -58,6 +63,7 @@ export const printyDaters = [
     price: 55.49,
     oldPrice: 58.49,
     rating: 4.9,
+    reviews: 156,
     slug: "daters-6-9-lines",
   },
   {
@@ -68,6 +74,7 @@ export const printyDaters = [
     price: 57.99,
     oldPrice: 60.99,
     rating: 4.9,
+    reviews: 189,
     slug: "daters-7-10-lines",
   },
   {
@@ -79,6 +86,7 @@ export const printyDaters = [
     price: 60.29,
     oldPrice: 63.29,
     rating: 4.8,
+    reviews: 132,
     slug: "daters-8-11-lines",
   },
   {
@@ -89,6 +97,7 @@ export const printyDaters = [
     price: 62.99,
     oldPrice: 65.99,
     rating: 4.9,
+    reviews: 243,
     slug: "daters-9-12-lines",
   },
   {
@@ -99,6 +108,7 @@ export const printyDaters = [
     price: 64.99,
     oldPrice: 68.0,
     rating: 4.9,
+    reviews: 178,
     slug: "daters-10-13-lines",
   },
   {
@@ -109,6 +119,7 @@ export const printyDaters = [
     price: 67.49,
     oldPrice: 70.49,
     rating: 4.9,
+    reviews: 124,
     slug: "daters-11-14-lines",
   },
   {
@@ -119,6 +130,7 @@ export const printyDaters = [
     price: 69.99,
     oldPrice: 73.0,
     rating: 4.9,
+    reviews: 95,
     slug: "daters-12-15-lines",
   },
 ];

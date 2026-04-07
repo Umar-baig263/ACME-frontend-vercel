@@ -7,6 +7,7 @@ import RedButtonLink from "../main/Buttons/RedButtonLink";
 // import SignUpPopUp from './SignUpPopUp';
 import OutlineButton from "../main/Buttons/OutlineButton";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { CartContext } from "../../../../contexts/cartContext";
 
 const StampDesc = ({ product: propProduct }) => {
@@ -122,102 +123,100 @@ const images =
   };
 
   return (
-        <div className='flex flex-col lg:px-26 gap-5 mt-5'>
-
-            <div className='flex gap-10'>
-
-                {/* LEFT SIDE */}
-                <div className='w-1/2'>
-                    <div className='overflow-hidden rounded-xl h-[70%] group flex justify-center items-center'>
-                        <img src={selectedImg} alt="" className="object-contain max-h-full" />
-                    </div>
-
-                    <div className="flex overflow-x-auto gap-2 mt-4">
-                        {images.map((d, i) => (
-                            <img
-                                key={i}
-                                src={d}
-                                onClick={() => setSelectedImg(d)}
-                                className={`w-32 h-32 object-cover cursor-pointer rounded-xl ${selectedImg === d ? 'border-2 border-red-500' : ''}`}
-                                alt=""
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* RIGHT SIDE */}
-                <div className='w-1/2'>
-
-                    <div className='border-b pb-5 px-5'>
-                        <div className='text-3xl font-bold'>{product.name}</div>
-                        <div className='text-lg text-gray-800'>{product.desc}</div>
-
-                        <div className='flex justify-between mt-3'>
-                            <div className='text-xl font-bold'>$ {Number(product.price) || 39.99}</div>
-                            <div className='flex gap-2'>
-                                <span className='text-yellow-500'>★★★★★</span>
-                                <span className='font-bold'>5</span>
-                                <span>(10934)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='p-5 flex flex-col gap-5'>
-
-                        {/* Quantity */}
-                        <div className='flex justify-between items-center'>
-                            <div className="flex gap-2 bg-gray-100 p-1 rounded-full">
-                                <div onClick={decreaseQty} className="p-2 bg-white rounded cursor-pointer">
-                                    <FaMinus />
-                                </div>
-                                <div className="px-2">{items}</div>
-                                <div onClick={increaseQty} className="p-2 bg-white rounded cursor-pointer">
-                                    <FaPlus />
-                                </div>
-                            </div>
-
-                            <div onClick={() => setIsOpen(true)}>
-                                <RedButton text="Customize Stamp" />
-                            </div>
-                        </div>
-
-                        {/* ✅ BUTTONS ADDED */}
-                        <div className="flex gap-3">
-                            <RedButton text="Buy Now" onClick={handleBuyNow} width="w-1/2" />
-                            <button
-                                type="button"
-                                onClick={handleAddToCart}
-                                className="w-1/2 py-3 rounded border border-black text-black"
-                            >
-                                Add To Cart
-                            </button>
-                        </div>
-
-                        {/* ✅ Design Navigation Buttons */}
-                        <div className="flex flex-col gap-3 mt-2">
-                            <div 
-                                onClick={() => navigate('/card-template')}
-                                className="bg-[#cc1016] cursor-pointer text-white flex flex-col justify-center items-start px-4 py-3 hover:bg-[#a10d12] transition-colors"
-                            >
-                                <div className="text-lg font-medium">Browse design</div>
-                                <div className="text-xs font-light">choose one of our templates</div>
-                            </div>
-                            <div 
-                                onClick={() => navigate('/card-template')}
-                                className="bg-white border border-gray-400 cursor-pointer text-black flex flex-col justify-center items-start px-4 py-3 hover:bg-gray-50 transition-colors"
-                            >
-                                <div className="text-lg font-medium">Upload design</div>
-                                <div className="text-xs font-light text-gray-500">Have a design? Upload and edit it</div>
-                            </div>
-                        </div>
-
-                        <div className='text-gray-700'>
-                            Introducing the Trodat Printy TR-4910...
-                        </div>
-
-                    </div>
-                </div>
+    <div className="flex flex-col lg:px-26 gap-5 mt-5">
+      <div className="flex gap-10">
+        <div className="w-1/2">
+          <div className="overflow-hidden rounded-xl aspect-square bg-gray-50 border border-gray-100 flex justify-center items-center p-12 group">
+            <img
+              src={selectedImg}
+              className="w-full h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
+              alt={product.name}
+            />
+          </div>
+          <div className="flex overflow-x-auto overflow-y-hidden gap-2 mt-4 whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400">
+            {images.map((d, i) => (
+              <img
+                key={i}
+                src={d}
+                alt={`Thumbnail ${i + 1}`}
+                onClick={() => setSelectedImg(d)}
+                className={`w-32 h-32 object-contain bg-gray-50 p-2 cursor-pointer rounded-xl border-2 transition-all duration-200 ${
+                  selectedImg === d ? "border-[#C6131B]" : "border-gray-100 opacity-70 hover:opacity-100"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="w-1/2">
+          <div className="border-b border-gray-300 flex flex-col gap-3 pb-5 px-5">
+            <div className="text-3xl font-bold">{product.name}</div>
+            <div className="text-lg text-gray-800">{product.desc}</div>
+            <div className="flex  w-full items-center justify-between">
+              <div className="text-xl font-bold">${product.price}</div>
+              <div className="flex gap-2 items-center">
+                <span className="text-[#FFB200] text-2xl">★★★★★</span>
+                <span className="font-medium">{product.rating}</span>
+                <span className="text-gray-800">(10934)</span>
+              </div>
             </div>
+          </div>
+          <div className="p-5 flex flex-col gap-5">
+            <div className="flex w-full justify-between items-center">
+              <div>
+                <div className="flex">
+                  <div className="flex justify-between items-center gap-2 text-sm p-1 bg-gray-100 rounded-full md:text-xs text-sm">
+                    <div
+                      onClick={() => (items > 1 ? setItems(items - 1) : "")}
+                      className="p-2 rounded-full border border-white hover:border-red-600 bg-white "
+                    >
+                      <FaMinus />
+                    </div>
+                    <div>{items}</div>
+                    <div
+                      onClick={() => setItems(items + 1)}
+                      className="p-2 rounded-full border border-white hover:border-red-600 bg-white "
+                    >
+                      <FaPlus />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div onClick={() => navigate("/stamp-customize", { state: { product } })}>
+                  <RedButton text="Customize Stamp" />
+                </div>
+                <div>
+                  <OutlineButton text="Buy Now" onClick={handleBuyNow} />
+                </div>
+              </div>
+            </div>
+            <div className="text-lg text-gray-700">
+              Introducing the Trodat Printy TR-4910, a compact self-inking stamp
+              with dimensions of 9 x 26 mm (3/8" x 1-1/32"). Perfect for those
+              seeking a small yet efficient stamp for quick and precise
+              impressions. Ideal for addresses, logos, or personalized messages
+              in a space-efficient design. Enjoy global shipping on every order.
+              Free shipping for orders above $30. Ideal for offices and personal
+              use. Order now!
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="text-xl font-bold">Key Features</div>
+              <div className="flex flex-col gap-5 p-2 bg-gray-100 h-[250px] overflow-hidden">
+                <div className="overflow-y-auto">
+                  <ul className="list-disc p-5 flex flex-col gap-2">
+                    {keyFeatures?.map((d, i) => (
+                      <li key={i}>
+                        <div className="text-lg font-bold">{d?.heading}</div>
+                        <div className="text-lg">{d?.description}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
             {/* MODAL */}
             {isOpen && (

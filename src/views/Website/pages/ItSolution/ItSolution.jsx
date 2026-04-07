@@ -30,7 +30,7 @@ const ItSolution = () => {
         isred={false}
         heading="Ready to speak with a marketing expert? Give us a ring"
         subheading="Let’s grow your brand—one call away."
-        btnLink="/stamp"
+        btnLink="/stamp-customize"
         btntext="Custom your Own Stamp"
         img="itBanner2.png"
       />

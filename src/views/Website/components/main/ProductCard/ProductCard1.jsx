@@ -86,8 +86,11 @@ const ProductCard1 = ({
           <AiOutlineHeart className="text-gray-600 text-xl" />
         )}
       </div>
-      <div className="w-full">
-        <img src={img} className="w-full object-cover" />
+      <div className="w-full aspect-square bg-gray-50 rounded-xl overflow-hidden flex justify-center items-center p-6 border border-gray-100 group">
+        <img
+          src={img}
+          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+        />
       </div>
       <div className="flex flex-col pr-5 gap-1">
         <div className={`md:text-lg font-semibold text-sm`}>{name}</div>
