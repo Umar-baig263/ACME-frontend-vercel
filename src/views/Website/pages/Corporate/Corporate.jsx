@@ -76,17 +76,27 @@ const Corporate = () => {
     if (activeMain !== mainKey) return fallbackData;
     if (selectedSpecificProducts.length > 0) return selectedSpecificProducts;
     if (activeSub) {
-      const subCatObj = corporateGiftingData[mainKey]?.categories.find((c) => c.name === activeSub);
+      const subCatObj = corporateGiftingData[mainKey]?.categories.find(
+        (c) => c.name === activeSub,
+      );
       return subCatObj ? subCatObj.products : fallbackData;
     }
     return fallbackData;
   };
 
   // Extract initial product arrays from corporateGiftingData
-  const giftBoxes = corporateGiftingData.gifts.categories.flatMap(c => c.products);
-  const mugsAndBottles = corporateGiftingData.mugs.categories.flatMap(c => c.products);
-  const techGifts = corporateGiftingData.tech.categories.flatMap(c => c.products);
-  const pensNotebooks = corporateGiftingData.pens.categories.flatMap(c => c.products);
+  const giftBoxes = corporateGiftingData.gifts.categories.flatMap(
+    (c) => c.products,
+  );
+  const mugsAndBottles = corporateGiftingData.mugs.categories.flatMap(
+    (c) => c.products,
+  );
+  const techGifts = corporateGiftingData.tech.categories.flatMap(
+    (c) => c.products,
+  );
+  const pensNotebooks = corporateGiftingData.pens.categories.flatMap(
+    (c) => c.products,
+  );
   return (
     <div className="md:pt-30 pt-20">
       <Navbar breadcrumb="corporate-gifting" isBanner={false} />
@@ -94,8 +104,8 @@ const Corporate = () => {
         head="Thoughtful Corporate Gifts for Every Occasion"
         isButton={true}
         desc="Custom-branded gifts for employees, clients, and events."
-        btnLink="/stamp"
-        btnText="Customize your stamp"
+        btnLink="/customize"
+        btnText="Customize your product"
         imgUrl="/coprate.png"
       />
 

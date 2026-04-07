@@ -16,7 +16,7 @@ const BlogDetail = () => {
         isred={false}
         img="shops4img.png"
         btntext="Custom Design Template"
-        btnLink="/"
+        btnLink="/card-template"
       />
       <Section3 />
       <Section3 />

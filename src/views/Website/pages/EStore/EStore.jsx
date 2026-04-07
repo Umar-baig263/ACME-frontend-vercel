@@ -128,7 +128,7 @@ const EStore = () => {
       <HeaderBanner
         head="Shop ACME’s exclusive collection of branded merchandise."
         isButton={true}
-        btnLink="/stamp"
+        btnLink="/shop"
         btnText="Shop Now"
         imgUrl="/estore.png"
       />

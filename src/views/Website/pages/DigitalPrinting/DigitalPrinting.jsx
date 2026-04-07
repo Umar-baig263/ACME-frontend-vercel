@@ -120,7 +120,7 @@ const DigitalPrinting = () => {
 
     if (activeSub) {
       const subCatObj = digitalPrintingData[mainKey]?.categories.find(
-        (c) => c.name === activeSub
+        (c) => c.name === activeSub,
       );
       return subCatObj ? subCatObj.products : fallbackData;
     }
@@ -135,8 +135,8 @@ const DigitalPrinting = () => {
         head="High-Quality Digital Printing Services"
         isButton={true}
         desc="From business cards to banners — we deliver vibrant, sharp, and reliable prints."
-        btnLink="/stamp"
-        btnText="Customize your stamp"
+        btnLink="/card-customize"
+        btnText="Customize your card"
         imgUrl="/dpbannerimg.png"
       />
 
@@ -169,7 +169,7 @@ const DigitalPrinting = () => {
             onCategoryClick={handleMainClick}
             paddingClass="lg:px-10 md:px-5 px-5"
           />
-          
+
           {(!activeMain || activeMain === "business") && (
             <ProductSwiper
               head="Business Card"
@@ -194,12 +194,12 @@ const DigitalPrinting = () => {
               <Banner
                 color="text-white"
                 heading="Fast. Affordable. Professional. Get Your Prints Today!"
-                subheading="Mess-free, self-inking stamps for clean, reliable impressions — every time."
+                subheading="Premium business cards, banners, and marketing materials tailored to your brand."
                 isred={false}
                 img="/dbBanner.png"
                 width="w-full"
                 btntext="Shop Now"
-                btnLink="/"
+                btnLink="/card-template"
               />
             </div>
           )}

@@ -949,7 +949,7 @@ const Section1 = () => {
                 strategies tailored to elevate your online presence.
               </div>
               <div>
-                <RedButtonLink text="Contact Us" />
+                <RedButtonLink text="Contact Us" link="/contact" />
               </div>
             </div>
           </div>

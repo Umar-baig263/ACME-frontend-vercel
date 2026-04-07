@@ -136,8 +136,8 @@ const Apparel = () => {
           head="Your Everyday Wardrobe Starts Here"
           isButton={true}
           desc="T-shirts, shirts, and essentials for every mood — shop all in one place."
-          btnLink="/stamp"
-          btnText="Customize your stamp"
+          btnLink="/apparel-customize"
+          btnText="Customize your apparel"
           imgUrl="/apparel.png"
         />
 

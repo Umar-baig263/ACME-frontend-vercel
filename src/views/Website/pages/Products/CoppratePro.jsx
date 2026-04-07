@@ -48,7 +48,7 @@ const CoppratePro = () => {
         isred={false}
         heading="Have an Idea? Let's Design It"
         subheading="Get started with your custom Stamp in minutes"
-        btnLink="/stamp"
+        btnLink="/contact"
         btntext="Contact Us"
         img="/bottelBanner.png"
       />

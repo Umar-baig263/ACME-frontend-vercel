@@ -14,10 +14,10 @@ const Shop = () => {
   return (
     <div className="md:pt-30 pt-20">
          <Navbar breadcrumb="shop" isBanner={false} />
-         <HeaderBanner head="Customized Prints That Speak Your Brand" desc="Discover our most popular customizable items, ready to be personalized your way" btnLink="/" btnText="Customize your design" imgUrl="/shop-banner.png" isButton={true}/>
+         <HeaderBanner head="Customized Prints That Speak Your Brand" desc="Discover our most popular customizable items, ready to be personalized your way" btnLink="/apparel-customize" btnText="Customize your design" imgUrl="/shop-banner.png" isButton={true}/>
          <Section2/>
          <Section3/>
-         <Banner color="text-black" heading="Have an Idea? Let's Design It" subheading="Get started with your custom design template in minutes" isred={false} img="shops4img.png"  btntext="Custom Design Template" btnLink="/" />
+         <Banner color="text-black" heading="Have an Idea? Let's Design It" subheading="Get started with your custom design template in minutes" isred={false} img="shops4img.png"  btntext="Custom Design Template" btnLink="/card-template" />
          <Section4/>
          <Section5/>
          <FaqSection/>
