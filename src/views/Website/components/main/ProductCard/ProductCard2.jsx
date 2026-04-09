@@ -1,3 +1,5 @@
+
+
 import React, { useContext } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { WishlistContext } from "../../../../../contexts/wishlistContext";
@@ -46,9 +48,14 @@ const ProductCard2 = ({
       addToWishlist(product);
     }
   };
+
   return (
-    <div className="flex flex-col gap-3 relative cursor-pointer" onClick={onClick}>
-      <button 
+    <div
+      className="flex flex-col gap-3 relative cursor-pointer group"
+      onClick={onClick}
+    >
+      <div className="absolute top-2 right-2 p-2 rounded-full bg-white shadow-md">
+       <button 
         onClick={handleWishlistClick}
         className="absolute top-2 right-2 p-2 rounded-full cursor-pointer bg-white shadow-md z-10"
       >
@@ -58,8 +65,12 @@ const ProductCard2 = ({
             <AiOutlineHeart className="text-gray-600 text-lg" />
         )}
       </button>
-      <div className="w-full">
-        <img src={img} className="w-full object-cover" />
+      </div>
+      <div className="w-full aspect-square bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden p-6 border border-gray-100">
+        <img
+          src={img}
+          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+        />
       </div>
       <div className="flex flex-col pr-5">
         <div
