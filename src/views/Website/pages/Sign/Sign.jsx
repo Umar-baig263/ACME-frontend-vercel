@@ -16,7 +16,7 @@ import Section2 from "../../components/sign/Section2";
 const Sign = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="signage" isBanner={false} />
+      <Navbar breadcrumb="Signage" isBanner={false} />
       <HeaderBanner
         head="Signs That Speak Your Brand’s Language"
         isButton={true}

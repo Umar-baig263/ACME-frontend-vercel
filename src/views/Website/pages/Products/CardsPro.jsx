@@ -21,7 +21,7 @@ const CardsPro = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
       <Navbar
-        breadcrumb="products /  Card"
+        breadcrumb="Digital Printing / Cards"
         isBanner={true}
         img="CardProductBanner.png"
       />

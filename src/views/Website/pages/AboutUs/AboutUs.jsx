@@ -22,7 +22,7 @@ const AboutUs = () => {
   ]
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="about-us" img="about.png" isBanner={true} />
+      <Navbar breadcrumb="About Us" img="about.png" isBanner={true} />
       <Section1 />
       <Section2
         img="abouts1.png"

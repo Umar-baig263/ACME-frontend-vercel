@@ -69,18 +69,6 @@ const Apparel = () => {
     })),
   }));
 
-  const handleMainClick = (key) => {
-    setActiveMain((prev) => (prev === key ? "" : key));
-    setActiveSub("");
-    setSelectedSpecificProducts([]);
-  };
-
-  const handleSubClick = (subName, mainKey) => {
-    setActiveMain(mainKey);
-    setActiveSub((prev) => (prev === subName ? "" : subName));
-    setSelectedSpecificProducts([]);
-  };
-
   const handleProductClick = (product) => {
     setSelectedSpecificProducts((prev) => {
       const isSelected = prev.some((p) => p.id === product.id);
@@ -88,6 +76,40 @@ const Apparel = () => {
         ? prev.filter((p) => p.id !== product.id)
         : [...prev, product];
     });
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMainClick = (key) => {
+    const isDeactivating = activeMain === key;
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+
+    if (!isDeactivating && key) {
+      setTimeout(() => scrollToSection(`section-${key}`), 100);
+    }
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+    setTimeout(() => scrollToSection(`section-${mainKey}`), 100);
   };
 
   const getFilteredProducts = (mainKey, fallbackData) => {
@@ -131,7 +153,7 @@ const Apparel = () => {
   return (
     <div className="md:pt-30 pt-20 md:pb-20">
       <div className=" md:pb-20">
-        <Navbar breadcrumb="apparel" isBanner={false} />
+        <Navbar breadcrumb="Apparel" isBanner={false} />
         <HeaderBanner
           head="Your Everyday Wardrobe Starts Here"
           isButton={true}
@@ -142,8 +164,7 @@ const Apparel = () => {
         />
 
         <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
-          {/* SIDEBAR */}
-          <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+          <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0 sticky top-32 h-fit">
             <Filter
               filter={mainCategories.map((cat) => ({
                 key: cat.key,
@@ -171,7 +192,7 @@ const Apparel = () => {
               paddingClass="lg:px-10 md:px-5 px-5"
             />
 
-            {(!activeMain || activeMain === "tshirt") && (
+            <div id="section-tshirt">
               <ProductSwiper
                 head="T-Shirt"
                 desc="High-quality custom t-shirts for every occasion — choose your style and make a statement."
@@ -179,9 +200,9 @@ const Apparel = () => {
                 onProductClick={() => navigate(`/apparel-products?main=tshirt`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
-            )}
+            </div>
 
-            {(!activeMain || activeMain === "jacket") && (
+            <div id="section-jacket">
               <ProductSwiper
                 head="Jacket"
                 desc="Find inspiration in these thoughtfully curated product collections — stay warm and stylish."
@@ -189,7 +210,7 @@ const Apparel = () => {
                 onProductClick={() => navigate(`/apparel-products?main=jacket`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
-            )}
+            </div>
 
             {!activeMain && (
               <div className="mt-10 lg:pl-10">
@@ -206,7 +227,7 @@ const Apparel = () => {
               </div>
             )}
 
-            {(!activeMain || activeMain === "paint") && (
+            <div id="section-paint">
               <ProductSwiper
                 head="Paint & Short"
                 desc="Custom short-sleeve apparel designed for comfort and durability in any setting."
@@ -214,9 +235,9 @@ const Apparel = () => {
                 onProductClick={() => navigate(`/apparel-products?main=paint`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
-            )}
+            </div>
 
-            {(!activeMain || activeMain === "cap") && (
+            <div id="section-cap">
               <ProductSwiper
                 head="Cap"
                 desc="From baseball caps to trucker hats, our high-quality headwear is perfect for any brand."
@@ -224,9 +245,9 @@ const Apparel = () => {
                 onProductClick={() => navigate(`/apparel-products?main=cap`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
-            )}
+            </div>
 
-            {(!activeMain || activeMain === "shirt") && (
+            <div id="section-shirt">
               <ProductSwiper
                 head="Shirt"
                 desc="Formal, slim fit, or linen — choose the perfect custom shirt for your professional wardrobe."
@@ -234,7 +255,7 @@ const Apparel = () => {
                 onProductClick={() => navigate(`/apparel-products?main=shirt`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
-            )}
+            </div>
           </div>
         </div>
       </div>

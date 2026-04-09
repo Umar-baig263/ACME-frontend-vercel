@@ -1,5 +1,4 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
 import ReviewSec from "../../components/ProductDesc/ReviewSec";
 import Banner from "../../components/main/Banner/Banner";
@@ -11,25 +10,55 @@ import { useParams, useNavigate } from "react-router-dom";
 import { digitalPrintingData } from "../../../../constants/digitalPrintingData";
 
 const CardProductDesc = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
   const { slug } = useParams();
+  const navigate = useNavigate();
 
-  let product = state?.product || state;
+  const [product, setProduct] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
-  if (!product || !product.id) {
-      // Fallback to searching all digital printing products by slug
-      const allProducts = Object.values(digitalPrintingData)
-          .flatMap((main) => main.categories || [])
-          .flatMap((sub) => sub.products || []);
-      product = allProducts.find((p) => p.slug === slug) || {};
-  }
-  
-  const relatedProducts = digitalPrintingData?.business?.categories[0]?.products || [];
+  // 🔍 Find product by slug
+  const getProductWithCategory = (slug) => {
+    for (const mainKey in digitalPrintingData) {
+      const main = digitalPrintingData[mainKey];
+      for (const cat of main.categories) {
+        const matched = cat.products.find((p) => p.slug === slug);
+        if (matched) return { product: matched, category: cat.name };
+      }
+    }
+    return { product: null, category: null };
+  };
+
+  // 🔄 Update product & related products whenever slug changes
+  useEffect(() => {
+    const { product, category } = getProductWithCategory(slug);
+    if (product) {
+      setProduct(product);
+      setCategory(category);
+
+      // ✅ Related products from same category
+      const related = Object.values(digitalPrintingData)
+        .flatMap((main) =>
+          main.categories.flatMap((cat) =>
+            cat.products.map((p) => ({ ...p, category: cat.name })),
+          ),
+        )
+        .filter((p) => p.category === category && p.slug !== product.slug)
+        .slice(0, 5); // max 5 related products
+      setRelatedProducts(related);
+    } else {
+      setProduct(null);
+      setCategory(null);
+      setRelatedProducts([]);
+    }
+  }, [slug]);
+
+  if (!product)
+    return <div className="p-10 text-red-500">Product Not Found</div>;
 
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb={`Card Product / ${product?.name || 'Details'}`} isBanner={false} />
+      <Navbar breadcrumb={`Digital Printing / Cards / ${product?.name}`} isBanner={false} />
       <CardDescSec1 product={product} />
       <CardDescSec2 img="/cardDesc12.png" />
       <ProductSwiper

@@ -80,18 +80,6 @@ const Stamp = () => {
     })),
   }));
 
-  const handleMainClick = (key) => {
-    setActiveMain((prev) => (prev === key ? "" : key));
-    setActiveSub("");
-    setSelectedSpecificProducts([]);
-  };
-
-  const handleSubClick = (subName, mainKey) => {
-    setActiveMain(mainKey);
-    setActiveSub((prev) => (prev === subName ? "" : subName));
-    setSelectedSpecificProducts([]);
-  };
-
   const handleProductClick = (product) => {
     setSelectedSpecificProducts((prev) => {
       const isSelected = prev.some((p) => p.id === product.id);
@@ -101,11 +89,47 @@ const Stamp = () => {
     });
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMainClick = (key) => {
+    const isDeactivating = activeMain === key;
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+
+    if (!isDeactivating && key) {
+      setTimeout(() => scrollToSection(`section-${key}`), 100);
+    }
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+    setTimeout(() => scrollToSection(`section-${mainKey}`), 100);
+  };
+
   const getFilteredProducts = (mainKey, fallbackData) => {
     if (activeMain !== mainKey) return fallbackData;
     if (selectedSpecificProducts.length > 0) return selectedSpecificProducts;
     if (activeSub) {
-      const subCatObj = stampData[mainKey]?.categories.find((c) => c.name === activeSub);
+      const subCatObj = stampData[mainKey]?.categories.find(
+        (c) => c.name === activeSub,
+      );
       return subCatObj ? subCatObj.products : fallbackData;
     }
     return fallbackData;
@@ -124,7 +148,7 @@ const Stamp = () => {
 
       <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
         {/* SIDEBAR */}
-        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0 sticky top-32 h-fit">
           <Filter
             filter={mainCategories.map((cat) => ({
               key: cat.key,
@@ -152,7 +176,7 @@ const Stamp = () => {
             paddingClass="lg:px-10 md:px-5 px-5"
           />
 
-          {(!activeMain || activeMain === "trodat") && (
+          <div id="section-trodat">
             <ProductSwiper
               head="Trodat/Printy"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -160,9 +184,9 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=trodat")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "colop") && (
+          <div id="section-colop">
             <ProductSwiper
               head="Colop/ 2000Plus"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -170,7 +194,7 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=colop")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
           {!activeMain && (
             <div className="mt-10 lg:pl-10">
@@ -186,7 +210,7 @@ const Stamp = () => {
             </div>
           )}
 
-          {(!activeMain || activeMain === "rubber") && (
+          <div id="section-rubber">
             <ProductSwiper
               head="Rubber Stamps"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -194,9 +218,9 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=rubber")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "pads") && (
+          <div id="section-pads">
             <ProductSwiper
               head="Pads, Inks & Racks"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -204,9 +228,9 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=pads")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "embossing") && (
+          <div id="section-embossing">
             <ProductSwiper
               head="Embossing Seal"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -214,9 +238,9 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=embossing")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "stencils") && (
+          <div id="section-stencils">
             <ProductSwiper
               head="Custom Stencils"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
@@ -224,7 +248,7 @@ const Stamp = () => {
               onProductClick={() => navigate("/stamp-products?main=stencils")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
         </div>
       </div>
       <FaqSection />

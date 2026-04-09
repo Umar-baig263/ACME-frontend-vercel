@@ -167,7 +167,7 @@ const websiteRoutes = [
         element: <CardProductDesc />,
       },
       {
-        path: "e-store-description",
+        path: "e-store-description/:slug",
         element: <EStoreProductDesc />,
       },
       {

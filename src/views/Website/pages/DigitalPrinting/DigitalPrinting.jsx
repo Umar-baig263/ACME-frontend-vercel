@@ -91,18 +91,6 @@ const DigitalPrinting = () => {
     })),
   }));
 
-  const handleMainClick = (key) => {
-    setActiveMain((prev) => (prev === key ? "" : key));
-    setActiveSub("");
-    setSelectedSpecificProducts([]);
-  };
-
-  const handleSubClick = (subName, mainKey) => {
-    setActiveMain(mainKey);
-    setActiveSub((prev) => (prev === subName ? "" : subName));
-    setSelectedSpecificProducts([]);
-  };
-
   const handleProductClick = (product) => {
     setSelectedSpecificProducts((prev) => {
       const isSelected = prev.some((p) => p.id === product.id);
@@ -110,6 +98,40 @@ const DigitalPrinting = () => {
         ? prev.filter((p) => p.id !== product.id)
         : [...prev, product];
     });
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120; // Adjusted offset for navbar and swiper
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMainClick = (key) => {
+    const isDeactivating = activeMain === key;
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+
+    if (!isDeactivating && key) {
+      setTimeout(() => scrollToSection(`section-${key}`), 100);
+    }
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+    setTimeout(() => scrollToSection(`section-${mainKey}`), 100);
   };
 
   // Helper function to return filtered products for an active category Swiper
@@ -142,7 +164,7 @@ const DigitalPrinting = () => {
 
       <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
         {/* SIDEBAR */}
-        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0 sticky top-32 h-fit">
           <Filter
             filter={mainCategories.map((cat) => ({
               key: cat.key,
@@ -170,7 +192,7 @@ const DigitalPrinting = () => {
             paddingClass="lg:px-10 md:px-5 px-5"
           />
 
-          {(!activeMain || activeMain === "business") && (
+          <div id="section-business">
             <ProductSwiper
               head="Business Card"
               desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
@@ -178,8 +200,8 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=business")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
-          {(!activeMain || activeMain === "card") && (
+          </div>
+          <div id="section-card">
             <ProductSwiper
               head="Card & Print Advertising"
               desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
@@ -187,7 +209,7 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=card")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
           {!activeMain && (
             <div className="mt-10 lg:pl-10">
@@ -204,7 +226,7 @@ const DigitalPrinting = () => {
             </div>
           )}
 
-          {(!activeMain || activeMain === "sign") && (
+          <div id="section-sign">
             <ProductSwiper
               head="Signs, Banner & Poster"
               desc="Whether indoors or outdoors, our eye-catching signs, banners, and posters are perfect for promotions, events, or branding visibility."
@@ -212,9 +234,9 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=sign")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "promotional") && (
+          <div id="section-promotional">
             <ProductSwiper
               head="Promotional & Product"
               desc="Customized promotional items and product branding solutions designed to keep your business top of mind with your audience."
@@ -222,8 +244,8 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=promotional")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
-          {(!activeMain || activeMain === "sticker") && (
+          </div>
+          <div id="section-sticker">
             <ProductSwiper
               head="stickers & labels"
               desc="From product labeling to creative branding, our high-quality stickers and labels are designed to enhance visibility, deliver information, and make your packaging stand out."
@@ -231,9 +253,9 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=sticker")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "packaging") && (
+          <div id="section-packaging">
             <ProductSwiper
               head="packaging"
               desc="Custom-designed packaging that protects your product while enhancing shelf appeal and reinforcing your brand identity."
@@ -241,7 +263,7 @@ const DigitalPrinting = () => {
               onProductClick={() => navigate("/card-products?main=packaging")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
         </div>
       </div>
 

@@ -20,6 +20,8 @@
     "datatables.net-bs5": "^2.3.1",
     "dompurify": "^3.2.6",
     "html-react-parser": "^5.2.5",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
     "jodit-react": "^5.2.19",
     "jquery": "^3.7.1",
     "react": "^18.3.1",

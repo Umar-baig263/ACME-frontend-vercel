@@ -313,7 +313,7 @@ const Setting = () => {
   const [activeTab, setActiveTab] = useState("Personal Information");
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="account-setting" isBanner={false} />
+      <Navbar breadcrumb="Account Settings" isBanner={false} />
       <div className="flex flex-col gap-5 md:mt-10 mt-5">
         <div className="lg:px-26 md:px-10 px-5">
           <div className="flex flex-col ">

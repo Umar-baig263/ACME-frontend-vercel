@@ -13,7 +13,7 @@ import HeaderBanner from "../../components/main/HeaderBanner/HeaderBanner";
 const Shop = () => {
   return (
     <div className="md:pt-30 pt-20">
-         <Navbar breadcrumb="shop" isBanner={false} />
+         <Navbar breadcrumb="Shop" isBanner={false} />
          <HeaderBanner head="Customized Prints That Speak Your Brand" desc="Discover our most popular customizable items, ready to be personalized your way" btnLink="/apparel-customize" btnText="Customize your design" imgUrl="/shop-banner.png" isButton={true}/>
          <Section2/>
          <Section3/>

@@ -43,21 +43,28 @@ const Section1 = () => {
 
                   return (
                     <tr key={item.cartKey} className="border border-gray-300">
-                      <td className="p-4 flex items-center gap-2">
+                      <td className="p-4 flex items-center gap-4">
                         <img
-                          src={item.img}
+                          src={item.img || item.image || "/business-img1.png"}
                           alt={item.name}
-                          className="w-16 h-16 object-contain"
+                          className="w-16 h-16 object-contain rounded-md"
                         />
                         <div className="flex flex-col">
                           <span className="font-bold">{item.name}</span>
-                          {item.customization && (
-                            <div className="text-xs text-gray-500 mt-1 flex flex-col gap-1">
-                              <div>Font: {item.customization.fontFamily} ({item.customization.fontSize}px)</div>
-                              <div>Style: {item.customization.isBold ? "Bold" : ""} {item.customization.isItalic ? "Italic" : ""}</div>
-                              {item.customization.lines?.map((line, idx) => line && (
-                                <div key={idx}>Line {idx+1}: "{line}"</div>
-                              ))}
+                          {item.customDetails && (
+                            <div className="text-[11px] text-gray-500 mt-1 flex flex-col">
+                              {item.customDetails.apparelColor ? (
+                                <>
+                                  <span><span className="font-semibold text-gray-700">Size:</span> {item.customDetails.size}</span>
+                                  <span><span className="font-semibold text-gray-700">Material:</span> {item.customDetails.material}</span>
+                                </>
+                              ) : (
+                                <>
+                                  {item.customDetails.themeColor && <span><span className="font-semibold text-gray-700">Theme:</span> <span className="capitalize">{item.customDetails.themeColor}</span></span>}
+                                  {item.customDetails.layout && <span><span className="font-semibold text-gray-700">Layout:</span> <span className="capitalize">{item.customDetails.layout}</span></span>}
+                                  {item.customDetails.style?.fontFamily && <span><span className="font-semibold text-gray-700">Font:</span> {item.customDetails.style.fontFamily}</span>}
+                                </>
+                              )}
                             </div>
                           )}
                         </div>

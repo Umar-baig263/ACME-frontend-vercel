@@ -5,6 +5,7 @@ import RedButtonLink from "../main/Buttons/RedButtonLink";
 import OutlineButton from "../main/Buttons/OutlineButton";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { products } from "../../../../constants/products";
+import { apparelData } from "../../../../constants/apparelData";
 import { CartContext } from "../../../../contexts/cartContext";
 
 const EstoreDesc = () => {
@@ -21,8 +22,23 @@ const EstoreDesc = () => {
   const navigate = useNavigate();
   const { addToCart, cart } = useContext(CartContext);
 
-  const allProducts = products;
-  const currentProduct = allProducts.find((item) => item.slug === slug);
+  // Search in main products FIRST
+  let currentProduct = products.find((item) => item.slug === slug);
+
+  // If not found, search in ALL apparelData categories
+  if (!currentProduct) {
+    for (const mainKey in apparelData) {
+      const categories = apparelData[mainKey].categories;
+      for (const cat of categories) {
+        const found = cat.products.find((p) => p.slug === slug);
+        if (found) {
+          currentProduct = found;
+          break;
+        }
+      }
+      if (currentProduct) break;
+    }
+  }
 
   //  image set fix (hook issue solve)
   useEffect(() => {
@@ -192,42 +208,46 @@ const EstoreDesc = () => {
               <div className="text-lg text-gray-800">{currentProduct.desc}</div>
             </div>
             <div className="flex gap-10 border-b border-gray-300  py-5 px-5">
-              <div className="flex flex-col gap-2">
-                <div className="text-lg">Size</div>
-                <div className="flex gap-2">
-                  {currentProduct.sizes.map((d, i) => (
-                    <div
-                      onClick={() => setSelectSize(d)}
-                      className={`text-lg border ${
-                        d == selectSize
-                          ? " border-red-700 bg-red-700 text-white"
-                          : "border-black"
-                      } cursor-pointer px-3 rounded-lg flex py-1 justify-center items-center text-lg`}
-                      key={i}
-                    >
-                      {d}
-                    </div>
-                  ))}
+              {currentProduct.sizes?.length > 0 && (
+                <div className="flex flex-col gap-2">
+                  <div className="text-lg">Size</div>
+                  <div className="flex gap-2">
+                    {currentProduct.sizes.map((d, i) => (
+                      <div
+                        onClick={() => setSelectSize(d)}
+                        className={`text-lg border ${
+                          d == selectSize
+                            ? " border-red-700 bg-red-700 text-white"
+                            : "border-black"
+                        } cursor-pointer px-3 rounded-lg flex py-1 justify-center items-center text-lg`}
+                        key={i}
+                      >
+                        {d}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <div className="text-lg">Color</div>
-                <div className="flex gap-2">
-                  {currentProduct.colors.map((color, i) => (
-                    <div
-                      key={i}
-                      onClick={() => setSelectColor(color)}
-                      className={`w-8 h-8 rounded-full cursor-pointer border-2 ${
-                        colorMap[color] || "bg-gray-200"
-                      } ${
-                        selectColor === color
-                          ? "border-red-600"
-                          : "border-white"
-                      }`}
-                    ></div>
-                  ))}
+              )}
+              {currentProduct.colors?.length > 0 && (
+                <div className="flex flex-col gap-2">
+                  <div className="text-lg">Color</div>
+                  <div className="flex gap-2">
+                    {currentProduct.colors.map((color, i) => (
+                      <div
+                        key={i}
+                        onClick={() => setSelectColor(color)}
+                        className={`w-8 h-8 rounded-full cursor-pointer border-2 ${
+                          colorMap[color] || "bg-gray-200"
+                        } ${
+                          selectColor === color
+                            ? "border-red-600"
+                            : "border-white"
+                        }`}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="flex flex-col gap-5 p-5">
               <div className="flex flex-col gap-2">

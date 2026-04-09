@@ -9,7 +9,7 @@ import ProductCustomizer from "./ProductCustomizer";
 const CustomizePage = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="customize / product / id" isBanner={false} />
+      <Navbar breadcrumb="Products / Customization" isBanner={false} />
       <ProductCustomizer />
       <Section1 />
       <Testmonial1 />

@@ -11,7 +11,7 @@ const StampsPro = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
       <Navbar
-        breadcrumb="products /  Stamp"
+        breadcrumb="Stamp / Products"
         isBanner={true}
         img="StampProductBanner.png"
       />

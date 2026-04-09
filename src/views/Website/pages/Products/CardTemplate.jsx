@@ -6,7 +6,7 @@ import CarTempSec1 from '../../components/Products/CarTempSec1';
 const CardTemplate = () => {
   return (
     <div className="md:pt-30 pt-20 ">
-      <Navbar breadcrumb="products /  Cards / E-commerce Card / id" isBanner={false}  />
+      <Navbar breadcrumb="Digital Printing / Cards / Template" isBanner={false}  />
       <CarTempSec1/>
       <FaqSection />
     </div>

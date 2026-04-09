@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../../components/main/Navbar/Navbar";
 import Section1 from "../../components/ItSolution/Section1";
 import Section2 from "../../components/ItSolution/Section2";
 import Section3 from "../../components/ItSolution/Section3";
@@ -11,6 +12,7 @@ import Section6 from "../../components/ItSolution/Section6";
 const ItSolution = () => {
   return (
     <div className="md:pt-35 pt-20">
+      <Navbar breadcrumb="IT Solutions" isBanner={false} />
       <Section1 />
       <Section2 />
       <Section3 />

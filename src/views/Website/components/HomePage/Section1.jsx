@@ -1717,20 +1717,22 @@ const Section1 = () => {
             {list.map((item) => (
               <div
                 key={item.id}
-                className="group border border-gray-200 text-base  flex items-center gap-4 px-4 py-4 cursor-pointer"
+                className="group border border-gray-200 text-base text-base flex items-center px-4 py-4 cursor-pointer hover:bg-gray-50 transition-colors"
               >
-                <div>
-                  <img
-                    className="w-[20px] h-[20px] flex-shrink-0"
-                    src={item?.url}
-                    alt=""
-                  />
-                </div>
                 <Link
                   to={item?.link}
-                  className="text-gray-600 group-hover:text-[#C6131B] font-bold text-sm whitespace-nowrap overflow-hidden"
+                  className="flex items-center gap-4 flex-1"
                 >
-                  {item.title}
+                  <div className="flex-shrink-0">
+                    <img
+                      className="w-[20px] h-[20px]"
+                      src={item?.url}
+                      alt=""
+                    />
+                  </div>
+                  <span className="text-gray-600 group-hover:text-[#C6131B] font-bold text-sm whitespace-nowrap overflow-hidden">
+                    {item.title}
+                  </span>
                 </Link>
                 <div className="absolute group-hover:block hidden top-5  left-87 border border-gray-300 top-0 bg-white p-5 z-100 ">
                   <div className="grid grid-rows-2 grid-flow-col">

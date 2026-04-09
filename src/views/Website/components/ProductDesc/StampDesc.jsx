@@ -186,6 +186,9 @@ const images =
                   <RedButton text="Customize Stamp" />
                 </div>
                 <div>
+                  <OutlineButton text="Add to Cart" onClick={handleAddToCart} />
+                </div>
+                <div>
                   <OutlineButton text="Buy Now" onClick={handleBuyNow} />
                 </div>
               </div>

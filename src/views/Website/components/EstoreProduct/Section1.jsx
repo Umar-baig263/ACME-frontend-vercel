@@ -143,9 +143,7 @@ const Section1 = ({ defaultMain = "tshirt", defaultSub = null }) => {
                   rating={d.rating}
                   isDetail={true}
                   isPrice={false}
-                  onClick={() =>
-                    navigate(`/apparel-product-description/${d.slug}`)
-                  }
+                  onClick={() => navigate(`/e-store-description/${d.slug}`)}
                 />
               ))}
             </div>

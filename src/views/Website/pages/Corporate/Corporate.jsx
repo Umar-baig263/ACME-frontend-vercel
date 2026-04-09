@@ -51,18 +51,6 @@ const Corporate = () => {
     })),
   }));
 
-  const handleMainClick = (key) => {
-    setActiveMain((prev) => (prev === key ? "" : key));
-    setActiveSub("");
-    setSelectedSpecificProducts([]);
-  };
-
-  const handleSubClick = (subName, mainKey) => {
-    setActiveMain(mainKey);
-    setActiveSub((prev) => (prev === subName ? "" : subName));
-    setSelectedSpecificProducts([]);
-  };
-
   const handleProductClick = (product) => {
     setSelectedSpecificProducts((prev) => {
       const isSelected = prev.some((p) => p.id === product.id);
@@ -70,6 +58,40 @@ const Corporate = () => {
         ? prev.filter((p) => p.id !== product.id)
         : [...prev, product];
     });
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMainClick = (key) => {
+    const isDeactivating = activeMain === key;
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+
+    if (!isDeactivating && key) {
+      setTimeout(() => scrollToSection(`section-${key}`), 100);
+    }
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+    setTimeout(() => scrollToSection(`section-${mainKey}`), 100);
   };
 
   const getFilteredProducts = (mainKey, fallbackData) => {
@@ -99,7 +121,7 @@ const Corporate = () => {
   );
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="corporate-gifting" isBanner={false} />
+      <Navbar breadcrumb="Corporate Gifting" isBanner={false} />
       <HeaderBanner
         head="Thoughtful Corporate Gifts for Every Occasion"
         isButton={true}
@@ -111,7 +133,7 @@ const Corporate = () => {
 
       <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
         {/* SIDEBAR */}
-        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0 sticky top-32 h-fit">
           <Filter
             filter={mainCategories.map((cat) => ({
               key: cat.key,
@@ -139,7 +161,7 @@ const Corporate = () => {
             paddingClass="lg:px-10 md:px-5 px-5"
           />
 
-          {(!activeMain || activeMain === "gifts") && (
+          <div id="section-gifts">
             <ProductSwiper
               head="Top Selling Gift Boxes"
               desc="Thoughtfully curated gift boxes for employees and clients."
@@ -147,9 +169,9 @@ const Corporate = () => {
               onProductClick={() => navigate("/corporate-products?main=gifts")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "mugs") && (
+          <div id="section-mugs">
             <ProductSwiper
               head="Customized Mugs & Bottles"
               desc="Hydration and coffee essentials branded with your logo."
@@ -157,7 +179,7 @@ const Corporate = () => {
               onProductClick={() => navigate("/corporate-products?main=mugs")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
           {!activeMain && (
             <div className="mt-10 lg:pl-10">
@@ -174,7 +196,7 @@ const Corporate = () => {
             </div>
           )}
 
-          {(!activeMain || activeMain === "tech") && (
+          <div id="section-tech">
             <ProductSwiper
               head="Useful Branded Tech Gifts"
               desc="Practical tech gadgets that keep your brand in their daily lives."
@@ -182,9 +204,9 @@ const Corporate = () => {
               onProductClick={() => navigate("/corporate-products?main=tech")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "pens") && (
+          <div id="section-pens">
             <ProductSwiper
               head="Branded Pens & Notebooks"
               desc="Professional stationery and writing tools for the modern office."
@@ -192,7 +214,7 @@ const Corporate = () => {
               onProductClick={() => navigate("/corporate-products?main=pens")}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
         </div>
       </div>
 

@@ -9,7 +9,7 @@ import Banner from "../../components/main/Banner/Banner";
 const Blog = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
-      <Navbar breadcrumb="blog" isBanner={false} />
+      <Navbar breadcrumb="Blog" isBanner={false} />
       <Section1 />
       <Section2 />
       <Section3 />

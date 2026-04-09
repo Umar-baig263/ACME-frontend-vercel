@@ -296,7 +296,7 @@ const Section1 = () => {
                   >
                     <div className="w-[20%]">
                       <img
-                        src={item.img}
+                        src={item.img || item.image || "/business-img1.png"}
                         className="rounded-md w-full"
                         alt={item.name}
                       />
@@ -314,18 +314,29 @@ const Section1 = () => {
                           </div>
                         </div>
 
-                        <div className="text-xs">
-                          Size: {item.selectSize || 'N/A'} | Color: {item.selectColor || 'N/A'}
-                        </div>
-                        {item.customization && (
-                          <div className="text-xs text-gray-500 mt-1 flex flex-col gap-1 bg-gray-50 p-2 rounded border border-gray-100">
-                            <div><strong>Font:</strong> {item.customization.fontFamily} ({item.customization.fontSize}px)</div>
-                            {(item.customization.isBold || item.customization.isItalic) && (
-                              <div><strong>Style:</strong> {item.customization.isBold ? "Bold" : ""} {item.customization.isItalic ? "Italic" : ""}</div>
+                        {item.customDetails ? (
+                          <div className="text-[11px] text-gray-500 mt-1 flex flex-col">
+                            {item.customDetails.apparelColor ? (
+                              <>
+                                <span><span className="font-bold text-gray-700">Size:</span> {item.customDetails.size} | <span className="font-bold text-gray-700">Material:</span> {item.customDetails.material}</span>
+                                <div className="flex items-center gap-1">
+                                   <span className="font-bold text-gray-700">Color:</span>
+                                   <div className="w-3 h-3 rounded-full border border-gray-200" style={{ backgroundColor: item.customDetails.apparelColor }}></div>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <span><span className="font-bold text-gray-700">Theme:</span> <span className="capitalize">{item.customDetails.themeColor || 'N/A'}</span> | <span className="font-bold text-gray-700">Layout:</span> <span className="capitalize">{item.customDetails.layout || 'N/A'}</span></span>
+                                {item.customDetails.style?.fontFamily && (
+                                  <span><span className="font-bold text-gray-700">Font:</span> {item.customDetails.style.fontFamily}</span>
+                                )}
+                              </>
                             )}
-                            {item.customization.lines?.map((line, idx) => line && (
-                              <div key={idx}><strong>Line {idx+1}:</strong> "{line}"</div>
-                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-xs">
+                            {item.selectSize && <span>Size: {item.selectSize} | </span>}
+                            {item.selectColor && <span>Color: {item.selectColor}</span>}
                           </div>
                         )}
                       </div>

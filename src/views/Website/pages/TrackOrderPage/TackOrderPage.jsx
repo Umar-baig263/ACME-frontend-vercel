@@ -35,7 +35,7 @@ const TackOrderPage = () => {
 
   return (
     <div className="md:pt-30 pt-20 pb-26">
-      <Navbar breadcrumb="track-order" isBanner={false} />
+      <Navbar breadcrumb="Track Order" isBanner={false} />
 
       {isOpen ? (
         <div className="mt-10 flex flex-col gap-2 lg:px-26 md:px-10 px-5">

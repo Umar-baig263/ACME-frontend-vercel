@@ -7,7 +7,7 @@ import FaqSection from "../../components/main/FaqSection/FaqSection";
 const Contact = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="contact-us" isBanner={false} />
+      <Navbar breadcrumb="Contact Us" isBanner={false} />
       <Section1/>
       <Section2/>
       <FaqSection/>

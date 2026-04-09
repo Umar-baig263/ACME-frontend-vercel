@@ -38,7 +38,7 @@ const CoppratePro = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
       <Navbar
-        breadcrumb="products /  Corprate-Gifting / Bottles"
+        breadcrumb="Corporate Gifting / Products"
         isBanner={true}
         img="coppratePro.png"
       />

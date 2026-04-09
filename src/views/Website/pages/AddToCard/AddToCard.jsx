@@ -5,7 +5,7 @@ import Section1 from "../../components/AddToCard/Section1";
 const AddToCard = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="cart" isBanner={false} />
+      <Navbar breadcrumb="Cart" isBanner={false} />
       <Section1 />
     </div>
   );

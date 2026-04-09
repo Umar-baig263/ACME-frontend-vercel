@@ -5,7 +5,7 @@ import Section1 from "../../components/Login/Section1";
 const Login = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="login" isBanner={false} />
+      <Navbar breadcrumb="Login" isBanner={false} />
       <Section1/>
     </div>
   );

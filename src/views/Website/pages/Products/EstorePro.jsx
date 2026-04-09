@@ -12,7 +12,7 @@ const EstorePro = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
       <Navbar
-        breadcrumb="products /  E-store"
+        breadcrumb="E-Store / Products"
         isBanner={true}
         img="apparelPro.png"
       />

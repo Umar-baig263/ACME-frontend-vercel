@@ -896,12 +896,19 @@ const Section1 = () => {
             {list.map((item) => (
               <div
                 key={item.id}
-                className="group border border-gray-200 text-base text-base flex items-center gap-3 px-4 py-3.5 hover:bg-gray-100 cursor-pointer"
+                className="group border border-gray-200 text-base text-base flex items-center px-4 py-3.5 hover:bg-gray-100 cursor-pointer transition-colors"
               >
-                <div>
-                  <img className="w-[20px] h-[20px]" src={item?.url} alt="" />
-                </div>
-                <div className="text-gray-600 font-bold group-hover:text-[#C6131B]">{item.title}</div>
+                <Link
+                  to={item?.link || "#"}
+                  className="flex items-center gap-3 flex-1"
+                >
+                  <div className="flex-shrink-0">
+                    <img className="w-[20px] h-[20px]" src={item?.url} alt="" />
+                  </div>
+                  <div className="text-gray-600 font-bold group-hover:text-[#C6131B] text-sm whitespace-nowrap overflow-hidden">
+                    {item.title}
+                  </div>
+                </Link>
                 <div className="absolute group-hover:block hidden top-5  left-87 border border-gray-300 top-0 bg-white p-5 z-100 ">
                   <div className="grid grid-rows-2 grid-flow-col">
                     {item?.subLinks?.map((d, i) => (

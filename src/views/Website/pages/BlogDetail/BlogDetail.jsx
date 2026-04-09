@@ -7,7 +7,7 @@ import Section3 from "../../components/Blog/Section3";
 const BlogDetail = () => {
   return (
     <div className="md:pt-30 pt-20 pb-26">
-      <Navbar breadcrumb="blog-detail" isBanner={false} />
+      <Navbar breadcrumb="Blog Detail" isBanner={false} />
       <Section1/>
       <Banner
         color="text-black"

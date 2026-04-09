@@ -83,18 +83,6 @@ const EStore = () => {
     ],
   }));
 
-  const handleMainClick = (key) => {
-    setActiveMain((prev) => (prev === key ? "" : key));
-    setActiveSub("");
-    setSelectedSpecificProducts([]);
-  };
-
-  const handleSubClick = (subName, mainKey) => {
-    setActiveMain(mainKey);
-    setActiveSub((prev) => (prev === subName ? "" : subName));
-    setSelectedSpecificProducts([]);
-  };
-
   const handleProductClick = (product) => {
     setSelectedSpecificProducts((prev) => {
       const isSelected = prev.some((p) => p.id === product.id);
@@ -102,6 +90,40 @@ const EStore = () => {
         ? prev.filter((p) => p.id !== product.id)
         : [...prev, product];
     });
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMainClick = (key) => {
+    const isDeactivating = activeMain === key;
+    setActiveMain((prev) => (prev === key ? "" : key));
+    setActiveSub("");
+    setSelectedSpecificProducts([]);
+
+    if (!isDeactivating && key) {
+      setTimeout(() => scrollToSection(`section-${key}`), 100);
+    }
+  };
+
+  const handleSubClick = (subName, mainKey) => {
+    setActiveMain(mainKey);
+    setActiveSub((prev) => (prev === subName ? "" : subName));
+    setSelectedSpecificProducts([]);
+    setTimeout(() => scrollToSection(`section-${mainKey}`), 100);
   };
 
   const getFilteredProducts = (mainKey, fallbackData) => {
@@ -124,7 +146,7 @@ const EStore = () => {
   ];
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="e-store" isBanner={false} />
+      <Navbar breadcrumb="E-Store" isBanner={false} />
       <HeaderBanner
         head="Shop ACME’s exclusive collection of branded merchandise."
         isButton={true}
@@ -135,7 +157,7 @@ const EStore = () => {
 
       <div className="max-w-[1500px] mx-auto flex md:flex-row flex-col w-full pt-10 px-4 md:px-8">
         {/* SIDEBAR */}
-        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0">
+        <div className="md:w-[30%] lg:w-[25%] px-2 md:px-5 border-r border-[#E5E5E5] flex-shrink-0 sticky top-32 h-fit">
           <Filter
             filter={mainCategories.map((cat) => ({
               key: cat.key,
@@ -163,7 +185,7 @@ const EStore = () => {
             paddingClass="lg:px-10 md:px-5 px-5"
           />
 
-          {(!activeMain || activeMain === "tshirt") && (
+          <div id="section-tshirt">
             <ProductSwiper
               head="T-Shirt"
               desc="High-quality custom t-shirts for every occasion — choose your style and make a statement."
@@ -173,9 +195,9 @@ const EStore = () => {
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "cap") && (
+          <div id="section-cap">
             <ProductSwiper
               head="Cap"
               desc="Branded caps and headwear for high visibility and professional style."
@@ -185,7 +207,7 @@ const EStore = () => {
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
           {!activeMain && (
             <div className="mt-10 lg:pl-10">
@@ -202,7 +224,7 @@ const EStore = () => {
             </div>
           )}
 
-          {(!activeMain || activeMain === "jacket") && (
+          <div id="section-jacket">
             <ProductSwiper
               head="Jacket"
               desc="Stay warm and promote your brand with our premium custom jackets."
@@ -212,9 +234,9 @@ const EStore = () => {
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "shirt") && (
+          <div id="section-shirt">
             <ProductSwiper
               head="Shirt"
               desc="Professional branded shirts for your team — available in a variety of styles and fits."
@@ -224,9 +246,9 @@ const EStore = () => {
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
-          {(!activeMain || activeMain === "paint") && (
+          <div id="section-paint">
             <ProductSwiper
               head="Paint & Short"
               desc="Comfortable and durable branded short-sleeve apparel for any setting."
@@ -236,7 +258,7 @@ const EStore = () => {
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
-          )}
+          </div>
 
           {!activeMain && <Section2 />}
         </div>

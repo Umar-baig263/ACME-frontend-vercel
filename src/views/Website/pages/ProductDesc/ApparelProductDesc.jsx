@@ -51,7 +51,7 @@ const ApparelProductDesc = () => {
 
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb={`Apparel / ${product.name}`} isBanner={false} />
+      <Navbar breadcrumb={`Apparel / Products / ${product.name}`} isBanner={false} />
       <ApparelDescSec product={product} />
 
       <ProductSwiper

@@ -134,7 +134,10 @@ const Filter = ({
                             )}
                           </button>
                           <div
-                            onClick={() => onSubClick(sub.name, main.key)}
+                            onClick={() => {
+                              onSubClick(sub.name, main.key);
+                              toggleSubCategory(sub.name);
+                            }}
                             className={`cursor-pointer transition-all duration-150 text-base ${
                               isSelectedSub
                                 ? "font-medium text-black"

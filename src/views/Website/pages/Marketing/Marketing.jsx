@@ -12,7 +12,7 @@ import Section5 from "../../components/Marketing/Section5";
 const Marketing = () => {
   return (
     <div className="md:pt-30 pt-20">
-      <Navbar breadcrumb="marketing-advertising" isBanner={false} />
+      <Navbar breadcrumb="Marketing & Advertising" isBanner={false} />
       <HeaderBanner
         head="Marketing & Advertising Materials"
         isButton={true}
