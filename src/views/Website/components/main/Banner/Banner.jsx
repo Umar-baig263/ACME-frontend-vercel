@@ -23,7 +23,9 @@ const Banner = ({
       }}
     >
       <div className={`flex flex-col gap-5 ${width}`}>
-        <div className={`md:text-5xl text-xl ${color} `}>{heading}</div>
+        <div className={`md:text-5xl text-xl font-medium ${color} `}>
+          {heading}
+        </div>
         <div className={`md:text-xl text-lg ${color}`}>{subheading}</div>
       </div>
       <div>

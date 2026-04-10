@@ -25,14 +25,14 @@ const Section1 = () => {
       ) : (
         <>
           <div className="mt-10 overflow-x-auto">
-            <table className="min-w-full table-auto border border-gray-300 md:text-sm text-xs">
+            <table className="min-w-full table-fixed border border-gray-300 md:text-sm text-xs">
               <thead>
-                <tr>
-                  <td className="p-4">Product</td>
-                  <td className="p-4">Price</td>
-                  <td className="p-4">Quantity</td>
-                  <td className="p-4">Total</td>
-                  <td className="p-4">Action</td>
+                <tr className="bg-gray-50 border-b border-gray-300">
+                  <td className="p-4 font-bold w-[40%]">Product</td>
+                  <td className="p-4 font-bold w-[15%]">Price</td>
+                  <td className="p-4 font-bold w-[15%] text-center border-x border-gray-100">Quantity</td>
+                  <td className="p-4 font-bold w-[20%]">Total</td>
+                  <td className="p-4 font-bold w-[10%] text-center">Action</td>
                 </tr>
               </thead>
               <tbody>
@@ -49,8 +49,8 @@ const Section1 = () => {
                           alt={item.name}
                           className="w-16 h-16 object-contain rounded-md"
                         />
-                        <div className="flex flex-col">
-                          <span className="font-bold">{item.name}</span>
+                        <div className="flex flex-col overflow-hidden">
+                          <span className="font-bold truncate">{item.name}</span>
                           {item.customDetails && (
                             <div className="text-[11px] text-gray-500 mt-1 flex flex-col">
                               {item.customDetails.apparelColor ? (
@@ -70,29 +70,35 @@ const Section1 = () => {
                         </div>
                       </td>
                       <td className="p-4">${price.toFixed(2)}</td>
-                      <td className="p-4 ">
-                        <button
-                          onClick={() => updateCartItemQty(item.cartKey, "dec")}
-                          className="bg-gray-200 p-1 rounded"
-                        >
-                          <FaMinus />
-                        </button>
-                        <span className="px-2">{qty}</span>
-                        <button
-                          onClick={() => updateCartItemQty(item.cartKey, "inc")}
-                          className="bg-gray-200 p-1 rounded"
-                        >
-                          <FaPlus />
-                        </button>
-                      </td>
-                      <td className="p-4">${total.toFixed(2)}</td>
                       <td className="p-4">
-                        <button
-                          onClick={() => removeFromCart(item.cartKey)}
-                          className="text-red-500 flex "
-                        >
-                          <FaTrash />
-                        </button>
+                        <div className="flex items-center justify-center gap-2">
+                          <button
+                            onClick={() => updateCartItemQty(item.cartKey, "dec")}
+                            className="bg-gray-200 p-2 rounded hover:bg-gray-300 transition-colors"
+                          >
+                            <FaMinus size={10} />
+                          </button>
+                          <span className="w-8 text-center font-semibold">
+                            {qty}
+                          </span>
+                          <button
+                            onClick={() => updateCartItemQty(item.cartKey, "inc")}
+                            className="bg-gray-200 p-2 rounded hover:bg-gray-300 transition-colors"
+                          >
+                            <FaPlus size={10} />
+                          </button>
+                        </div>
+                      </td>
+                      <td className="p-4 font-semibold">${total.toFixed(2)}</td>
+                      <td className="p-4">
+                        <div className="flex justify-center">
+                          <button
+                            onClick={() => removeFromCart(item.cartKey)}
+                            className="text-red-500 hover:text-red-700 transition"
+                          >
+                            <FaTrash />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );

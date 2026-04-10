@@ -16,23 +16,31 @@ const ProductCard = ({
   isLink = false,
   disableLink = false,
 }) => {
-  const { wishlist, addToWishlist } = useContext(WishlistContext);
+  const { wishlist, addToWishlist, removeFromWishlist } =
+    useContext(WishlistContext);
+
+  // Use slug, id or name as a unique identifier to avoid collisions
+  const productId = slug || id || name;
 
   // Check if this product is already in wishlist
-  const isInWishlist = wishlist.some((p) => p.id === id);
+  const isInWishlist = wishlist.some((p) => p.id === productId);
 
   const handleWishlistClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    addToWishlist({
-      id,
-      img,
-      name,
-      desc,
-      price: Number(price) || 0,
-      quantity: 1, // optional, for wishlist quantity
-    });
+    if (isInWishlist) {
+      removeFromWishlist(productId);
+    } else {
+      addToWishlist({
+        id: productId,
+        img,
+        name,
+        desc,
+        price: Number(price) || 0,
+        quantity: 1,
+      });
+    }
   };
 
   const getProductRoute = () => {
@@ -48,7 +56,7 @@ const ProductCard = ({
 
   const cardContent = (
     <>
-      <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4]">
+      <div className="w-full h-40 md:h-48 flex justify-center items-center bg-[#F4F4F4] rounded-none">
         <img
           src={img}
           alt={name}

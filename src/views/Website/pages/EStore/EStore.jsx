@@ -190,8 +190,9 @@ const EStore = () => {
               head="T-Shirt"
               desc="High-quality custom t-shirts for every occasion — choose your style and make a statement."
               data={getFilteredProducts("tshirt", apparel["T-Shirts"])}
-              onProductClick={() =>
-                navigate("/estore-products", { state: { category: "tshirt" } })
+              link="/estore-products?category=tshirt"
+              onProductClick={(product) =>
+                navigate(`/e-store-description/${product.slug || product.id}`)
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
@@ -202,8 +203,9 @@ const EStore = () => {
               head="Cap"
               desc="Branded caps and headwear for high visibility and professional style."
               data={getFilteredProducts("cap", apparel["Caps"])}
-              onProductClick={() =>
-                navigate("/estore-products", { state: { category: "cap" } })
+              link="/estore-products?category=cap"
+              onProductClick={(product) =>
+                navigate(`/e-store-description/${product.slug || product.id}`)
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
@@ -229,8 +231,9 @@ const EStore = () => {
               head="Jacket"
               desc="Stay warm and promote your brand with our premium custom jackets."
               data={getFilteredProducts("jacket", apparel["Jackets"])}
-              onProductClick={() =>
-                navigate("/estore-products", { state: { category: "jacket" } })
+              link="/estore-products?category=jacket"
+              onProductClick={(product) =>
+                navigate(`/e-store-description/${product.slug || product.id}`)
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
@@ -241,8 +244,9 @@ const EStore = () => {
               head="Shirt"
               desc="Professional branded shirts for your team — available in a variety of styles and fits."
               data={getFilteredProducts("shirt", apparel["Shirts"])}
-              onProductClick={() =>
-                navigate("/estore-products", { state: { category: "shirt" } })
+              link="/estore-products?category=shirt"
+              onProductClick={(product) =>
+                navigate(`/e-store-description/${product.slug || product.id}`)
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />
@@ -253,8 +257,9 @@ const EStore = () => {
               head="Paint & Short"
               desc="Comfortable and durable branded short-sleeve apparel for any setting."
               data={getFilteredProducts("paint", apparel["Paint"])}
-              onProductClick={() =>
-                navigate("/estore-products", { state: { category: "paint" } })
+              link="/estore-products?category=paint"
+              onProductClick={(product) =>
+                navigate(`/e-store-description/${product.slug || product.id}`)
               }
               paddingClass="lg:px-10 md:px-5 px-5"
             />

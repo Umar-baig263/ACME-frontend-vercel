@@ -496,7 +496,7 @@ const StampEditor = () => {
             <div className="mt-auto flex flex-col gap-6 border-t border-gray-100 pt-6">
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between font-bold text-[13px] text-gray-800">
-                  <span>Horizontal position</span>
+                  <span>Horizontal size</span>
                   <span className="text-gray-500 font-mono">
                     [{xPos.toFixed(1)}]
                   </span>
@@ -512,7 +512,7 @@ const StampEditor = () => {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between font-bold text-[13px] text-gray-800">
-                  <span>Vertical position</span>
+                  <span>Vertical size</span>
                   <span className="text-gray-500 font-mono">
                     [{yPos.toFixed(1)}]
                   </span>
@@ -562,17 +562,19 @@ const StampEditor = () => {
                 id="stamp-capture-element"
                 className={`relative border-gray-300 flex flex-col items-center justify-center bg-white shadow-xl ${stampColor} ${
                   activeShape === "Circle"
-                    ? "rounded-full aspect-square border-4 border-dashed min-w-[400px] min-h-[400px]"
+                    ? "rounded-full border-4 border-dashed"
                     : activeShape === "Star" || activeShape === "Polygon"
-                      ? "aspect-square min-w-[400px] min-h-[400px]"
+                      ? "border-none"
                       : activeShape === "Arrow"
-                        ? "min-w-[500px] min-h-[300px]"
-                        : "rounded-[30px] border-4 border-dashed min-w-[500px] min-h-[300px]" // Default Rectangle
+                        ? "border-none"
+                        : "rounded-[30px] border-4 border-dashed" // Default Rectangle
                 }`}
                 style={{
                   fontFamily: fontFamily,
                   fontStyle: isItalic ? "italic" : "normal",
-                  padding: `${yPos / 2}% ${xPos / 2}%`,
+                  width: `${350 + xPos * 5}px`,
+                  height: `${150 + yPos * 5}px`,
+                  padding: "40px",
                   transform: `rotate(${rotation}deg)`,
                 }}
               >
@@ -651,7 +653,7 @@ const StampEditor = () => {
                         paddingTop: activeTool === "Table" ? "8px" : "0px",
                         paddingBottom: activeTool === "Table" ? "8px" : "0px",
                         marginBottom:
-                          activeTool === "Table" ? "0px" : `${yPos / 4}px`,
+                          activeTool === "Table" ? "0px" : "6px",
                       }}
                       className={`whitespace-nowrap w-full ${activeTool === "Slash" && idx === 0 ? "border-b-2 border-dashed border-current pb-2 mb-4" : ""}`}
                     >

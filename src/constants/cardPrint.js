@@ -6,6 +6,7 @@ export const cardPrint = [
     desc: "Eye-catching promotional flyers perfect for events, offers, and marketing campaigns.",
     rating: 4.9,
     reviews: 15020,
+    price: 49.0,
     img: "/card-img1.png",
   },
   {
@@ -15,6 +16,7 @@ export const cardPrint = [
     desc: "Tri-fold or bi-fold brochures ideal for showcasing detailed information attractively.",
     rating: 4.8,
     reviews: 11240,
+    price: 89.0,
     img: "/card-img2.png",
   },
   {
@@ -24,6 +26,7 @@ export const cardPrint = [
     desc: "Bold, compact postcards designed for direct mail and brand promotions.",
     rating: 4.7,
     reviews: 9821,
+    price: 35.0,
     img: "/card-img3.png",
   },
   {
@@ -33,6 +36,7 @@ export const cardPrint = [
     desc: "Lightweight handout leaflets great for mass distribution and quick promotions.",
     rating: 4.6,
     reviews: 8450,
+    price: 40.0,
     img: "/card-img4.png",
   },
   {
@@ -42,6 +46,7 @@ export const cardPrint = [
     desc: "Elegant custom invitations for corporate events, launches, and ceremonies.",
     rating: 4.9,
     reviews: 7640,
+    price: 55.0,
     img: "/card-img1.png",
   },
   {
@@ -51,6 +56,7 @@ export const cardPrint = [
     desc: "Premium greeting cards for festive wishes, client greetings, and celebrations.",
     rating: 4.8,
     reviews: 6890,
+    price: 45.0,
     img: "/card-img2.png",
   },
   {
@@ -60,6 +66,7 @@ export const cardPrint = [
     desc: "Multi-page booklets suitable for catalogs, company profiles, and event programs.",
     rating: 4.7,
     reviews: 5310,
+    price: 120.0,
     img: "/card-img3.png",
   },
   {
@@ -69,6 +76,7 @@ export const cardPrint = [
     desc: "High-quality restaurant menus with durable prints and beautiful layouts.",
     rating: 4.7,
     reviews: 4980,
+    price: 65.0,
     img: "/card-img4.png",
   },
   {
@@ -78,6 +86,7 @@ export const cardPrint = [
     desc: "Stand-up table tents perfect for food promotions, offers, and product highlights.",
     rating: 4.8,
     reviews: 4620,
+    price: 25.0,
     img: "/card-img1.png",
   },
   {
@@ -87,6 +96,7 @@ export const cardPrint = [
     desc: "Tall promotional cards ideal for travel agencies, hotels, and boutiques.",
     rating: 4.7,
     reviews: 4350,
+    price: 30.0,
     img: "/card-img2.png",
   },
   {
@@ -96,6 +106,7 @@ export const cardPrint = [
     desc: "Custom door hangers suitable for hotels, marketing, and brand messaging.",
     rating: 4.6,
     reviews: 3890,
+    price: 35.0,
     img: "/card-img3.png",
   },
   {
@@ -105,6 +116,7 @@ export const cardPrint = [
     desc: "Printed event tickets with perforations and unique numbering options.",
     rating: 4.8,
     reviews: 3710,
+    price: 20.0,
     img: "/card-img4.png",
   },
   {
@@ -114,6 +126,7 @@ export const cardPrint = [
     desc: "Custom desk and wall calendars ideal for yearly corporate giveaways.",
     rating: 4.7,
     reviews: 3400,
+    price: 75.0,
     img: "/card-img1.png",
   },
   {
@@ -123,6 +136,7 @@ export const cardPrint = [
     desc: "Award and achievement certificates with premium printing and finishing.",
     rating: 4.9,
     reviews: 3250,
+    price: 15.0,
     img: "/card-img2.png",
   },
   {
@@ -132,6 +146,7 @@ export const cardPrint = [
     desc: "Branded notepads perfect for corporate gifting and office use.",
     rating: 4.6,
     reviews: 2980,
+    price: 12.0,
     img: "/card-img3.png",
   },
   {
@@ -141,6 +156,7 @@ export const cardPrint = [
     desc: "Personalized thank-you cards to strengthen customer relationships.",
     rating: 4.7,
     reviews: 2700,
+    price: 10.0,
     img: "/card-img4.png",
   },
 ];

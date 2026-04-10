@@ -52,7 +52,7 @@ const Section8 = () => {
       <div className=" lg:p-26 md:p-10 p-5 ">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="flex flex-col gap-5 sm:col-span-2 col-span-2 ">
-            <div className="md:text-3xl text-lg font-bold">E-Store</div>
+            <div className="md:text-3xl text-lg font-medium">E-Store</div>
             <div className="md:text-xl text-sm">
               No need to customize—just pick your favorite ready-made products
               and get them delivered to your doorstep.
@@ -71,7 +71,7 @@ const Section8 = () => {
               </div>
               <div className="flex justify-between items-center w-full">
                 <div className="md:text-lg text-sm">{d?.name} </div>
-                <div className="md:text-lg text-sm font-bold">{d?.price}</div>
+                <div className="md:text-lg text-sm font-medium">{d?.price}</div>
               </div>
               <div className="md:text-sm text-xs w-full">{d?.desc} </div>
             </div>

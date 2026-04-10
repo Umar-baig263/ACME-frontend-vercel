@@ -171,20 +171,32 @@ const Footer = () => {
           </div>
           <div className="w-full flex md:flex-row justify-center flex-row gap-10 ">
             <div className="flex flex-col gap-3">
-              <h2 className="font-palm md:text-xl text-lg">Quick Links:</h2>
+              <h2 className="font-palm md:text-xl text-lg font-semibold whitespace-nowrap">
+                Quick Links
+              </h2>
               <div className="flex flex-col gap-3 md:text-sm text-xs">
                 {quickLinks.map((data, index) => (
-                  <NavLink to={data.url} key={index}>
+                  <NavLink
+                    to={data.url}
+                    key={index}
+                    className="whitespace-nowrap"
+                  >
                     {data.name}
                   </NavLink>
                 ))}
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <h2 className="font-palm md:text-xl text-lg">Customer Care:</h2>
+              <h2 className="font-palm md:text-xl text-lg font-semibold whitespace-nowrap">
+                Customer Support
+              </h2>
               <div className="flex flex-col gap-3 md:text-sm text-xs">
                 {Customer.map((data, index) => (
-                  <NavLink to={data.url} key={index}>
+                  <NavLink
+                    to={data.url}
+                    key={index}
+                    className="whitespace-nowrap"
+                  >
                     {data.name}
                   </NavLink>
                 ))}
@@ -202,29 +214,29 @@ const Footer = () => {
               ></iframe>
             </div>
             <div className="w-full flex flex-col gap-3 ">
-              <div className="flex gap-2 md:text-sm text-xs">
+              <div className="flex gap-2 md:text-sm text-xs items-center">
                 <div>
                   <FaPhone />
                 </div>
                 <div>855.233.4333</div>
               </div>
-              <div className="flex gap-2  md:text-sm text-xs">
+              <div className="flex gap-2  md:text-sm text-xs items-center">
                 <div>
                   <FaLocationPin />
                 </div>
                 <div>3209 Commander Driver Carrollton (Dallas), TX75006</div>
               </div>
               <ul className="flex flex-row sm:justify-start justify-center gap-3 ">
-                <li className="text-white border border-white rounded-full w-8 h-8 flex justify-center items-center">
+                <li className="text-white border border-white rounded-full w-12 h-12 flex justify-center items-center">
                   <FaFacebookF />
                 </li>
-                <li className="text-white border border-white rounded-full w-8 h-8 flex justify-center items-center">
+                <li className="text-white border border-white rounded-full w-12 h-12 flex justify-center items-center">
                   <FaInstagram />
                 </li>
-                <li className="text-white border border-white rounded-full w-8 h-8 flex justify-center items-center">
+                <li className="text-white border border-white rounded-full w-12 h-12 flex justify-center items-center">
                   <FaTiktok />
                 </li>
-                <li className="text-white border border-white rounded-full w-8 h-8 flex justify-center items-center">
+                <li className="text-white border border-white rounded-full w-12 h-12 flex justify-center items-center">
                   <FaXTwitter />
                 </li>
               </ul>
@@ -233,12 +245,20 @@ const Footer = () => {
         </div>
         <div className="lg:px-26 sm:px-10 px-5 w-full py-5 border-t border-white/50 flex sm:flex-row flex-col justify-between items-center gap-2">
           <h2 className="sm:text-sm text-xs">
-            © 2025 <span className="font-bold">ACME Graphic</span> All Rights
+            © {new Date().getFullYear()}{" "}
+            <span className="font-medium">ACME Graphic</span> All Rights
             Reserved.
           </h2>
-          <h2 className="sm:text-sm text-xs flex md:gap-5 gap-3">
-            <div>Terms & Conditions</div> |<div>Pricacy Policy</div> |
-            <div>Company information</div>
+          <h2 className="sm:text-sm text-xs flex md:gap-5 gap-3 whitespace-nowrap">
+            <div className="hover:underline cursor-pointer">
+              Terms & Conditions
+            </div>{" "}
+            |
+            <div className="hover:underline cursor-pointer">Privacy Policy</div>{" "}
+            |
+            <div className="hover:underline cursor-pointer">
+              Company information
+            </div>
           </h2>
         </div>
       </div>

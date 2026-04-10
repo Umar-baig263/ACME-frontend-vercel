@@ -197,7 +197,8 @@ const DigitalPrinting = () => {
               head="Business Card"
               desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
               data={getFilteredProducts("business", businessCards)}
-              onProductClick={() => navigate("/card-products?main=business")}
+              link="/card-products?main=business"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -206,7 +207,8 @@ const DigitalPrinting = () => {
               head="Card & Print Advertising"
               desc="From business cards to flyers, we create high-quality printed materials that leave a lasting impression on your audience."
               data={getFilteredProducts("card", cardPrintAds)}
-              onProductClick={() => navigate("/card-products?main=card")}
+              link="/card-products?main=card"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -231,7 +233,8 @@ const DigitalPrinting = () => {
               head="Signs, Banner & Poster"
               desc="Whether indoors or outdoors, our eye-catching signs, banners, and posters are perfect for promotions, events, or branding visibility."
               data={getFilteredProducts("sign", signsBannersPosters)}
-              onProductClick={() => navigate("/card-products?main=sign")}
+              link="/card-products?main=sign"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -241,7 +244,8 @@ const DigitalPrinting = () => {
               head="Promotional & Product"
               desc="Customized promotional items and product branding solutions designed to keep your business top of mind with your audience."
               data={getFilteredProducts("promotional", promotionalProducts)}
-              onProductClick={() => navigate("/card-products?main=promotional")}
+              link="/card-products?main=promotional"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -250,7 +254,8 @@ const DigitalPrinting = () => {
               head="stickers & labels"
               desc="From product labeling to creative branding, our high-quality stickers and labels are designed to enhance visibility, deliver information, and make your packaging stand out."
               data={getFilteredProducts("sticker", stickersLabels)}
-              onProductClick={() => navigate("/card-products?main=sticker")}
+              link="/card-products?main=sticker"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -260,7 +265,8 @@ const DigitalPrinting = () => {
               head="packaging"
               desc="Custom-designed packaging that protects your product while enhancing shelf appeal and reinforcing your brand identity."
               data={getFilteredProducts("packaging", packaging)}
-              onProductClick={() => navigate("/card-products?main=packaging")}
+              link="/card-products?main=packaging"
+              onProductClick={(product) => navigate(`/card-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>

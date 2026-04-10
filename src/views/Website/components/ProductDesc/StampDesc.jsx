@@ -1,35 +1,26 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import RedButton from '../main/Buttons/RedButton';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { FaX } from "react-icons/fa6";
-import RedButtonLink from "../main/Buttons/RedButtonLink";
 // import SignUpPopUp from './SignUpPopUp';
 import OutlineButton from "../main/Buttons/OutlineButton";
-import { useLocation, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../../contexts/cartContext";
 
-const StampDesc = ({ product: propProduct }) => {
-  const { state } = useLocation();
-  const product = propProduct || state?.product;
+const StampDesc = ({ product }) => {
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
+  const [items, setItems] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const dummyImages = [
+    product?.img || "/productImgDesc.png",
+    "/productImgDesc1.png",
+    "/productImgDesc2.png",
+    "/productImgDesc3.png",
+  ];
 
-  const handleQtyChange = (index, type) => {
-    setItems((prevItems) => {
-      return prevItems.map((item, i) => {
-        if (i === index) {
-          const newQty =
-            type === "inc"
-              ? item.qty + 1
-              : item.qty > 1
-                ? item.qty - 1
-                : item.qty;
-          return { ...item, qty: newQty };
-        }
-        return item;
-      });
-    });
-  };
   const keyFeatures = [
     {
       heading: "Laser-Crafted Precision",
@@ -72,30 +63,15 @@ const StampDesc = ({ product: propProduct }) => {
   // ];
   // const images = product?.images && product.images.length > 0 ? product.images : dummyImages;
 
- 
-  const dummyImages = [
-  product?.img || "/productImgDesc.png",
-  "/productImgDesc1.png",
-  "/productImgDesc2.png",
-  "/productImgDesc3.png",
-];
-
-const images =
-  product?.images && product.images.length > 0
-    ? product.images
-    : dummyImages;
-
-
-  const [items, setItems] = useState(1);
-  const [isOpen, setIsOpen] = useState(false);
+  const images =
+    product?.images && product.images.length > 0
+      ? product.images
+      : dummyImages;
   const [selectedImg, setSelectedImg] = useState(images[0]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSelectedImg(images[0]);
-  }, [product]);
-
-  const { addToCart } = useContext(CartContext);
-  const navigate = useNavigate();
+  }, [product, images]);
 
   // ✅ If no product
   if (!product?.id) {
@@ -124,6 +100,11 @@ const images =
 
   return (
     <div className="flex flex-col lg:px-26 gap-5 mt-5">
+      {showPopup && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+          Item added to cart 🛒
+        </div>
+      )}
       <div className="flex gap-10">
         <div className="w-1/2">
           <div className="overflow-hidden rounded-xl aspect-square bg-gray-50 border border-gray-100 flex justify-center items-center p-12 group">
@@ -141,7 +122,9 @@ const images =
                 alt={`Thumbnail ${i + 1}`}
                 onClick={() => setSelectedImg(d)}
                 className={`w-32 h-32 object-contain bg-gray-50 p-2 cursor-pointer rounded-xl border-2 transition-all duration-200 ${
-                  selectedImg === d ? "border-[#C6131B]" : "border-gray-100 opacity-70 hover:opacity-100"
+                  selectedImg === d
+                    ? "border-[#C6131B]"
+                    : "border-gray-100 opacity-70 hover:opacity-100"
                 }`}
               />
             ))}
@@ -152,7 +135,7 @@ const images =
             <div className="text-3xl font-bold">{product.name}</div>
             <div className="text-lg text-gray-800">{product.desc}</div>
             <div className="flex  w-full items-center justify-between">
-              <div className="text-xl font-bold">${product.price}</div>
+              <div className="text-xl font-bold">${product.price || 29.99}</div>
               <div className="flex gap-2 items-center">
                 <span className="text-[#FFB200] text-2xl">★★★★★</span>
                 <span className="font-medium">{product.rating}</span>
@@ -160,11 +143,11 @@ const images =
               </div>
             </div>
           </div>
-          <div className="p-5 flex flex-col gap-5">
+          <div className="p-5 flex flex-col gap-6">
             <div className="flex w-full justify-between items-center">
               <div>
                 <div className="flex">
-                  <div className="flex justify-between items-center gap-2 text-sm p-1 bg-gray-100 rounded-full md:text-xs text-sm">
+                  <div className="flex justify-between items-center gap-2 text-sm p-1 bg-gray-100 rounded-full md:text-xs">
                     <div
                       onClick={() => (items > 1 ? setItems(items - 1) : "")}
                       className="p-2 rounded-full border border-white hover:border-red-600 bg-white "
@@ -193,6 +176,16 @@ const images =
                 </div>
               </div>
             </div>
+
+            <div className="flex gap-60 w-full mt-2">
+              <div className="w-1/2">
+                <RedButton text="Add to Cart" onClick={handleAddToCart} />
+              </div>
+              <div className="w-1/2">
+                <OutlineButton text="Buy Now" onClick={handleBuyNow} />
+              </div>
+            </div>
+
             <div className="text-lg text-gray-700">
               Introducing the Trodat Printy TR-4910, a compact self-inking stamp
               with dimensions of 9 x 26 mm (3/8" x 1-1/32"). Perfect for those

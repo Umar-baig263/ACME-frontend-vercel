@@ -933,19 +933,6 @@ const Section1 = () => {
           </div>
         </div>
         <div className="flex flex-col md:w-[73%] w-full h-full ">
-          <div className="flex items-center justify-between w-full md:gap-5 gap-3 md:px-0 px-5 py-1.5 md:pr-26">
-            {navLink.map((item) => (
-              <Link
-                to={item.url}
-                key={item.id}
-                className="flex items-center gap-3 md:p-2 p-0 cursor-pointer"
-              >
-                <div className="md:text-lg text-xs hover:font-bold">
-                  {item.name}
-                </div>
-              </Link>
-            ))}
-          </div>
           <div className="flex flex-col gap-5 text-white lg:py-26 md:py-10 py-10 md:px-10 px-5  bg-[url('ItBanner.png')]  bg-cover bg-center bg-no-repeat">
             {/* <img src="about.png" alt="Banner" className="w-full object-cover" /> */}
             <div className="flex flex-col gap-5 md:w-3/4 w-full">

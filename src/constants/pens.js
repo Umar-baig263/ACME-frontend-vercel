@@ -8,6 +8,8 @@ export const pens = [
     rating: 4.8,
     reviews: 210,
     img: "/pens-1.png",
+    priceWas: 24.99,
+    priceNow: 19.99,
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ export const pens = [
     rating: 4.7,
     reviews: 190,
     img: "/pens-2.png",
+    priceWas: 14.99,
+    priceNow: 11.99,
   },
   {
     id: 3,
@@ -26,6 +30,8 @@ export const pens = [
     rating: 4.8,
     reviews: 180,
     img: "/pens-3.png",
+    priceWas: 19.99,
+    priceNow: 15.99,
   },
   {
     id: 4,
@@ -35,6 +41,8 @@ export const pens = [
     rating: 4.7,
     reviews: 160,
     img: "/pens-5.png",
+    priceWas: 17.99,
+    priceNow: 13.99,
   },
   {
     id: 5,
@@ -44,6 +52,8 @@ export const pens = [
     rating: 4.9,
     reviews: 150,
     img: "/pens-1.png",
+    priceWas: 49.99,
+    priceNow: 39.99,
   },
   {
     id: 6,
@@ -53,6 +63,8 @@ export const pens = [
     rating: 4.8,
     reviews: 140,
     img: "/pens-2.png",
+    priceWas: 29.99,
+    priceNow: 24.99,
   },
   {
     id: 7,
@@ -62,6 +74,8 @@ export const pens = [
     rating: 4.9,
     reviews: 130,
     img: "/pens-3.png",
+    priceWas: 22.99,
+    priceNow: 17.99,
   },
   {
     id: 8,
@@ -71,6 +85,8 @@ export const pens = [
     rating: 4.7,
     reviews: 120,
     img: "/pens-5.png",
+    priceWas: 16.99,
+    priceNow: 12.99,
   },
   {
     id: 9,
@@ -80,6 +96,8 @@ export const pens = [
     rating: 4.8,
     reviews: 110,
     img: "/pens-1.png",
+    priceWas: 34.99,
+    priceNow: 27.99,
   },
   {
     id: 10,
@@ -89,6 +107,8 @@ export const pens = [
     rating: 4.7,
     reviews: 100,
     img: "/pens-2.png",
+    priceWas: 12.99,
+    priceNow: 9.99,
   },
   {
     id: 11,
@@ -98,6 +118,8 @@ export const pens = [
     rating: 4.9,
     reviews: 90,
     img: "/pens-3.png",
+    priceWas: 54.99,
+    priceNow: 44.99,
   },
   {
     id: 12,
@@ -107,5 +129,7 @@ export const pens = [
     rating: 4.8,
     reviews: 85,
     img: "/pens-5.png",
+    priceWas: 18.99,
+    priceNow: 14.99,
   },
 ];

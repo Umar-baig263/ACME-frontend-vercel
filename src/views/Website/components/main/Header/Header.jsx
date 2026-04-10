@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useContext, useRef, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { WishlistContext } from "../../../../../contexts/wishlistContext";
+import { FiSearch } from "react-icons/fi";
 
 import {
   FaSearch,
@@ -14,6 +15,7 @@ import {
   AiOutlineHeart,
   AiOutlineShopping,
   AiFillHeart,
+  AiOutlineSearch,
 } from "react-icons/ai";
 import { CartContext } from "../../../../../contexts/cartContext";
 
@@ -21,9 +23,47 @@ import { products } from "../../../../../constants/products";
 import { apparelData } from "../../../../../constants/apparelData";
 import { stampData } from "../../../../../constants/stampData";
 import { digitalPrintingData } from "../../../../../constants/digitalPrintingData";
+import { corporateGiftingData } from "../../../../../constants/corporateGiftingData";
+
+const normalizeText = (text = "") =>
+  String(text)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const scoreSearchMatch = (item, query) => {
+  const q = normalizeText(query);
+  if (!q) return 0;
+
+  const name = normalizeText(item.name);
+  const category = normalizeText(item.category);
+  const tags = normalizeText(item.searchTags);
+  const desc = normalizeText(item.desc);
+
+  const allText = `${name} ${category} ${tags} ${desc}`.trim();
+  if (!allText.includes(q)) return 0;
+
+  // For 1-letter search, keep results strict and professional:
+  // prefer products that start with this letter to avoid noisy matches.
+  if (q.length === 1) {
+    if (name.startsWith(q)) return 100;
+    if (name.split(" ").some((w) => w.startsWith(q))) return 80;
+    return 0;
+  }
+
+  if (name === q) return 100;
+  if (name.startsWith(q)) return 90;
+  if (name.split(" ").some((w) => w.startsWith(q))) return 80;
+  if (name.includes(q)) return 70;
+  if (category.startsWith(q) || tags.startsWith(q)) return 50;
+  if (category.includes(q) || tags.includes(q)) return 35;
+  return 20;
+};
 
 const Header = () => {
-  const { wishlist, wishlistPopup, wishlistAnimate } = useContext(WishlistContext);
+  const { wishlistPopup, wishlistAnimate, wishlist } =
+    useContext(WishlistContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,6 +73,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const [allItems, setAllItems] = useState([]);
   const searchRef = useRef(null);
 
@@ -43,30 +84,38 @@ const Header = () => {
   useEffect(() => {
     // Collect and format all searchable items
     const flattenedApparel = Object.values(apparelData || {})
-      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title, topLevel: "Apparel Shirt Shirts" })))
+      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title })))
       .flatMap((subCat) => (subCat.products || []).map((p) => ({ 
         ...p, 
         route: `/apparel-product-description/${p.slug}`,
-        searchTags: `${subCat.name} ${subCat.mainCatTitle} ${subCat.topLevel}`
+        searchTags: `${subCat.name} ${subCat.mainCatTitle} apparel`
       })));
 
     const flattenedStamps = Object.values(stampData || {})
-      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title, topLevel: "Stamps Stamp" })))
+      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title })))
       .flatMap((subCat) => (subCat.products || []).map((p) => ({ 
         ...p, 
         route: `/stamp-description/${p.slug}`,
-        searchTags: `${subCat.name} ${subCat.mainCatTitle} ${subCat.topLevel}`
+        searchTags: `${subCat.name} ${subCat.mainCatTitle} stamp`
       })));
 
     const flattenedDigital = Object.values(digitalPrintingData || {})
-      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title, topLevel: "Digital Printing" })))
+      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title })))
       .flatMap((subCat) => (subCat.products || []).map((p) => ({ 
         ...p, 
         route: `/card-product-description/${p.slug}`,
-        searchTags: `${subCat.name} ${subCat.mainCatTitle} ${subCat.topLevel}`
+        searchTags: `${subCat.name} ${subCat.mainCatTitle} digital printing`
       })));
 
-    const mappedProducts = (products || []).map((p) => ({ ...p, route: `/shop/${p.slug}`, searchTags: p.category || "" }));
+    const flattenedCorporate = Object.values(corporateGiftingData || {})
+      .flatMap((mainCat) => (mainCat.categories || []).map(subCat => ({ ...subCat, mainCatTitle: mainCat.title })))
+      .flatMap((subCat) => (subCat.products || []).map((p) => ({
+        ...p,
+        route: `/corporate-product-description/${p.slug}`,
+        searchTags: `${subCat.name} ${subCat.mainCatTitle} corporate gifting`,
+      })));
+
+    const mappedProducts = (products || []).map((p) => ({ ...p, route: `/shop/${p.slug}`, searchTags: `${p.category || ""} e-store` }));
 
     const categoriesList = [
       { id: "cat1", name: "Stamps", category: "Category", route: "/stamp" },
@@ -81,8 +130,40 @@ const Header = () => {
       { id: "cat10", name: "Business Cards", category: "Category", route: "/card-products" },
     ];
 
-    setAllItems([...categoriesList, ...mappedProducts, ...flattenedApparel, ...flattenedStamps, ...flattenedDigital]);
+    setAllItems([
+      ...categoriesList,
+      ...mappedProducts,
+      ...flattenedApparel,
+      ...flattenedStamps,
+      ...flattenedDigital,
+      ...flattenedCorporate,
+    ]);
   }, []);
+
+  const rankedResults = useMemo(() => {
+    const query = searchQuery.trim();
+    if (query.length < 1) return [];
+
+    const scored = allItems
+      .map((item) => ({ item, score: scoreSearchMatch(item, query) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || String(a.item.name).localeCompare(String(b.item.name)));
+
+    const deduped = [];
+    const seen = new Set();
+
+    for (const { item } of scored) {
+      const uniqueKey = item.slug
+        ? `${item.slug}-${item.route || ""}`
+        : `${item.id || item.name}-${item.route || ""}`;
+      if (seen.has(uniqueKey)) continue;
+      seen.add(uniqueKey);
+      deduped.push(item);
+      if (deduped.length >= 10) break;
+    }
+
+    return deduped;
+  }, [allItems, searchQuery]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,27 +191,27 @@ const Header = () => {
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    if (query.trim() === "") {
+    setHighlightedIndex(-1);
+    if (query.trim().length < 1) {
       setSearchResults([]);
       setShowDropdown(false);
     } else {
-      const results = allItems.filter(p => {
-        const q = query.toLowerCase();
-        return p.name?.toLowerCase().includes(q) || 
-               p.category?.toLowerCase().includes(q) ||
-               p.searchTags?.toLowerCase().includes(q);
-      });
-      // Deduplicate results by slug
-      const uniqueResults = [];
-      const slugs = new Set();
-      for (const item of results) {
-        if (item.slug && !slugs.has(item.slug)) {
-          slugs.add(item.slug);
-          uniqueResults.push(item);
-        }
-      }
-      setSearchResults(uniqueResults.slice(0, 8)); // show up to 8 max
       setShowDropdown(true);
+    }
+  };
+
+  useEffect(() => {
+    if (searchQuery.trim().length >= 1) {
+      setSearchResults(rankedResults);
+    }
+  }, [rankedResults, searchQuery]);
+
+  const handleSearchSubmit = () => {
+    if (searchResults.length === 0) return;
+    const selectedIndex = highlightedIndex >= 0 ? highlightedIndex : 0;
+    const selected = searchResults[selectedIndex];
+    if (selected) {
+      handleResultClick(selected);
     }
   };
 
@@ -205,15 +286,60 @@ const Header = () => {
                   type="text"
                   value={searchQuery}
                   onChange={handleSearch}
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowDown") {
+                      e.preventDefault();
+                      if (!showDropdown && searchResults.length > 0) {
+                        setShowDropdown(true);
+                      }
+                      setHighlightedIndex((prev) =>
+                        searchResults.length === 0
+                          ? -1
+                          : (prev + 1) % searchResults.length,
+                      );
+                      return;
+                    }
+
+                    if (e.key === "ArrowUp") {
+                      e.preventDefault();
+                      if (!showDropdown && searchResults.length > 0) {
+                        setShowDropdown(true);
+                      }
+                      setHighlightedIndex((prev) =>
+                        searchResults.length === 0
+                          ? -1
+                          : prev <= 0
+                            ? searchResults.length - 1
+                            : prev - 1,
+                      );
+                      return;
+                    }
+
+                    if (e.key === "Escape") {
+                      setShowDropdown(false);
+                      setHighlightedIndex(-1);
+                      return;
+                    }
+
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleSearchSubmit();
+                    }
+                  }}
                   onFocus={() => {
-                    if (searchQuery.trim() !== "") setShowDropdown(true);
+                    if (searchQuery.trim().length >= 1) {
+                      setShowDropdown(true);
+                    }
                   }}
                   className="w-full outline-none md:px-2 px-0 py-1"
                   placeholder="search your product"
                 />
               </div>
               <div>
-                <button className="py-2 bg-black rounded-full px-5 hover:bg-gray-800 transition-colors text-white md:text-sm text-xs">
+                <button
+                  onClick={handleSearchSubmit}
+                  className="py-2 bg-black rounded-full px-5 hover:bg-gray-800 transition-colors text-white md:text-sm text-xs"
+                >
                   <FaSearch />
                 </button>
               </div>
@@ -222,11 +348,24 @@ const Header = () => {
             {/* Search Dropdown Results */}
             {showDropdown && searchResults.length > 0 && (
               <div className="absolute top-full left-0 w-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 max-h-[400px] overflow-y-auto">
-                {searchResults.map((result) => (
+                    {searchResults.map((result) => (
                   <div
-                     key={result.slug || result.id || Math.random()}
+                     key={`${result.slug || result.id || result.name}-${result.route || "no-route"}`}
                      onClick={() => handleResultClick(result)}
-                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors"
+                     onMouseEnter={() =>
+                       setHighlightedIndex(
+                         searchResults.findIndex(
+                           (item) =>
+                             `${item.slug || item.id || item.name}-${item.route || "no-route"}` ===
+                             `${result.slug || result.id || result.name}-${result.route || "no-route"}`,
+                         ),
+                       )
+                     }
+                     className={`flex items-center gap-3 px-4 py-3 cursor-pointer border-b border-gray-100 last:border-0 transition-colors ${
+                       searchResults[highlightedIndex] === result
+                         ? "bg-gray-100"
+                         : "hover:bg-gray-50"
+                     }`}
                   >
                     {result.img && (
                       <div className="w-10 h-10 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden flex items-center justify-center">
@@ -244,7 +383,7 @@ const Header = () => {
               </div>
             )}
             
-            {showDropdown && searchQuery.trim() !== "" && searchResults.length === 0 && (
+            {showDropdown && searchQuery.trim().length >= 1 && searchResults.length === 0 && (
               <div className="absolute top-full left-0 w-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 px-4 py-6 text-sm text-gray-500 text-center">
                 No products found for "{searchQuery}"
               </div>
@@ -281,7 +420,7 @@ const Header = () => {
               <AiOutlineShopping />
               {/* Badge */}
               {totalCartItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
                   {totalCartItems}
                 </span>
               )}

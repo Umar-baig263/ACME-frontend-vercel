@@ -38,7 +38,7 @@ const FaqSection = () => {
             </h2> */}
 
       <div className="md:w-[40%] w-full flex flex-col gap-5 ">
-        <div className="md:text-5xl text-3xl font-bold">
+        <div className="md:text-5xl text-3xl font-medium">
           Frequently Asked Questions
         </div>
         <div className="md:text-base text-sm ">

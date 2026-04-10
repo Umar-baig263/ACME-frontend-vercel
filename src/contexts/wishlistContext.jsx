@@ -25,6 +25,7 @@ export const WishlistProvider = ({ children }) => {
   };
 
   const addToWishlist = (product) => {
+    if (!product.id) return; // Prevent adding items with no ID
     const exist = wishlist.find((p) => p.id === product.id);
     if (!exist) {
       setWishlist([

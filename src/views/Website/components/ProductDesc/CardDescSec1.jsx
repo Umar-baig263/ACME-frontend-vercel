@@ -5,11 +5,16 @@ import RedButtonLink from "../main/Buttons/RedButtonLink";
 import OutlineButton from "../main/Buttons/OutlineButton";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../../../contexts/cartContext";
 
 const CardDescSec1 = ({ product }) => {
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
   const [items, setItems] = useState(1);
   const [selected, setSelected] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dummyImages = [
     product?.img || "/productImgDesc.png",
@@ -28,6 +33,46 @@ const CardDescSec1 = ({ product }) => {
   // ✅ Upload handler
   const handleUploadClick = () => {
     document.getElementById("fileInput").click();
+  };
+
+  const handleAddToCart = () => {
+    if (selected === null) {
+      setErrorMessage(
+        "⚠ Please select a quantity option before adding to cart",
+      );
+      return;
+    }
+    setErrorMessage("");
+
+    const cartProduct = {
+      ...product,
+      qty: options[selected].qty,
+      totalPrice: options[selected].price,
+    };
+
+    addToCart(cartProduct);
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
+
+  const handleBuyNow = () => {
+    if (selected === null) {
+      setErrorMessage("⚠ Please select a quantity option before buying");
+      return;
+    }
+    setErrorMessage("");
+
+    const cartProduct = {
+      ...product,
+      qty: options[selected].qty,
+      totalPrice: options[selected].price,
+    };
+
+    navigate("/check-out", {
+      state: { buyNowProduct: cartProduct },
+    });
   };
 
   const options = [
@@ -89,6 +134,11 @@ const CardDescSec1 = ({ product }) => {
 
   return (
     <div className="flex flex-col lg:px-26 gap-5 mt-5">
+      {showPopup && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+          Item added to cart 🛒
+        </div>
+      )}
       <div className="flex gap-10">
         <div className="w-1/2">
           <div className="overflow-hidden  h-[70%] group">
@@ -121,7 +171,9 @@ const CardDescSec1 = ({ product }) => {
               <span className="text-[#5C5C5F]">({product.reviews})</span>
             </div>
             <div className="text-lg text-gray-800">{product.desc}</div>
-            <div className="text-lg font-medium">100 starting at $21.99</div>
+            <div className="text-lg font-medium">
+              Starting at ${product.priceNow || product.price || 21.99}
+            </div>
           </div>
           <div className="p-5 flex flex-col gap-5">
             <div className="flex flex-col gap-2 text-lg">
@@ -177,6 +229,21 @@ const CardDescSec1 = ({ product }) => {
                 </div>
                 <div>
                   <OutlineButton text="See more Quantity" />
+                </div>
+              </div>
+
+              {errorMessage && (
+                <div className="text-red-500 font-semibold mb-2 text-sm">
+                  {errorMessage}
+                </div>
+              )}
+
+              <div className="flex gap-55 w-full mt-2">
+                <div className="w-1/2">
+                  <RedButton text="Add to Cart" onClick={handleAddToCart} />
+                </div>
+                <div className="w-1/2">
+                  <OutlineButton text="Buy Now" onClick={handleBuyNow} />
                 </div>
               </div>
             </div>

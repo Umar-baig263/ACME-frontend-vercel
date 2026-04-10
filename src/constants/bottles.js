@@ -8,6 +8,8 @@ export const bottles = [
     rating: 4.9,
     reviews: 120,
     img: "/mug-1.png",
+    priceWas: 22.99,
+    priceNow: 17.99,
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ export const bottles = [
     rating: 4.8,
     reviews: 98,
     img: "/mug-2.png",
+    priceWas: 34.99,
+    priceNow: 27.99,
   },
   {
     id: 3,
@@ -26,6 +30,8 @@ export const bottles = [
     rating: 4.7,
     reviews: 85,
     img: "/mug-3.png",
+    priceWas: 29.99,
+    priceNow: 24.99,
   },
   {
     id: 4,
@@ -35,6 +41,8 @@ export const bottles = [
     rating: 4.6,
     reviews: 75,
     img: "/mug-4.png",
+    priceWas: 19.99,
+    priceNow: 15.99,
   },
   {
     id: 5,
@@ -44,6 +52,8 @@ export const bottles = [
     rating: 4.7,
     reviews: 65,
     img: "/mug-5.png",
+    priceWas: 24.99,
+    priceNow: 19.99,
   },
   {
     id: 6,
@@ -53,6 +63,8 @@ export const bottles = [
     rating: 4.8,
     reviews: 110,
     img: "/mug-1.png",
+    priceWas: 32.99,
+    priceNow: 26.99,
   },
   {
     id: 7,
@@ -62,6 +74,8 @@ export const bottles = [
     rating: 4.9,
     reviews: 130,
     img: "/mug-2.png",
+    priceWas: 27.99,
+    priceNow: 22.99,
   },
   {
     id: 8,
@@ -71,6 +85,8 @@ export const bottles = [
     rating: 4.8,
     reviews: 95,
     img: "/mug-3.png",
+    priceWas: 37.99,
+    priceNow: 29.99,
   },
   {
     id: 9,
@@ -80,6 +96,8 @@ export const bottles = [
     rating: 4.7,
     reviews: 80,
     img: "/mug-4.png",
+    priceWas: 21.99,
+    priceNow: 16.99,
   },
   {
     id: 10,
@@ -89,5 +107,7 @@ export const bottles = [
     rating: 4.9,
     reviews: 105,
     img: "/mug-5.png",
+    priceWas: 44.99,
+    priceNow: 36.99,
   },
 ];

@@ -5,7 +5,8 @@ export const promotional = [
     slug: "custom-mugs",
     desc: "Personalized ceramic mugs ideal for corporate gifting and brand promotions.",
     rating: 4.9,
-    reviews: 15200,
+    reviews: 12,
+    price: 29.99,
     img: "/promo-img1.png",
   },
   {
@@ -14,7 +15,8 @@ export const promotional = [
     slug: "branded-t-shirts",
     desc: "High-quality printed T-shirts perfect for events, marketing, and staff uniforms.",
     rating: 4.8,
-    reviews: 14210,
+    reviews: 18,
+    price: 29.99,
     img: "/promo-img2.png",
   },
   {
@@ -23,7 +25,8 @@ export const promotional = [
     slug: "keychains",
     desc: "Durable customized keychains ideal for giveaways and company branding.",
     rating: 4.7,
-    reviews: 13140,
+    reviews: 22,
+    price: 29.99,
     img: "/promo-img3.png",
   },
   {
@@ -32,7 +35,8 @@ export const promotional = [
     slug: "custom-pens",
     desc: "Smooth-writing branded pens perfect for office use and promotional gifting.",
     rating: 4.6,
-    reviews: 12200,
+    reviews: 32,
+    price: 29.99,
     img: "/promo-img4.png",
   },
   {
@@ -41,7 +45,8 @@ export const promotional = [
     slug: "corporate-diaries",
     desc: "Premium notebooks and diaries ideal for employees, meetings, and giveaways.",
     rating: 4.9,
-    reviews: 11550,
+    reviews: 42,
+    price: 29.99,
     img: "/promo-img5.png",
   },
   {
@@ -50,7 +55,8 @@ export const promotional = [
     slug: "tote-bags",
     desc: "Reusable printed tote bags ideal for events, stores, and eco-friendly branding.",
     rating: 4.7,
-    reviews: 10780,
+    reviews: 52,
+    price: 29.99,
     img: "/promo-img1.png",
   },
   {
@@ -59,7 +65,8 @@ export const promotional = [
     slug: "water-bottles",
     desc: "Durable branded bottles ideal for fitness events, offices, and gifting.",
     rating: 4.8,
-    reviews: 9980,
+    reviews: 104,
+    price: 29.99,
     img: "/promo-img2.png",
   },
   {
@@ -68,7 +75,8 @@ export const promotional = [
     slug: "desk-calendars",
     desc: "Custom-designed calendars perfect for corporate distribution.",
     rating: 4.7,
-    reviews: 9450,
+    reviews: 120,
+    price: 29.99,
     img: "/promo-img3.png",
   },
   {
@@ -77,7 +85,8 @@ export const promotional = [
     slug: "usb-flash-drives",
     desc: "High-speed custom USB drives great for corporate giveaways.",
     rating: 4.8,
-    reviews: 8890,
+    reviews: 125,
+    price: 29.99,
     img: "/promo-img4.png",
   },
   {
@@ -86,7 +95,8 @@ export const promotional = [
     slug: "badges-buttons",
     desc: "Custom badges for events, campaigns, and branding.",
     rating: 4.7,
-    reviews: 8350,
+    reviews: 145,
+    price: 29.99,
     img: "/promo-img5.png",
   },
   {
@@ -95,7 +105,8 @@ export const promotional = [
     slug: "table-calendars",
     desc: "Compact promotional calendars ideal for office desks.",
     rating: 4.8,
-    reviews: 7900,
+    reviews: 190,
+    price: 29.99,
     img: "/promo-img1.png",
   },
   {
@@ -104,7 +115,8 @@ export const promotional = [
     slug: "mouse-pads",
     desc: "High-quality printed mousepads suitable for giveaways and offices.",
     rating: 4.7,
-    reviews: 7400,
+    reviews: 205,
+    price: 29.99,
     img: "/promo-img2.png",
   },
   {
@@ -113,7 +125,8 @@ export const promotional = [
     slug: "stickers-labels",
     desc: "Custom stickers for packaging, branding, and promotions.",
     rating: 4.6,
-    reviews: 6900,
+    reviews: 175,
+    price: 29.99,
     img: "/promo-img3.png",
   },
   {
@@ -122,7 +135,8 @@ export const promotional = [
     slug: "gift-boxes",
     desc: "Elegant branded gift boxes for corporate gifting and product packaging.",
     rating: 4.9,
-    reviews: 6500,
+    reviews: 180,
+    price: 29.99,
     img: "/promo-img4.png",
   },
   {
@@ -131,7 +145,8 @@ export const promotional = [
     slug: "lanyards",
     desc: "Custom printed lanyards ideal for offices, schools, and events.",
     rating: 4.8,
-    reviews: 6000,
+    reviews: 250,
+    price: 29.99,
     img: "/promo-img5.png",
   },
   {
@@ -140,7 +155,8 @@ export const promotional = [
     slug: "desk-organizers",
     desc: "Stylish custom organizers great for workplace branding and gifting.",
     rating: 4.7,
-    reviews: 5600,
+    reviews: 78,
+    price: 29.99,
     img: "/promo-img1.png",
   },
 ];

@@ -10,6 +10,7 @@ import { WishlistContext } from "../../../../../contexts/wishlistContext";
 const ProductCard1 = ({
   product,
   id,
+  slug,
   img,
   name,
   desc,
@@ -54,15 +55,28 @@ const ProductCard1 = ({
     });
   };
 
-  //Add to wishlist
-  const { wishlist, addToWishlist } = useContext(WishlistContext);
+  const { wishlist, addToWishlist, removeFromWishlist } =
+    useContext(WishlistContext);
 
-  const productId = cardProduct?.id || id;
+  const productId = slug || id || name;
   const isInWishlist = wishlist.some((p) => p.id === productId);
 
   const handleWishlistClick = (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    addToWishlist(cardProduct);
+
+    if (isInWishlist) {
+      removeFromWishlist(productId);
+    } else {
+      addToWishlist({
+        id: productId,
+        img,
+        name,
+        desc,
+        price: Number(price) || Number(now) || 0,
+        quantity: 1,
+      });
+    }
   };
 
   //Buy Now Button
@@ -86,7 +100,7 @@ const ProductCard1 = ({
           <AiOutlineHeart className="text-gray-600 text-xl" />
         )}
       </div>
-      <div className="w-full aspect-square bg-gray-50 rounded-xl overflow-hidden flex justify-center items-center p-6 border border-gray-100 group">
+      <div className="w-full aspect-square bg-gray-50 rounded-none overflow-hidden flex justify-center items-center p-6 border border-gray-100 group">
         <img
           src={img}
           className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"

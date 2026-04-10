@@ -4,7 +4,7 @@ const Section6 = () => {
   return (
     <div className="w-full md:mt-30 mt-20 lg:px-26 md:px-10 px-5">
       <div className="flex flex-col items-center justify-center gap-2">
-        <div className="md:text-4xl text-xl font-normal">
+        <div className="md:text-4xl text-xl font-medium">
           More Than Just Printing
         </div>
         <div className="md:text-base text-sm lg:px-26 md:px-10 px-5 text-center">

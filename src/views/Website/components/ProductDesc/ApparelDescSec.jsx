@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import RedButton from "../main/Buttons/RedButton";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import RedButtonLink from "../main/Buttons/RedButtonLink";
 import OutlineButton from "../main/Buttons/OutlineButton";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../../../contexts/cartContext";
 
 const ApparelDescSec = ({ product }) => {
   const [items, setItems] = useState(1);
-  const [selectSize, setSelectSize] = useState("M");
+  const [showPopup, setShowPopup] = useState(false);
   const [selectColor, setSelectColor] = useState("black");
   const [colorName, setColorName] = useState("Black");
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || null);
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
 
   const colors = [
     {
@@ -148,6 +150,24 @@ const ApparelDescSec = ({ product }) => {
     setSelectedSize(product?.sizes?.[0] || null);
   }, [product]);
 
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size first.");
+      return;
+    }
+    const cartProduct = {
+      ...product,
+      qty: items,
+      selectSize: selectedSize,
+      selectColor: colorName,
+    };
+    addToCart(cartProduct);
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
+
   const handleBuyNow = () => {
     if (!selectedSize) {
       alert("Please select a size first.");
@@ -169,7 +189,12 @@ const ApparelDescSec = ({ product }) => {
   };
 
   return (
-    <div className="flex flex-col lg:px-26 gap-5 mt-5">
+    <div className="flex flex-col lg:px-26 gap-5 mt-5 relative">
+      {showPopup && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+          Item added to cart 🛒
+        </div>
+      )}
       <div className="flex gap-10">
         <div className="w-1/2 flex flex-col gap-2">
           <div>
@@ -316,15 +341,20 @@ const ApparelDescSec = ({ product }) => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-4">
               <div>
                 <RedButton
                   text="Customize Your Design"
                   onClick={() => navigate(`/apparel-customize`, { state: { product } })}
                 />
               </div>
-              <div>
-                <OutlineButton text="Buy Now" onClick={handleBuyNow} />
+              <div className="flex gap-4 w-full">
+                <div className="w-1/2">
+                  <RedButton text="Add to Cart" onClick={handleAddToCart} />
+                </div>
+                <div className="w-1/2">
+                  <OutlineButton text="Buy Now" onClick={handleBuyNow} />
+                </div>
               </div>
             </div>
             <div className="flex flex-col gap-5">

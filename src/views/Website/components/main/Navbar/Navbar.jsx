@@ -44,7 +44,7 @@ const Navbar = ({ breadcrumb, isBanner, isBannerText, img, text, head }) => {
               key={item.id}
               className="flex items-center gap-3 md:p-2 p-0 cursor-pointer"
             >
-              <div className="md:text-lg text-xs hover:font-bold">
+              <div className="md:text-lg text-xs font-medium hover:font-bold">
                 {item.name}
               </div>
             </Link>

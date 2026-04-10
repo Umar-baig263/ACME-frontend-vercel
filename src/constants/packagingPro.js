@@ -5,7 +5,8 @@ export const packagingPro = [
     slug: "packaging-product-1",
     img: "/packaging-img1.png",
     rating: 4.8,
-    reviews: 152,
+    reviews: 142,
+    price: 29.99,
     desc: "Durable packaging designed to protect products and enhance brand presentation.",
   },
   {
@@ -14,7 +15,8 @@ export const packagingPro = [
     slug: "packaging-product-2",
     img: "/packaging-img2.png",
     rating: 4.7,
-    reviews: 138,
+    reviews: 89,
+    price: 29.99,
     desc: "High-quality packaging ideal for retail items and promotional products.",
   },
   {
@@ -23,7 +25,8 @@ export const packagingPro = [
     slug: "packaging-product-3",
     img: "/packaging-img3.png",
     rating: 4.9,
-    reviews: 167,
+    reviews: 215,
+    price: 29.99,
     desc: "Premium material packaging built to maintain product freshness and safety.",
   },
   {
@@ -32,7 +35,8 @@ export const packagingPro = [
     slug: "packaging-product-4",
     img: "/packaging-img4.png",
     rating: 4.7,
-    reviews: 129,
+    reviews: 110,
+    price: 29.99,
     desc: "Customizable packaging perfect for brand identity and visual appeal.",
   },
   {
@@ -41,7 +45,8 @@ export const packagingPro = [
     slug: "packaging-product-5",
     img: "/packaging-img5.png",
     rating: 4.8,
-    reviews: 144,
+    reviews: 304,
+    price: 29.99,
     desc: "Strong and stylish packaging suitable for corporate, retail, and gift items.",
   },
   {
@@ -50,7 +55,8 @@ export const packagingPro = [
     slug: "packaging-product-6",
     img: "/packaging-img1.png",
     rating: 4.6,
-    reviews: 120,
+    reviews: 76,
+    price: 29.99,
     desc: "Durable and lightweight packaging for everyday business use.",
   },
   {
@@ -59,7 +65,8 @@ export const packagingPro = [
     slug: "packaging-product-7",
     img: "/packaging-img2.png",
     rating: 4.7,
-    reviews: 131,
+    reviews: 198,
+    price: 29.99,
     desc: "Eco-friendly packaging solution with premium finishing options.",
   },
   {
@@ -68,7 +75,8 @@ export const packagingPro = [
     slug: "packaging-product-8",
     img: "/packaging-img3.png",
     rating: 4.8,
-    reviews: 149,
+    reviews: 234,
+    price: 29.99,
     desc: "Versatile packaging perfect for food, cosmetics, and retail products.",
   },
   {
@@ -77,7 +85,8 @@ export const packagingPro = [
     slug: "packaging-product-9",
     img: "/packaging-img4.png",
     rating: 4.7,
-    reviews: 126,
+    reviews: 112,
+    price: 29.99,
     desc: "Attractive packaging crafted for brand promotion and safe delivery.",
   },
   {
@@ -86,7 +95,8 @@ export const packagingPro = [
     slug: "packaging-product-10",
     img: "/packaging-img5.png",
     rating: 4.9,
-    reviews: 158,
+    reviews: 288,
+    price: 29.99,
     desc: "High-end packaging designed to elevate product presentation.",
   },
   {
@@ -95,7 +105,8 @@ export const packagingPro = [
     slug: "packaging-product-11",
     img: "/packaging-img1.png",
     rating: 4.6,
-    reviews: 118,
+    reviews: 95,
+    price: 29.99,
     desc: "Reliable packaging solution suitable for various industries.",
   },
   {
@@ -104,7 +115,8 @@ export const packagingPro = [
     slug: "packaging-product-12",
     img: "/packaging-img2.png",
     rating: 4.7,
-    reviews: 130,
+    reviews: 156,
+    price: 29.99,
     desc: "Custom-printed packaging perfect for showcasing your brand.",
   },
   {
@@ -113,7 +125,8 @@ export const packagingPro = [
     slug: "packaging-product-13",
     img: "/packaging-img3.png",
     rating: 4.8,
-    reviews: 147,
+    reviews: 210,
+    price: 29.99,
     desc: "High-quality packaging offering protection and premium appearance.",
   },
   {
@@ -122,7 +135,8 @@ export const packagingPro = [
     slug: "packaging-product-14",
     img: "/packaging-img4.png",
     rating: 4.7,
-    reviews: 134,
+    reviews: 145,
+    price: 29.99,
     desc: "Unique packaging solution designed to enhance customer experience.",
   },
   {
@@ -131,7 +145,8 @@ export const packagingPro = [
     slug: "packaging-product-15",
     img: "/packaging-img5.png",
     rating: 4.9,
-    reviews: 162,
+    reviews: 325,
+    price: 29.99,
     desc: "Luxury-grade packaging that gives your products a professional finish.",
   },
   {
@@ -140,7 +155,8 @@ export const packagingPro = [
     slug: "packaging-product-16",
     img: "/packaging-img1.png",
     rating: 4.7,
-    reviews: 125,
+    reviews: 134,
+    price: 29.99,
     desc: "Versatile packaging suitable for e-commerce, retail, and gifts.",
   },
 ];

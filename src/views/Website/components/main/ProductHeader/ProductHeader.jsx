@@ -14,7 +14,7 @@ const ProductHeader = ({ head, subHead, link, isLink }) => {
       ) : (
         <Link
           to={link}
-          className="flex items-center gap-2 text-[#9A0F1E] cursor-pointer"
+          className="flex items-center gap-2 text-[#9A0F1E] cursor-pointer whitespace-nowrap shrink-0"
         >
           View All <FaArrowRight />
         </Link>

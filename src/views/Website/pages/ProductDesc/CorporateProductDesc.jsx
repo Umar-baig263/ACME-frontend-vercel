@@ -10,6 +10,7 @@ import CorporateDescSec from "../../components/ProductDesc/CorporateDescSec";
 const CorporateProductDesc = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [allProducts, setAllProducts] = useState([]);
   const [product, setProduct] = useState(null);
 
@@ -24,6 +25,7 @@ const CorporateProductDesc = () => {
   // Update product whenever slug changes
   useEffect(() => {
     if (allProducts.length === 0) return;
+    setLoading(true);
 
     const found = allProducts.find((p) => p.slug === slug);
     setProduct(found);
@@ -36,14 +38,28 @@ const CorporateProductDesc = () => {
       if (recent.length > 10) recent = recent.slice(0, 10);
       localStorage.setItem("recentlyViewed", JSON.stringify(recent));
 
-      window.scrollTo(0, 0); // scroll to top
+      const timer = setTimeout(() => {
+        setLoading(false);
+        window.scrollTo(0, 0);
+      }, 300);
+      return () => clearTimeout(timer);
+    } else {
+      setLoading(false);
     }
   }, [slug, allProducts]);
 
   const handleProductClick = (clickedProduct) => {
     // Navigate to same route but with new slug
-    navigate(`/corporate-product-description/${clickedProduct.slug}`);
+    navigate(`/corporate-product-description/${clickedProduct.slug}`, { replace: true });
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#BC202B]"></div>
+      </div>
+    );
+  }
 
   if (!product) return <p className="p-10 text-center">Product not found!</p>;
 

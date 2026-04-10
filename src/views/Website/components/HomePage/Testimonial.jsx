@@ -45,7 +45,7 @@ const Testimonial = () => {
                     <p>{testimonial.feedback}</p>
                 </div>
             ))} */}
-      <div className="md:text-4xl text-xl  text-center Loved by Creators, Brands & Individuals">
+      <div className="md:text-4xl text-xl  text-center font-medium">
         Loved by Creators, Brands & Individuals
       </div>
       <div className=" md:mt-15 mt-5">

@@ -55,7 +55,7 @@ const Section5 = () => {
                 alt=""
               />
             </div>
-            <div className="text-2xl font-semiBold">{d?.text}</div>
+            <div className="text-2xl font-medium">{d?.text}</div>
             <div>
               <RedButtonLink
                 width="md:px-10 px-20"

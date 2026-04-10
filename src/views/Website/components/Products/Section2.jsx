@@ -167,6 +167,8 @@ const Section2 = ({ defaultMain = "tshirt", defaultSub = null }) => {
               {displayProducts.slice(0, visibleProducts).map((d) => (
                 <ProductCard2
                   key={d.id || d.name}
+                  id={d.id}
+                  slug={d.slug}
                   name={d.name}
                   desc={d.desc}
                   img={d.img}

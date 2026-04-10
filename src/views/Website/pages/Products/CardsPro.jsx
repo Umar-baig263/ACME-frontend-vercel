@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/main/Navbar/Navbar";
 import CardSec1 from "../../components/Products/CardSec1";
 import Banner from "../../components/main/Banner/Banner";
 import LatestNews from "../../components/main/LastestNews/LastestNews";
 import FaqSection from "../../components/main/FaqSection/FaqSection";
+import { useLocation } from "react-router-dom";
 
 const CardsPro = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const mainCat = params.get("main") || "business";
+
+  useEffect(() => {
+    const el = document.getElementById("products-section");
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }, []);
   const card = [
     {
       head: "Importance of Custom Stamps for Your Business",
@@ -25,7 +38,9 @@ const CardsPro = () => {
         isBanner={true}
         img="CardProductBanner.png"
       />
-      <CardSec1 />
+      <div id="products-section">
+        <CardSec1 defaultMain={mainCat} />
+      </div>
       <Banner
         color="text-white"
         isred={false}

@@ -181,12 +181,15 @@ const CorpSec1 = ({ defaultMain = "gifts", defaultSub = null }) => {
             {displayProducts.slice(0, visibleProducts).map((p, i) => (
               <ProductCard2
                 key={p.id || i}
+                id={p.id}
+                slug={p.slug}
                 name={p.name}
                 desc={p.desc}
                 img={p.img}
-                star={p.stars}
-                rating={p.rating}
-                people={p.people}
+                rating={p.rating || p.stars}
+                reviews={p.reviews || p.people || 0}
+                was={p.priceWas || p.oldPrice}
+                now={p.priceNow || p.price}
                 isDetail={true}
                 isPrice={false}
                 onClick={() =>

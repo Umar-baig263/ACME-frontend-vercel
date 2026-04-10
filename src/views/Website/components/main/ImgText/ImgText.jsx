@@ -14,7 +14,9 @@ const ImgText = ({ head, des, img, isreversed, btntext, btnlink, pad }) => {
       className={`w-full flex ${isreversed ? "md:flex-row" : "md:flex-row-reverse"}  flex-col gap-14 justify-between items-center ${pad} lg:px-26 md:px-10 px-5`}
     >
       <div className="md:w-1/2 w-full flex flex-col justify-center lg:gap-5 gap-3">
-        <h2 className="md:text-4xl text-3xl lg:leading-14">{head}</h2>
+        <h2 className="md:text-4xl text-3xl lg:leading-14 font-medium">
+          {head}
+        </h2>
         <p className="lg:text-lg text-base leading-normal ">
           {/* <BlogBody body={des} /> */}
           {des}

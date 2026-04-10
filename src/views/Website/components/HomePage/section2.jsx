@@ -60,7 +60,7 @@ const Section2 = () => {
                 className={`flex flex-col sm:col-span-2 col-span-1 w-full  h-[250px] relative overflow-hidden  bg-cover bg-center bg-no-repeat`}
                 style={{ backgroundImage: `url(${card?.image})` }}
               >
-                <div className="absolute bottom-5 left-3 w-[50%] text-lg ">
+                <div className="absolute bottom-5 left-3 w-[50%] text-lg font-medium">
                   {card?.title}
                 </div>
               </Link>
@@ -73,7 +73,7 @@ const Section2 = () => {
                 className={`flex flex-col  w-full h-[250px] relative overflow-hidden  bg-cover bg-center bg-no-repeat`}
                 style={{ backgroundImage: `url(${card?.image})` }}
               >
-                <div className="absolute bottom-5 left-3 w-[46%] text-base ">
+                <div className="absolute bottom-5 left-3 w-[46%] text-base font-medium ">
                   {card.title}
                 </div>
               </Link>

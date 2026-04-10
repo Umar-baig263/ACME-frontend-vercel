@@ -30,53 +30,63 @@ const Section1 = () => {
         <RedButton text="Delete All" onClick={clearWishlist} />
       </div>
 
-      <table className="min-w-full border border-gray-300 mt-5">
-        <thead>
+      <table className="min-w-full table-fixed border border-gray-300 mt-5">
+        <thead className="bg-gray-50 border-b border-gray-300">
           <tr>
-            <th className="p-4 text-left">Product</th>
-            <th className="p-4 text-center">Price</th>
-            <th className="p-4 text-center">Quantity</th>
-            <th className="p-4 text-center">Remove</th>
-            <th className="p-4 text-center">Add to Cart</th>
+            <th className="p-4 text-left w-[35%]">Product</th>
+            <th className="p-4 text-center w-[15%]">Price</th>
+            <th className="p-4 text-center w-[20%] border-x border-gray-100">
+              Quantity
+            </th>
+            <th className="p-4 text-center w-[15%]">Remove</th>
+            <th className="p-4 text-center w-[15%]">Add to Cart</th>
           </tr>
         </thead>
         <tbody>
           {wishlist.map((item) => (
             <tr key={item.id} className="border-t border-gray-300">
-              <td className="p-4">{item.name}</td>
+              <td className="p-4 truncate font-medium">{item.name}</td>
               <td className="p-4 text-center">
                 ${(Number(item.price) || 0).toFixed(2)}
               </td>
-              <td className="p-4 flex items-center justify-center gap-2">
-                <button
-                  onClick={() => handleQuantityChange(item.id, "dec")}
-                  className="px-2 py-1 bg-gray-200 rounded"
-                >
-                  -
-                </button>
-                <span>{item.quantity}</span>
-                <button
-                  onClick={() => handleQuantityChange(item.id, "inc")}
-                  className="px-2 py-1 bg-gray-200 rounded"
-                >
-                  +
-                </button>
+              <td className="p-4">
+                <div className="flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => handleQuantityChange(item.id, "dec")}
+                    className="w-6 h-6 flex items-center justify-center bg-gray-200 hover:bg-gray-300 transition-colors rounded font-bold"
+                  >
+                    -
+                  </button>
+                  <span className="w-10 text-center font-semibold">
+                    {item.quantity}
+                  </span>
+                  <button
+                    onClick={() => handleQuantityChange(item.id, "inc")}
+                    className="w-6 h-6 flex items-center justify-center bg-gray-200 hover:bg-gray-300 transition-colors rounded font-bold"
+                  >
+                    +
+                  </button>
+                </div>
               </td>
-              <td className="p-4 text-center">
-                <button
-                  onClick={() => removeFromWishlist(item.id)}
-                  className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer"
-                >
-                  Remove
-                </button>
+              <td className="p-4">
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => removeFromWishlist(item.id)}
+                    className="px-3 py-1 bg-[#C6131B] text-white rounded cursor-pointer hover:bg-[#9A0F1E] transition"
+                  >
+                    Remove
+                  </button>
+                </div>
               </td>
-              <td className="p-4 text-center">
-                <button
-                  onClick={() => handleAddToCart(item)}
-                  className="px-3 py-1 bg-green-500 text-white rounded cursor-pointer"
-                >
-                  Add To Cart
-                </button>
+              <td className="p-4">
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => handleAddToCart(item)}
+                    className="px-3 py-1 bg-green-600 text-white rounded cursor-pointer hover:bg-green-700 transition font-medium"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

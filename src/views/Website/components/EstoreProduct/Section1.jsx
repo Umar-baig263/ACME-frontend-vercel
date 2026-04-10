@@ -132,15 +132,15 @@ const Section1 = ({ defaultMain = "tshirt", defaultSub = null }) => {
               {filteredProducts.slice(0, visibleProducts).map((d) => (
                 <ProductCard2
                   key={d.id || d.name}
+                  id={d.id}
+                  slug={d.slug}
                   name={d.name}
                   desc={d.desc}
                   img={d.img}
-                  people={d.people}
-                  was={d.priceWas}
-                  now={d.priceNow}
-                  text={d.text}
-                  star={d.stars}
-                  rating={d.rating}
+                  rating={d.rating || d.stars}
+                  reviews={d.reviews || d.people || 0}
+                  was={d.priceWas || d.oldPrice}
+                  now={d.priceNow || d.price}
                   isDetail={true}
                   isPrice={false}
                   onClick={() => navigate(`/e-store-description/${d.slug}`)}

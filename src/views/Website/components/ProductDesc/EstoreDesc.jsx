@@ -6,6 +6,7 @@ import OutlineButton from "../main/Buttons/OutlineButton";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { products } from "../../../../constants/products";
 import { apparelData } from "../../../../constants/apparelData";
+import { apparel } from "../../../../constants/products/apparel";
 import { CartContext } from "../../../../contexts/cartContext";
 
 const EstoreDesc = () => {
@@ -37,6 +38,17 @@ const EstoreDesc = () => {
         }
       }
       if (currentProduct) break;
+    }
+  }
+
+  // If STILL not found, search in the apparel representation arrays
+  if (!currentProduct) {
+    for (const key in apparel) {
+      const found = apparel[key].find((p) => p.slug === slug);
+      if (found) {
+        currentProduct = found;
+        break;
+      }
     }
   }
 

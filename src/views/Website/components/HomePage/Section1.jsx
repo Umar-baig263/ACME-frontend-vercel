@@ -1724,11 +1724,7 @@ const Section1 = () => {
                   className="flex items-center gap-4 flex-1"
                 >
                   <div className="flex-shrink-0">
-                    <img
-                      className="w-[20px] h-[20px]"
-                      src={item?.url}
-                      alt=""
-                    />
+                    <img className="w-[20px] h-[20px]" src={item?.url} alt="" />
                   </div>
                   <span className="text-gray-600 group-hover:text-[#C6131B] font-bold text-sm whitespace-nowrap overflow-hidden">
                     {item.title}
@@ -1765,7 +1761,7 @@ const Section1 = () => {
                 key={item.id}
                 className="flex items-center gap-3 md:p-2 p-0 cursor-pointer"
               >
-                <div className="md:text-lg text-xs hover:font-bold">
+                <div className="md:text-lg text-xs font-medium hover:font-bold">
                   {item.name}
                 </div>
               </Link>
@@ -1790,7 +1786,7 @@ const Section1 = () => {
                       alt=""
                     />
                     <Link to="/shop">
-                      <button className="absolute bottom-24 left-44 px-5 py-3 bg-white text-black text-xs cursor-pointer">
+                      <button className="absolute bottom-24 left-44 px-5 py-3 bg-white text-black text-xs cursor-pointer font-medium">
                         Browse Products
                       </button>
                     </Link>

@@ -6,6 +6,7 @@ export const businessCards = [
     desc: "Small, sleek cards perfect for minimal branding and everyday use.",
     rating: 4.9,
     reviews: 12034,
+    price: 15.0,
     img: "/business-img1.png",
   },
   {
@@ -15,6 +16,7 @@ export const businessCards = [
     desc: "Standard business cards with a professional and clean finish.",
     rating: 4.8,
     reviews: 9872,
+    price: 18.0,
     img: "/business-img2.png",
   },
   {
@@ -24,6 +26,7 @@ export const businessCards = [
     desc: "Wider format cards for more space and bold designs.",
     rating: 4.7,
     reviews: 8451,
+    price: 20.0,
     img: "/business-img3.png",
   },
   {
@@ -33,6 +36,7 @@ export const businessCards = [
     desc: "Classic size cards suitable for all industries.",
     rating: 4.7,
     reviews: 7650,
+    price: 15.0,
     img: "/business-img4.png",
   },
   {
@@ -42,6 +46,7 @@ export const businessCards = [
     desc: "Modern square-shaped cards for a unique impression.",
     rating: 4.8,
     reviews: 6231,
+    price: 22.0,
     img: "/business-img5.png",
   },
   {
@@ -51,6 +56,7 @@ export const businessCards = [
     desc: "Smooth rounded edges for a soft and premium feel.",
     rating: 4.7,
     reviews: 5980,
+    price: 19.5,
     img: "/business-img6.png",
   },
   {
@@ -60,6 +66,7 @@ export const businessCards = [
     desc: "Creative circular cards that stand out instantly.",
     rating: 4.6,
     reviews: 4120,
+    price: 25.0,
     img: "/business-img7.png",
   },
   {
@@ -69,6 +76,7 @@ export const businessCards = [
     desc: "Elegant oval-shaped cards for stylish branding.",
     rating: 4.6,
     reviews: 3895,
+    price: 24.0,
     img: "/business-img8.png",
   },
   {
@@ -78,6 +86,7 @@ export const businessCards = [
     desc: "High-quality thick cards with luxurious finish.",
     rating: 4.9,
     reviews: 11023,
+    price: 35.0,
     img: "/business-img9.png",
   },
   {
@@ -87,6 +96,7 @@ export const businessCards = [
     desc: "Non-glossy cards with smooth and subtle texture.",
     rating: 4.7,
     reviews: 7021,
+    price: 20.0,
     img: "/business-img10.png",
   },
   {
@@ -96,6 +106,7 @@ export const businessCards = [
     desc: "Shiny finish cards for vibrant colors and images.",
     rating: 4.6,
     reviews: 6543,
+    price: 20.0,
     img: "/business-img11.png",
   },
   {
@@ -105,6 +116,7 @@ export const businessCards = [
     desc: "Premium textured surface for a tactile experience.",
     rating: 4.8,
     reviews: 4321,
+    price: 28.0,
     img: "/business-img12.png",
   },
   {
@@ -114,6 +126,7 @@ export const businessCards = [
     desc: "Double-sided foldable cards for extra information.",
     rating: 4.7,
     reviews: 3890,
+    price: 30.0,
     img: "/business-img13.png",
   },
   {
@@ -123,6 +136,7 @@ export const businessCards = [
     desc: "Metallic foil highlights for premium branding.",
     rating: 4.9,
     reviews: 5210,
+    price: 40.0,
     img: "/business-img14.png",
   },
   {
@@ -132,6 +146,7 @@ export const businessCards = [
     desc: "Raised print effect for a luxury feel.",
     rating: 4.8,
     reviews: 4785,
+    price: 45.0,
     img: "/business-img15.png",
   },
   {
@@ -141,6 +156,7 @@ export const businessCards = [
     desc: "Clear plastic cards for a modern unique look.",
     rating: 4.6,
     reviews: 2950,
+    price: 50.0,
     img: "/business-img16.png",
   },
 ];

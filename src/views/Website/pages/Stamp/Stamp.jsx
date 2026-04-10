@@ -181,7 +181,8 @@ const Stamp = () => {
               head="Trodat/Printy"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("trodat", trodatprinty)}
-              onProductClick={() => navigate("/stamp-products?main=trodat")}
+              link="/stamp-products?main=trodat"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -191,7 +192,8 @@ const Stamp = () => {
               head="Colop/ 2000Plus"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("colop", colop)}
-              onProductClick={() => navigate("/stamp-products?main=colop")}
+              link="/stamp-products?main=colop"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -215,7 +217,8 @@ const Stamp = () => {
               head="Rubber Stamps"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("rubber", rubberstamps)}
-              onProductClick={() => navigate("/stamp-products?main=rubber")}
+              link="/stamp-products?main=rubber"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -225,7 +228,8 @@ const Stamp = () => {
               head="Pads, Inks & Racks"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("pads", padsandinks)}
-              onProductClick={() => navigate("/stamp-products?main=pads")}
+              link="/stamp-products?main=pads"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -235,7 +239,8 @@ const Stamp = () => {
               head="Embossing Seal"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("embossing", embossingseals)}
-              onProductClick={() => navigate("/stamp-products?main=embossing")}
+              link="/stamp-products?main=embossing"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -245,7 +250,8 @@ const Stamp = () => {
               head="Custom Stencils"
               desc="Mess-free, self-inking stamps for clean, reliable impressions — every time."
               data={getFilteredProducts("stencils", stencils)}
-              onProductClick={() => navigate("/stamp-products?main=stencils")}
+              link="/stamp-products?main=stencils"
+              onProductClick={(product) => navigate(`/stamp-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>

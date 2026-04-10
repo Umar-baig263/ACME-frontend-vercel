@@ -181,18 +181,18 @@ const CardSec1 = () => {
               {displayProducts.slice(0, visibleProducts).map((d) => (
                 <ProductCard2
                   key={d.id || d.name}
+                  id={d.id}
+                  slug={d.slug}
                   name={d.name}
                   desc={d.desc}
                   img={d.img}
-                  people={d.people}
-                  was={d.priceWas}
-                  now={d.priceNow}
+                  rating={d.rating || d.stars}
+                  reviews={d.reviews || d.people || 0}
+                  was={d.priceWas || d.oldPrice}
+                  now={d.priceNow || d.price}
                   text={d.text}
-                  star={d.stars}
-                  rating={d.rating}
                   isDetail={true}
-                  isPrice={true}
-                  price={d.price || "$21.99"}
+                  isPrice={false}
                   onClick={() =>
                     navigate(`/card-product-description/${d.slug}`)
                   }

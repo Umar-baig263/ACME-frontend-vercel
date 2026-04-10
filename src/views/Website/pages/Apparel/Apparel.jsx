@@ -197,7 +197,8 @@ const Apparel = () => {
                 head="T-Shirt"
                 desc="High-quality custom t-shirts for every occasion — choose your style and make a statement."
                 data={getFilteredProducts("tshirt", tshirts)}
-                onProductClick={() => navigate(`/apparel-products?main=tshirt`)}
+                link="/apparel-products?main=tshirt"
+                onProductClick={(product) => navigate(`/apparel-product-description/${product.slug || product.id}`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
             </div>
@@ -207,7 +208,8 @@ const Apparel = () => {
                 head="Jacket"
                 desc="Find inspiration in these thoughtfully curated product collections — stay warm and stylish."
                 data={getFilteredProducts("jacket", jackets)}
-                onProductClick={() => navigate(`/apparel-products?main=jacket`)}
+                link="/apparel-products?main=jacket"
+                onProductClick={(product) => navigate(`/apparel-product-description/${product.slug || product.id}`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
             </div>
@@ -232,7 +234,8 @@ const Apparel = () => {
                 head="Paint & Short"
                 desc="Custom short-sleeve apparel designed for comfort and durability in any setting."
                 data={getFilteredProducts("paint", paints)}
-                onProductClick={() => navigate(`/apparel-products?main=paint`)}
+                link="/apparel-products?main=paint"
+                onProductClick={(product) => navigate(`/apparel-product-description/${product.slug || product.id}`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
             </div>
@@ -242,7 +245,8 @@ const Apparel = () => {
                 head="Cap"
                 desc="From baseball caps to trucker hats, our high-quality headwear is perfect for any brand."
                 data={getFilteredProducts("cap", caps)}
-                onProductClick={() => navigate(`/apparel-products?main=cap`)}
+                link="/apparel-products?main=cap"
+                onProductClick={(product) => navigate(`/apparel-product-description/${product.slug || product.id}`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
             </div>
@@ -252,7 +256,8 @@ const Apparel = () => {
                 head="Shirt"
                 desc="Formal, slim fit, or linen — choose the perfect custom shirt for your professional wardrobe."
                 data={getFilteredProducts("shirt", shirts)}
-                onProductClick={() => navigate(`/apparel-products?main=shirt`)}
+                link="/apparel-products?main=shirt"
+                onProductClick={(product) => navigate(`/apparel-product-description/${product.slug || product.id}`)}
                 paddingClass="lg:px-10 md:px-5 px-5"
               />
             </div>

@@ -52,27 +52,22 @@ const Section1 = () => {
           loop={true}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           // effect="fade"
-          modules={[Autoplay ]}
-        //   pagination={true}
+          modules={[Autoplay]}
+          //   pagination={true}
 
           className="w-[100%] md:w-[100%] h-full"
         >
           {text?.map((d, i) => (
             <SwiperSlide key={i}>
               <div className="flex flex-col md:gap-5 gap-2">
-                <div className="md:text-5xl text-3xl font-bold">
+                <div className="md:text-5xl text-3xl font-medium">
                   {d.heading}
                 </div>
-                <div className="md:text-xl text-base">
-                  {d.desc1}
-                </div>
-                <div className="md:text-xl text-base">
-                  {d.desc2}
-                </div>
+                <div className="md:text-xl text-base">{d.desc1}</div>
+                <div className="md:text-xl text-base">{d.desc2}</div>
               </div>
             </SwiperSlide>
           ))}
-          
         </Swiper>
       </div>
     </div>

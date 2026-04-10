@@ -166,7 +166,8 @@ const Corporate = () => {
               head="Top Selling Gift Boxes"
               desc="Thoughtfully curated gift boxes for employees and clients."
               data={getFilteredProducts("gifts", giftBoxes)}
-              onProductClick={() => navigate("/corporate-products?main=gifts")}
+              link="/corporate-products?main=gifts"
+              onProductClick={(product) => navigate(`/corporate-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -176,7 +177,8 @@ const Corporate = () => {
               head="Customized Mugs & Bottles"
               desc="Hydration and coffee essentials branded with your logo."
               data={getFilteredProducts("mugs", mugsAndBottles)}
-              onProductClick={() => navigate("/corporate-products?main=mugs")}
+              link="/corporate-products?main=mugs"
+              onProductClick={(product) => navigate(`/corporate-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -201,7 +203,8 @@ const Corporate = () => {
               head="Useful Branded Tech Gifts"
               desc="Practical tech gadgets that keep your brand in their daily lives."
               data={getFilteredProducts("tech", techGifts)}
-              onProductClick={() => navigate("/corporate-products?main=tech")}
+              link="/corporate-products?main=tech"
+              onProductClick={(product) => navigate(`/corporate-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>
@@ -211,7 +214,8 @@ const Corporate = () => {
               head="Branded Pens & Notebooks"
               desc="Professional stationery and writing tools for the modern office."
               data={getFilteredProducts("pens", pensNotebooks)}
-              onProductClick={() => navigate("/corporate-products?main=pens")}
+              link="/corporate-products?main=pens"
+              onProductClick={(product) => navigate(`/corporate-product-description/${product.slug || product.id}`)}
               paddingClass="lg:px-10 md:px-5 px-5"
             />
           </div>

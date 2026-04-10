@@ -8,6 +8,8 @@ export const gift = [
     rating: 4.9,
     reviews: 220,
     img: "/giftbox-1.png",
+    priceWas: 49.99,
+    priceNow: 39.99,
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ export const gift = [
     rating: 4.8,
     reviews: 180,
     img: "/giftbox-2.png",
+    priceWas: 79.99,
+    priceNow: 64.99,
   },
   {
     id: 3,
@@ -26,6 +30,8 @@ export const gift = [
     rating: 4.7,
     reviews: 150,
     img: "/giftbox-3.png",
+    priceWas: 44.99,
+    priceNow: 34.99,
   },
   {
     id: 4,
@@ -35,6 +41,8 @@ export const gift = [
     rating: 4.8,
     reviews: 200,
     img: "/giftbox-4.png",
+    priceWas: 99.99,
+    priceNow: 84.99,
   },
   {
     id: 5,
@@ -44,6 +52,8 @@ export const gift = [
     rating: 4.9,
     reviews: 250,
     img: "/giftbox-5.png",
+    priceWas: 59.99,
+    priceNow: 49.99,
   },
   {
     id: 6,
@@ -53,6 +63,8 @@ export const gift = [
     rating: 4.9,
     reviews: 210,
     img: "/giftbox-1.png",
+    priceWas: 54.99,
+    priceNow: 44.99,
   },
   {
     id: 7,
@@ -62,6 +74,8 @@ export const gift = [
     rating: 4.8,
     reviews: 175,
     img: "/giftbox-2.png",
+    priceWas: 74.99,
+    priceNow: 59.99,
   },
   {
     id: 8,
@@ -71,6 +85,8 @@ export const gift = [
     rating: 4.7,
     reviews: 160,
     img: "/giftbox-3.png",
+    priceWas: 39.99,
+    priceNow: 29.99,
   },
   {
     id: 9,
@@ -80,6 +96,8 @@ export const gift = [
     rating: 4.8,
     reviews: 190,
     img: "/giftbox-4.png",
+    priceWas: 119.99,
+    priceNow: 99.99,
   },
   {
     id: 10,
@@ -89,6 +107,8 @@ export const gift = [
     rating: 4.9,
     reviews: 230,
     img: "/giftbox-5.png",
+    priceWas: 64.99,
+    priceNow: 54.99,
   },
   {
     id: 11,
@@ -98,6 +118,8 @@ export const gift = [
     rating: 4.9,
     reviews: 200,
     img: "/giftbox-1.png",
+    priceWas: 52.99,
+    priceNow: 42.99,
   },
   {
     id: 12,
@@ -107,5 +129,7 @@ export const gift = [
     rating: 4.8,
     reviews: 185,
     img: "/giftbox-2.png",
+    priceWas: 89.99,
+    priceNow: 74.99,
   },
 ];

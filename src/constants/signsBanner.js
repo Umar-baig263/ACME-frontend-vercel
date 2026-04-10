@@ -6,6 +6,7 @@ export const signsBanner = [
     desc: "Durable outdoor vinyl banners ideal for promotions, store displays, and events.",
     rating: 4.9,
     reviews: 15200,
+    price: 39.99,
     img: "/sign-img1.png",
   },
   {
@@ -15,6 +16,7 @@ export const signsBanner = [
     desc: "Portable pull-up stands perfect for exhibitions, trade shows, and presentations.",
     rating: 4.8,
     reviews: 13110,
+    price: 49.99,
     img: "/sign-img2.png",
   },
   {
@@ -24,6 +26,7 @@ export const signsBanner = [
     desc: "Lightweight foam board signs great for indoor branding and event displays.",
     rating: 4.7,
     reviews: 11820,
+    price: 29.99,
     img: "/sign-img3.png",
   },
   {
@@ -33,6 +36,7 @@ export const signsBanner = [
     desc: "Premium acrylic signage for reception areas and office branding.",
     rating: 4.6,
     reviews: 10450,
+    price: 89.99,
     img: "/sign-img4.png",
   },
   {
@@ -42,6 +46,7 @@ export const signsBanner = [
     desc: "Large-format hoardings for outdoor advertising and long-term visibility.",
     rating: 4.9,
     reviews: 9800,
+    price: 139.99,
     img: "/sign-img5.png",
   },
   {
@@ -51,6 +56,7 @@ export const signsBanner = [
     desc: "Promotional flag banners ideal for outdoor events, exhibitions, and sales.",
     rating: 4.7,
     reviews: 8600,
+    price: 59.99,
     img: "/sign-img1.png",
   },
   {
@@ -60,6 +66,7 @@ export const signsBanner = [
     desc: "Illuminated backlit signage designed for maximum nighttime visibility.",
     rating: 4.8,
     reviews: 7900,
+    price: 119.99,
     img: "/sign-img2.png",
   },
   {
@@ -69,6 +76,7 @@ export const signsBanner = [
     desc: "Wind-resistant mesh banners suitable for large outdoor installations.",
     rating: 4.7,
     reviews: 7420,
+    price: 45.99,
     img: "/sign-img3.png",
   },
   {
@@ -78,6 +86,7 @@ export const signsBanner = [
     desc: "Cost-effective X-stand banners perfect for indoor promotional setups.",
     rating: 4.8,
     reviews: 6900,
+    price: 35.99,
     img: "/sign-img4.png",
   },
   {
@@ -87,6 +96,7 @@ export const signsBanner = [
     desc: "High-quality posters for events, retail displays, and marketing campaigns.",
     rating: 4.7,
     reviews: 6400,
+    price: 19.99,
     img: "/sign-img5.png",
   },
   {
@@ -96,6 +106,7 @@ export const signsBanner = [
     desc: "Strong and weather-resistant aluminum signs for outdoor usage.",
     rating: 4.8,
     reviews: 5800,
+    price: 79.99,
     img: "/sign-img1.png",
   },
   {
@@ -105,6 +116,7 @@ export const signsBanner = [
     desc: "Double-sided banners mounted on poles for city-wide advertising.",
     rating: 4.7,
     reviews: 5200,
+    price: 64.99,
     img: "/sign-img2.png",
   },
   {
@@ -114,6 +126,7 @@ export const signsBanner = [
     desc: "Easy-change snap frames ideal for restaurants, malls, and offices.",
     rating: 4.6,
     reviews: 4700,
+    price: 29.99,
     img: "/sign-img3.png",
   },
   {
@@ -123,6 +136,7 @@ export const signsBanner = [
     desc: "Premium canvas prints for interior decoration and gallery displays.",
     rating: 4.9,
     reviews: 4300,
+    price: 49.99,
     img: "/sign-img4.png",
   },
   {
@@ -132,6 +146,7 @@ export const signsBanner = [
     desc: "Large custom backdrops for corporate events, weddings, and ceremonies.",
     rating: 4.8,
     reviews: 4100,
+    price: 159.99,
     img: "/sign-img5.png",
   },
   {
@@ -141,6 +156,7 @@ export const signsBanner = [
     desc: "Large custom backdrops for corporate events, weddings, and ceremonies.",
     rating: 4.9,
     reviews: 4500,
+    price: 149.99,
     img: "/sign-img1.png",
   },
 ];

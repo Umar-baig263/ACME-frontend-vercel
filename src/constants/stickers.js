@@ -5,7 +5,8 @@ export const stickers = [
     slug: "sticker-label-1",
     img: "/sticker-img1.png",
     rating: 4.7,
-    reviews: 128,
+    reviews: 120,
+    price: 29.99,
     desc: "High-quality custom stickers perfect for product labeling and branding.",
   },
   {
@@ -14,7 +15,8 @@ export const stickers = [
     slug: "sticker-label-2",
     img: "/sticker-img2.png",
     rating: 4.6,
-    reviews: 114,
+    reviews: 85,
+    price: 29.99,
     desc: "Durable and vibrant stickers ideal for packaging and brand promotion.",
   },
   {
@@ -23,7 +25,8 @@ export const stickers = [
     slug: "sticker-label-3",
     img: "/sticker-img3.png",
     rating: 4.8,
-    reviews: 139,
+    reviews: 230,
+    price: 29.99,
     desc: "Premium waterproof labels suitable for bottles, jars, and containers.",
   },
   {
@@ -32,7 +35,8 @@ export const stickers = [
     slug: "sticker-label-4",
     img: "/sticker-img4.png",
     rating: 4.7,
-    reviews: 121,
+    reviews: 145,
+    price: 29.99,
     desc: "Custom cut stickers available in multiple shapes and finishes.",
   },
   {
@@ -41,7 +45,8 @@ export const stickers = [
     slug: "sticker-label-5",
     img: "/sticker-img5.png",
     rating: 4.9,
-    reviews: 156,
+    reviews: 310,
+    price: 29.99,
     desc: "High-resolution print stickers ideal for branding and promotions.",
   },
   {
@@ -50,7 +55,8 @@ export const stickers = [
     slug: "sticker-label-6",
     img: "/sticker-img1.png",
     rating: 4.6,
-    reviews: 102,
+    reviews: 95,
+    price: 29.99,
     desc: "Strong adhesive labels suitable for all types of packaging.",
   },
   {
@@ -59,7 +65,8 @@ export const stickers = [
     slug: "sticker-label-7",
     img: "/sticker-img2.png",
     rating: 4.7,
-    reviews: 118,
+    reviews: 175,
+    price: 29.99,
     desc: "Vibrant and long-lasting stickers perfect for outdoor use.",
   },
   {
@@ -68,7 +75,8 @@ export const stickers = [
     slug: "sticker-label-8",
     img: "/sticker-img3.png",
     rating: 4.8,
-    reviews: 140,
+    reviews: 210,
+    price: 29.99,
     desc: "Waterproof custom labels ideal for product branding.",
   },
   {
@@ -77,7 +85,8 @@ export const stickers = [
     slug: "sticker-label-9",
     img: "/sticker-img4.png",
     rating: 4.7,
-    reviews: 132,
+    reviews: 134,
+    price: 29.99,
     desc: "Premium quality stickers with scratch-resistant coating.",
   },
   {
@@ -86,7 +95,8 @@ export const stickers = [
     slug: "sticker-label-10",
     img: "/sticker-img5.png",
     rating: 4.8,
-    reviews: 147,
+    reviews: 256,
+    price: 29.99,
     desc: "High-gloss and matte finish stickers for versatile applications.",
   },
   {
@@ -95,7 +105,8 @@ export const stickers = [
     slug: "sticker-label-11",
     img: "/sticker-img1.png",
     rating: 4.6,
-    reviews: 109,
+    reviews: 112,
+    price: 29.99,
     desc: "Customizable labels ideal for brand packaging and shipping.",
   },
   {
@@ -104,7 +115,8 @@ export const stickers = [
     slug: "sticker-label-12",
     img: "/sticker-img2.png",
     rating: 4.7,
-    reviews: 122,
+    reviews: 189,
+    price: 29.99,
     desc: "Premium stickers with excellent durability and color accuracy.",
   },
   {
@@ -113,7 +125,8 @@ export const stickers = [
     slug: "sticker-label-13",
     img: "/sticker-img3.png",
     rating: 4.8,
-    reviews: 151,
+    reviews: 245,
+    price: 29.99,
     desc: "Perfect for labeling jars, bottles, bags, and product boxes.",
   },
   {
@@ -122,7 +135,8 @@ export const stickers = [
     slug: "sticker-label-14",
     img: "/sticker-img4.png",
     rating: 4.7,
-    reviews: 136,
+    reviews: 167,
+    price: 29.99,
     desc: "Fade-resistant stickers ideal for long-term use.",
   },
   {
@@ -131,7 +145,8 @@ export const stickers = [
     slug: "sticker-label-15",
     img: "/sticker-img5.png",
     rating: 4.9,
-    reviews: 163,
+    reviews: 342,
+    price: 29.99,
     desc: "High-quality print labels to enhance product presentation.",
   },
   {
@@ -140,7 +155,8 @@ export const stickers = [
     slug: "sticker-label-16",
     img: "/sticker-img1.png",
     rating: 4.6,
-    reviews: 115,
+    reviews: 128,
+    price: 29.99,
     desc: "Durable stickers suitable for branding promotional items.",
   },
 ];
